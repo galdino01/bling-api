@@ -63,9 +63,6 @@ return new class extends Migration
             $table->string('producao');
             $table->string('dataValidade');
             $table->string('spedTipoItem');
-
-            $table->timestamps();
-            $table->softDeletes();
         });
     }
 
