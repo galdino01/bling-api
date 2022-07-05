@@ -18,9 +18,4 @@ class Product extends Model
         'situacao',
         'marca'
     ];
-
-    public function categories()
-    {
-        return $this->belongsToMany('App\Models\Category');
-    }
 }
