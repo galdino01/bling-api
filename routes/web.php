@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('products', \App\Http\Controllers\ProductsController::class);
+Route::resource('products', \App\Http\Controllers\ProductController::class);

@@ -24,9 +24,9 @@ class ProductController extends Controller
     public function index()
     {
         $list = Http::get('https://bling.com.br/Api/v2/produtos/json/&apikey='.$this->api_key)->json();
-        $api_products = $list['retorno']['produtos'];
+        $products = $list['retorno']['produtos'];
 
-        return view('products.index', compact('api_products'));
+        return view('products.index', compact('products'));
     }
 
     /**
