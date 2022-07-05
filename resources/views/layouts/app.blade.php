@@ -22,16 +22,20 @@
     <div>
         <nav class="navbar navbar-expand-lg bg-warning shadow">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="/">Bling Api</a>
-                <a href="https://github.com/galdino01/bling-api">
-                    <img class="img-thumbnail"
-                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original-wordmark.svg"
-                        alt="Github Link" width="45" height="45">
-                </a>
+                <div class="w-100 d-flex justify-content-between align-items-center">
+                    <a class="navbar-brand fw-bold" href="/">Bling Api</a>
+                    <a href="https://github.com/galdino01/bling-api">
+                        <img class="img-thumbnail"
+                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original-wordmark.svg"
+                            alt="Github Link" width="45" height="45">
+                    </a>
+                </div>
             </div>
         </nav>
         <main>
-            @yield('content')
+            <div class="container">
+                @yield('content')
+            </div>
         </main>
     </div>
 

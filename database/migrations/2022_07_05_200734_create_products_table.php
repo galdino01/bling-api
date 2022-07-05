@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->string('id')->unique()->primary();
 
-            $table->string('idFabricante');
+            $table->string('idFabricante')->nullable();
             $table->string('idGrupoProduto');
             $table->string('idCategoria');
 
@@ -32,15 +32,15 @@ return new class extends Migration
             $table->string('dataInclusao');
             $table->string('dataAlteracao');
             $table->string('imageThumbnail')->nullable();
-            $table->string('urlVideo');
-            $table->string('nomeFornecedor');
-            $table->string('codigoFabricante');
+            $table->string('urlVideo')->nullable();
+            $table->string('nomeFornecedor')->nullable();
+            $table->string('codigoFabricante')->nullable();
             $table->string('marca');
             $table->string('class_fiscal');
             $table->string('cest');
             $table->string('origem');
-            $table->string('linkExterno');
-            $table->string('observacoes');
+            $table->string('linkExterno')->nullable();
+            $table->string('observacoes')->nullable();
             $table->string('grupoProduto')->nullable();
             $table->string('garantia')->nullable();
             $table->string('descricaoFornecedor')->nullable();
@@ -48,21 +48,23 @@ return new class extends Migration
             $table->string('pesoBruto');
             $table->string('estoqueMinimo');
             $table->string('estoqueMaximo');
-            $table->string('gtin');
-            $table->string('gtinEmbalagem');
+            $table->string('gtin')->nullable();
+            $table->string('gtinEmbalagem')->nullable();
             $table->string('larguraProduto');
             $table->string('alturaProduto');
             $table->string('profundidadeProduto');
             $table->string('unidadeMedida');
             $table->integer('itensPorCaixa');
             $table->integer('volumes');
-            $table->string('localizacao');
+            $table->string('localizacao')->nullable();
             $table->string('crossdocking');
             $table->string('condicao');
             $table->string('freteGratis');
             $table->string('producao');
             $table->string('dataValidade');
             $table->string('spedTipoItem');
+
+            $table->timestamps();
         });
     }
 
