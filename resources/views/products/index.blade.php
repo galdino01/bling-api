@@ -59,6 +59,8 @@
                                     {{ $api_product['produto']['descricao'] }}
                                 @endif
                             </p>
+                            <p class="card-text">{{ $api_product['produto']['categoria']['id'] }}</p>
+                            <p class="card-text">{{ $api_product['produto']['categoria']['descricao'] }}</p>
                             <form id="{{ $api_product['produto']['id'] }}" action="{{ route('products.store') }}"
                                 method="POST">
                                 @csrf
