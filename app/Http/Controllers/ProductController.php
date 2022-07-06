@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Support\Arr;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -55,6 +55,8 @@ class ProductController extends Controller
             $product = Product::create($request->all());
 
             $product->save();
+
+            $request->session()->flash('message', 'Product created successfully!');
 
             return redirect(route('products.index'));
         } catch (\Exception $ex) {

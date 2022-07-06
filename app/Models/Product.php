@@ -61,9 +61,4 @@ class Product extends Model
         'dataValidade',
         'spedTipoItem',
     ];
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
 }

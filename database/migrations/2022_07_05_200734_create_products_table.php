@@ -18,11 +18,11 @@ return new class extends Migration
 
             $table->string('idFabricante')->nullable();
             $table->string('idGrupoProduto')->nullable();
-            $table->unsignedBigInteger('idCategoria')->nullable();
-            $table->foreign('idCategoria')->references('id')->on('categories')->onDelete('cascade');
+            $table->string('idCategoria')->nullable();
 
-            $table->string('key')->nullable();
+            $table->string('key')->nullable()->unique();
             $table->string('codigo')->nullable();
+
             $table->string('descricao')->nullable();
             $table->string('tipo')->nullable();
             $table->string('situacao')->nullable();

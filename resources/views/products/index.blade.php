@@ -63,10 +63,13 @@
                             <form id="{{ $api_product['id'] }}" action="{{ route('products.store') }}" method="POST">
                                 @csrf
                                 <input hidden type="text" name="key" value="{{ $api_product['id'] }}">
+
                                 <input hidden type="text" name="idFabricante" value="{{ $api_product['idFabricante'] }}">
                                 <input hidden type="text" name="idGrupoProduto" value="{{ $api_product['idGrupoProduto'] }}">
                                 <input hidden type="text" name="idCategoria" value="{{ $api_product['categoria']['id'] }}">
+
                                 <input hidden type="text" name="codigo" value="{{ $api_product['codigo'] }}">
+
                                 <input hidden type="text" name="descricao" value="{{ $api_product['descricao'] }}">
                                 <input hidden type="text" name="tipo" value="{{ $api_product['tipo'] }}">
                                 <input hidden type="text" name="situacao" value="{{ $api_product['situacao'] }}">
