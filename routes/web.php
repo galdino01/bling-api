@@ -17,8 +17,5 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/data', function () {
-    return view('data.index');
-});
 
-Route::resource('products', \App\Http\Controllers\ProductController::class);
+Route::resource('products', \App\Http\Controllers\ProductController::class)->except(['create', 'edit', 'show', 'update', 'destroy']);
