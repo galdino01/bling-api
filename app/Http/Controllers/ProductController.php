@@ -33,7 +33,10 @@ class ProductController extends Controller
 
             $api_products = array();
             foreach ($aux_api_products as $aux_api_product) {
-                array_push($api_products, $aux_api_product['produto']);
+                $aux_product = Product::where('key', '=', $aux_api_product['produto']['id'])->first();
+                if (!$aux_product) {
+                    array_push($api_products, $aux_api_product['produto']);
+                }
             }
 
             return view('products.index', compact('api_products', 'products'));
@@ -56,9 +59,7 @@ class ProductController extends Controller
 
             $product->save();
 
-            $request->session()->flash('message', 'Product created successfully!');
-
-            return redirect(route('products.index'));
+            return redirect(route('products.index'))->with('message', 'Produto cadastrado!');
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong', 'error' => $ex->getMessage()], 500);
         }
