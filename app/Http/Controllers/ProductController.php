@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Brick\Math\BigInteger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -51,7 +52,7 @@ class ProductController extends Controller
 
             return redirect(route('products.index'));
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Produto já cadastrado.'], 500);
+            return response()->json(['message' => 'Something went wrong', 'error' => $ex->getMessage()], 500);
         }
     }
 }

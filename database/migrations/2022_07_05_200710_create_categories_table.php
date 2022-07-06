@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->string('id')->unique()->primary();
-            $table->string('descricao');
+            $table->id();
 
-            $table->timestamps();
+            $table->string('key');
+            $table->string('descricao');
         });
     }
 

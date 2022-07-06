@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 
@@ -16,15 +16,12 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'id' => '4208042',
+            'key' => '4208042',
             'descricao' => 'Produtos de Venda',
         ]);
-
         Category::create([
-            'id' => '3720248',
+            'key' => '3720248',
             'descricao' => 'Categoria padrão',
         ]);
-
-        $this->call(CategorySeeder::class);
     }
 }

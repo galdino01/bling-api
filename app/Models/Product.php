@@ -9,8 +9,11 @@ class Product extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id',
+        'key',
         'codigo',
         'descricao',
         'tipo',
@@ -58,4 +61,9 @@ class Product extends Model
         'dataValidade',
         'spedTipoItem',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

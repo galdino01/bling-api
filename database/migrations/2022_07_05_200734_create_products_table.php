@@ -14,12 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->string('id')->unique()->primary();
+            $table->id();
 
             $table->string('idFabricante')->nullable();
             $table->string('idGrupoProduto')->nullable();
-            $table->string('idCategoria')->nullable();
+            $table->unsignedBigInteger('idCategoria')->nullable();
+            $table->foreign('idCategoria')->references('id')->on('categories')->onDelete('cascade');
 
+            $table->string('key')->nullable();
             $table->string('codigo')->nullable();
             $table->string('descricao')->nullable();
             $table->string('tipo')->nullable();
@@ -63,8 +65,6 @@ return new class extends Migration
             $table->string('producao')->nullable();
             $table->string('dataValidade')->nullable();
             $table->string('spedTipoItem')->nullable();
-
-            $table->timestamps();
         });
     }
 

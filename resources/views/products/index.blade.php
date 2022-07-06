@@ -62,7 +62,7 @@
                             <p class="card-text">{{ $api_product['produto']['categoria']['descricao'] }}</p>
                             <form id="{{ $api_product['produto']['id'] }}" action="{{ route('products.store') }}" method="POST">
                                 @csrf
-                                <input hidden type="text" name="id" value="{{ $api_product['produto']['id'] }}">
+                                <input hidden type="text" name="key" value="{{ $api_product['produto']['id'] }}">
                                 <input hidden type="text" name="idFabricante" value="{{ $api_product['produto']['idFabricante'] }}">
                                 <input hidden type="text" name="idGrupoProduto" value="{{ $api_product['produto']['idGrupoProduto'] }}">
                                 <input hidden type="text" name="idCategoria" value="{{ $api_product['produto']['categoria']['id'] }}">
