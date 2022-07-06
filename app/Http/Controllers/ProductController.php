@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Brick\Math\BigInteger;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -11,6 +11,7 @@ class ProductController extends Controller
 {
 
     protected $api_key;
+    protected $api_products_list;
 
     public function __construct()
     {
@@ -27,8 +28,13 @@ class ProductController extends Controller
         try {
             $products = Product::orderBy('dataInclusao', 'asc')->simplePaginate(5);
 
-            $list = Http::get('https://bling.com.br/Api/v2/produtos/json/&apikey='.$this->api_key)->json();
-            $api_products = $list['retorno']['produtos'];
+            $this->api_products_list = Http::get('https://bling.com.br/Api/v2/produtos/json/&apikey='.$this->api_key)->json();
+            $aux_api_products = $this->api_products_list['retorno']['produtos'];
+
+            $api_products = array();
+            foreach ($aux_api_products as $aux_api_product) {
+                array_push($api_products, $aux_api_product['produto']);
+            }
 
             return view('products.index', compact('api_products', 'products'));
         } catch (\Exception $ex) {

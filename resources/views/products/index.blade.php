@@ -35,8 +35,8 @@
             @foreach ($api_products as $api_product)
                 <div class="p-1 col-md-4">
                     <div class="card">
-                        @if ($api_product['produto']['imageThumbnail'] != null)
-                            <img src="{{ $api_product['produto']['imageThumbnail'] }}" class="card-img-top" alt="Product Image">
+                        @if ($api_product['imageThumbnail'] != null)
+                            <img src="{{ $api_product['imageThumbnail'] }}" class="card-img-top" alt="Product Image">
                         @else
                             <div class="d-flex justify-content-center align-items-center p-3">
                                 <i class="fa-solid fa-image"></i>&nbsp;
@@ -45,70 +45,70 @@
                         @endif
                         <div class="card-body">
                             <h5 class="card-title">
-                                @if ($api_product['produto']['codigo'] == null || $api_product['produto']['codigo'] == '')
+                                @if ($api_product['codigo'] == null || $api_product['codigo'] == '')
                                     Sem Código
                                 @else
-                                    {{ $api_product['produto']['codigo'] }}
+                                    {{ $api_product['codigo'] }}
                                 @endif
                             </h5>
                             <p class="card-text">
-                                @if ($api_product['produto']['descricao'] == null || $api_product['produto']['descricao'] == '')
+                                @if ($api_product['descricao'] == null || $api_product['descricao'] == '')
                                     Sem Descrição
                                 @else
-                                    {{ $api_product['produto']['descricao'] }}
+                                    {{ $api_product['descricao'] }}
                                 @endif
                             </p>
-                            <p class="card-text">{{ $api_product['produto']['categoria']['id'] }}</p>
-                            <p class="card-text">{{ $api_product['produto']['categoria']['descricao'] }}</p>
-                            <form id="{{ $api_product['produto']['id'] }}" action="{{ route('products.store') }}" method="POST">
+                            <p class="card-text">{{ $api_product['categoria']['id'] }}</p>
+                            <p class="card-text">{{ $api_product['categoria']['descricao'] }}</p>
+                            <form id="{{ $api_product['id'] }}" action="{{ route('products.store') }}" method="POST">
                                 @csrf
-                                <input hidden type="text" name="key" value="{{ $api_product['produto']['id'] }}">
-                                <input hidden type="text" name="idFabricante" value="{{ $api_product['produto']['idFabricante'] }}">
-                                <input hidden type="text" name="idGrupoProduto" value="{{ $api_product['produto']['idGrupoProduto'] }}">
-                                <input hidden type="text" name="idCategoria" value="{{ $api_product['produto']['categoria']['id'] }}">
-                                <input hidden type="text" name="codigo" value="{{ $api_product['produto']['codigo'] }}">
-                                <input hidden type="text" name="descricao" value="{{ $api_product['produto']['descricao'] }}">
-                                <input hidden type="text" name="tipo" value="{{ $api_product['produto']['tipo'] }}">
-                                <input hidden type="text" name="situacao" value="{{ $api_product['produto']['situacao'] }}">
-                                <input hidden type="text" name="unidade" value="{{ $api_product['produto']['unidade'] }}">
-                                <input hidden type="text" name="preco" value="{{ $api_product['produto']['preco'] }}">
-                                <input hidden type="text" name="precoCusto" value="{{ $api_product['produto']['precoCusto'] }}">
-                                <input hidden type="text" name="descricaoCurta" value="{{ $api_product['produto']['descricaoCurta'] }}">
-                                <input hidden type="text" name="descricaoComplementar" value="{{ $api_product['produto']['descricaoComplementar'] }}">
-                                <input hidden type="text" name="dataInclusao" value="{{ $api_product['produto']['dataInclusao'] }}">
-                                <input hidden type="text" name="dataAlteracao" value="{{ $api_product['produto']['dataAlteracao'] }}">
-                                <input hidden type="text" name="imageThumbnail" value="{{ $api_product['produto']['imageThumbnail'] }}">
-                                <input hidden type="text" name="urlVideo" value="{{ $api_product['produto']['urlVideo'] ? $api_product['produto']['urlVideo'] : '' }}">
-                                <input hidden type="text" name="nomeFornecedor" value="{{ $api_product['produto']['nomeFornecedor'] }}">
-                                <input hidden type="text" name="codigoFabricante" value="{{ $api_product['produto']['codigoFabricante'] }}">
-                                <input hidden type="text" name="marca" value="{{ $api_product['produto']['marca'] ? $api_product['produto']['marca'] : '' }}">
-                                <input hidden type="text" name="class_fiscal" value="{{ $api_product['produto']['class_fiscal'] }}">
-                                <input hidden type="text" name="cest" value="{{ $api_product['produto']['cest'] ? $api_product['produto']['cest'] : '' }}">
-                                <input hidden type="text" name="origem" value="{{ $api_product['produto']['origem'] }}">
-                                <input hidden type="text" name="linkExterno" value="{{ $api_product['produto']['linkExterno'] ? $api_product['produto']['linkExterno'] : '' }}">
-                                <input hidden type="text" name="observacoes" value="{{ $api_product['produto']['observacoes'] ? $api_product['produto']['observacoes'] : '' }}">
-                                <input hidden type="text" name="grupoProduto" value="{{ $api_product['produto']['grupoProduto'] ? $api_product['produto']['grupoProduto'] : '' }}">
-                                <input hidden type="text" name="garantia" value="{{ $api_product['produto']['garantia'] }}">
-                                <input hidden type="text" name="descricaoFornecedor" value="{{ $api_product['produto']['descricaoFornecedor'] }}">
-                                <input hidden type="text" name="pesoLiq" value="{{ $api_product['produto']['pesoLiq'] }}">
-                                <input hidden type="text" name="pesoBruto" value="{{ $api_product['produto']['pesoBruto'] }}">
-                                <input hidden type="text" name="estoqueMinimo" value="{{ $api_product['produto']['estoqueMinimo'] }}">
-                                <input hidden type="text" name="estoqueMaximo" value="{{ $api_product['produto']['estoqueMaximo'] }}">
-                                <input hidden type="text" name="gtin" value="{{ $api_product['produto']['gtin'] ? $api_product['produto']['gtin'] : '' }}">
-                                <input hidden type="text" name="gtinEmbalagem" value="{{ $api_product['produto']['gtinEmbalagem'] ? $api_product['produto']['gtinEmbalagem'] : '_' }}">
-                                <input hidden type="text" name="larguraProduto" value="{{ $api_product['produto']['larguraProduto'] }}">
-                                <input hidden type="text" name="alturaProduto" value="{{ $api_product['produto']['alturaProduto'] }}">
-                                <input hidden type="text" name="profundidadeProduto" value="{{ $api_product['produto']['profundidadeProduto'] }}">
-                                <input hidden type="text" name="unidadeMedida" value="{{ $api_product['produto']['unidadeMedida'] }}">
-                                <input hidden type="text" name="itensPorCaixa" value="{{ $api_product['produto']['itensPorCaixa'] }}">
-                                <input hidden type="text" name="volumes" value="{{ $api_product['produto']['volumes'] }}">
-                                <input hidden type="text" name="localizacao" value="{{ $api_product['produto']['localizacao'] ? $api_product['produto']['localizacao'] : '' }}">
-                                <input hidden type="text" name="crossdocking" value="{{ $api_product['produto']['crossdocking'] }}">
-                                <input hidden type="text" name="condicao" value="{{ $api_product['produto']['condicao'] }}">
-                                <input hidden type="text" name="freteGratis" value="{{ $api_product['produto']['freteGratis'] }}">
-                                <input hidden type="text" name="producao" value="{{ $api_product['produto']['producao'] }}">
-                                <input hidden type="text" name="dataValidade" value="{{ $api_product['produto']['dataValidade'] }}">
-                                <input hidden type="text" name="spedTipoItem" value="{{ $api_product['produto']['spedTipoItem'] }}">
+                                <input hidden type="text" name="key" value="{{ $api_product['id'] }}">
+                                <input hidden type="text" name="idFabricante" value="{{ $api_product['idFabricante'] }}">
+                                <input hidden type="text" name="idGrupoProduto" value="{{ $api_product['idGrupoProduto'] }}">
+                                <input hidden type="text" name="idCategoria" value="{{ $api_product['categoria']['id'] }}">
+                                <input hidden type="text" name="codigo" value="{{ $api_product['codigo'] }}">
+                                <input hidden type="text" name="descricao" value="{{ $api_product['descricao'] }}">
+                                <input hidden type="text" name="tipo" value="{{ $api_product['tipo'] }}">
+                                <input hidden type="text" name="situacao" value="{{ $api_product['situacao'] }}">
+                                <input hidden type="text" name="unidade" value="{{ $api_product['unidade'] }}">
+                                <input hidden type="text" name="preco" value="{{ $api_product['preco'] }}">
+                                <input hidden type="text" name="precoCusto" value="{{ $api_product['precoCusto'] }}">
+                                <input hidden type="text" name="descricaoCurta" value="{{ $api_product['descricaoCurta'] }}">
+                                <input hidden type="text" name="descricaoComplementar" value="{{ $api_product['descricaoComplementar'] }}">
+                                <input hidden type="text" name="dataInclusao" value="{{ $api_product['dataInclusao'] }}">
+                                <input hidden type="text" name="dataAlteracao" value="{{ $api_product['dataAlteracao'] }}">
+                                <input hidden type="text" name="imageThumbnail" value="{{ $api_product['imageThumbnail'] }}">
+                                <input hidden type="text" name="urlVideo" value="{{ $api_product['urlVideo'] ? $api_product['urlVideo'] : '' }}">
+                                <input hidden type="text" name="nomeFornecedor" value="{{ $api_product['nomeFornecedor'] }}">
+                                <input hidden type="text" name="codigoFabricante" value="{{ $api_product['codigoFabricante'] }}">
+                                <input hidden type="text" name="marca" value="{{ $api_product['marca'] ? $api_product['marca'] : '' }}">
+                                <input hidden type="text" name="class_fiscal" value="{{ $api_product['class_fiscal'] }}">
+                                <input hidden type="text" name="cest" value="{{ $api_product['cest'] ? $api_product['cest'] : '' }}">
+                                <input hidden type="text" name="origem" value="{{ $api_product['origem'] }}">
+                                <input hidden type="text" name="linkExterno" value="{{ $api_product['linkExterno'] ? $api_product['linkExterno'] : '' }}">
+                                <input hidden type="text" name="observacoes" value="{{ $api_product['observacoes'] ? $api_product['observacoes'] : '' }}">
+                                <input hidden type="text" name="grupoProduto" value="{{ $api_product['grupoProduto'] ? $api_product['grupoProduto'] : '' }}">
+                                <input hidden type="text" name="garantia" value="{{ $api_product['garantia'] }}">
+                                <input hidden type="text" name="descricaoFornecedor" value="{{ $api_product['descricaoFornecedor'] }}">
+                                <input hidden type="text" name="pesoLiq" value="{{ $api_product['pesoLiq'] }}">
+                                <input hidden type="text" name="pesoBruto" value="{{ $api_product['pesoBruto'] }}">
+                                <input hidden type="text" name="estoqueMinimo" value="{{ $api_product['estoqueMinimo'] }}">
+                                <input hidden type="text" name="estoqueMaximo" value="{{ $api_product['estoqueMaximo'] }}">
+                                <input hidden type="text" name="gtin" value="{{ $api_product['gtin'] ? $api_product['gtin'] : '' }}">
+                                <input hidden type="text" name="gtinEmbalagem" value="{{ $api_product['gtinEmbalagem'] ? $api_product['gtinEmbalagem'] : '_' }}">
+                                <input hidden type="text" name="larguraProduto" value="{{ $api_product['larguraProduto'] }}">
+                                <input hidden type="text" name="alturaProduto" value="{{ $api_product['alturaProduto'] }}">
+                                <input hidden type="text" name="profundidadeProduto" value="{{ $api_product['profundidadeProduto'] }}">
+                                <input hidden type="text" name="unidadeMedida" value="{{ $api_product['unidadeMedida'] }}">
+                                <input hidden type="text" name="itensPorCaixa" value="{{ $api_product['itensPorCaixa'] }}">
+                                <input hidden type="text" name="volumes" value="{{ $api_product['volumes'] }}">
+                                <input hidden type="text" name="localizacao" value="{{ $api_product['localizacao'] ? $api_product['localizacao'] : '' }}">
+                                <input hidden type="text" name="crossdocking" value="{{ $api_product['crossdocking'] }}">
+                                <input hidden type="text" name="condicao" value="{{ $api_product['condicao'] }}">
+                                <input hidden type="text" name="freteGratis" value="{{ $api_product['freteGratis'] }}">
+                                <input hidden type="text" name="producao" value="{{ $api_product['producao'] }}">
+                                <input hidden type="text" name="dataValidade" value="{{ $api_product['dataValidade'] }}">
+                                <input hidden type="text" name="spedTipoItem" value="{{ $api_product['spedTipoItem'] }}">
 
                                 <input type="submit" class="font-weight-bold btn btn-primary" value="Salvar no Banco">
                             </form>
