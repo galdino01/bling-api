@@ -24,7 +24,7 @@ class ProductController extends Controller
     public function index()
     {
         try {
-            $products = Product::all();
+            $products = Product::orderBy('dataInclusao', 'asc')->simplePaginate(5);
 
             $list = Http::get('https://bling.com.br/Api/v2/produtos/json/&apikey='.$this->api_key)->json();
             $api_products = $list['retorno']['produtos'];
@@ -101,7 +101,7 @@ class ProductController extends Controller
 
             return redirect(route('products.index'));
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong', 'error' => $ex->getMessage()], 500);
+            return response()->json(['message' => 'Produto já cadastrado.'], 500);
         }
     }
 }
