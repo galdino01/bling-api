@@ -27,3 +27,9 @@ php artisan migrate
 ```
 php artisan db:seed CategorySeeder
 ```
+
+-   Para povoar a tabela de **clientes**.
+
+```
+php artisan db:seed CustomerSeeder
+```
