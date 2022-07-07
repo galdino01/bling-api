@@ -17,5 +17,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-
-Route::resource('products', \App\Http\Controllers\ProductController::class)->except(['create', 'edit', 'show', 'update', 'destroy']);
+Route::prefix('products')->group(function () {
+    Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
+    Route::post('/store',[\App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
+    Route::get('/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
+});

@@ -1,6 +1,6 @@
 <form id="{{ $api_product['id'] }}" action="{{ route('products.store') }}" method="POST">
     @csrf
-    <input hidden type="text" name="key" value="{{ $api_product['id'] }}">
+    <input hidden type="text" name="id" value="{{ $api_product['id'] }}">
 
     <input hidden type="text" name="idFabricante" value="{{ $api_product['idFabricante'] }}">
     <input hidden type="text" name="idGrupoProduto" value="{{ $api_product['idGrupoProduto'] }}">

@@ -16,11 +16,11 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'key' => '4208042',
+            'id' => '4208042',
             'descricao' => 'Produtos de Venda',
         ]);
         Category::create([
-            'key' => '3720248',
+            'id' => '3720248',
             'descricao' => 'Categoria padrão',
         ]);
     }

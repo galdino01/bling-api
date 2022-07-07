@@ -20,7 +20,16 @@
         <nav class="navbar navbar-expand-lg bg-warning shadow">
             <div class="container">
                 <div class="w-100 d-flex justify-content-between align-items-center">
-                    <a class="navbar-brand fw-bold" href="/">Bling Api</a>
+                    <div class="w-50 d-flex align-items-center">
+                        <a class="navbar-brand fw-bold" href="/">Bling Api</a>
+                        @if (Route::getCurrentRoute()->getName() == 'products.show' || Route::getCurrentRoute()->getName() == 'products.index')
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ route('products.index') }}">Produtos</a>
+                                </li>
+                            </ul>
+                        @endif
+                    </div>
                     <a href="https://github.com/galdino01/bling-api">
                         <img class="img-thumbnail" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original-wordmark.svg" alt="Github Link" width="45" height="45">
                     </a>
