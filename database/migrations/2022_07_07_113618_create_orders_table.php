@@ -20,8 +20,8 @@ return new class extends Migration {
             $table->string('vendedor')->nullable();
             $table->string('valorFrete')->nullable();
             $table->string('outrasDespesas')->nullable();
-            $table->string('totalprodutos')->nullable();
-            $table->string('totalvenda')->nullable();
+            $table->string('totalProdutos')->nullable();
+            $table->string('totalVenda')->nullable();
             $table->string('situacao')->nullable();
             $table->string('data')->nullable();
             $table->string('dataSaida')->nullable();

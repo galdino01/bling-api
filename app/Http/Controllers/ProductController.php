@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class ProductController extends Controller {
-
     protected $api_key;
+    protected $api_link;
     protected $api_products_list;
 
     public function __construct() {
         $this->api_key = env('BLING_API_KEY', '/');
+        $this->api_link = 'https://bling.com.br/Api/v2/produtos/json/&apikey='.$this->api_key;
     }
 
     public function index(Request $request) {
@@ -26,7 +26,7 @@ class ProductController extends Controller {
                 $products = Product::orderBy('dataInclusao', 'asc')->simplePaginate(5);
             }
 
-            $this->api_products_list = Http::get('https://bling.com.br/Api/v2/produtos/json/&apikey='.$this->api_key)->json();
+            $this->api_products_list = Http::get($this->api_link)->json();
             $aux_api_products = $this->api_products_list['retorno']['produtos'];
 
             $api_products = array();
