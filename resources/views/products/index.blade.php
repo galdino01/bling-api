@@ -74,7 +74,7 @@
                         @endif
                         <div class="card-body">
                             <div class="w-100 d-flex align-items-center justify-content-start">
-                                <div class="w-50 d-flex flex-row align-items-center mb-3">
+                                <div class="d-flex flex-row align-items-center mb-3">
                                     @if ($api_product['codigo'] == null || $api_product['codigo'] == '')
                                         <span><strong>Código:</strong></span>&nbsp;
                                         <p class="card-text">Sem Código</p>
@@ -86,12 +86,12 @@
                             </div>
                             @if ($api_product['id'] == null || $api_product['id'] == '')
                                 <div class="d-flex flex-row align-items-center mb-3">
-                                    <span><strong>Chave:</strong></span>&nbsp;
-                                    <p class="card-text">Sem Chave</p>
+                                    <span><strong>ID:</strong></span>&nbsp;
+                                    <p class="card-text">Sem ID</p>
                                 </div>
                             @else
                                 <div class="d-flex flex-row align-items-center mb-3">
-                                    <span><strong>Chave:</strong></span>&nbsp;
+                                    <span><strong>ID:</strong></span>&nbsp;
                                     <p class="card-text">{{ $api_product['id'] }}</p>
                                 </div>
                             @endif
