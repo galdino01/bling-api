@@ -21,8 +21,8 @@ class Order extends Model {
         'vendedor',
         'valorFrete',
         'outrasDespesas',
-        'totalprodutos',
-        'totalvenda',
+        'totalProdutos',
+        'totalVenda',
         'situacao',
         'data',
         'dataSaida'

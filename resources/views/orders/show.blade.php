@@ -3,7 +3,7 @@
 @section('content')
     <div class="mt-3 p-2 d-flex flex-column justify-content-center align-items-center rounded shadow">
         <div class="d-flex flex-row justify-content-start">
-            <div class="row w-75">
+            <div class="row w-100">
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>ID:</strong></span>&nbsp;
                     <p>{{ $order->id }}</p>
@@ -18,11 +18,11 @@
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Data:</strong></span>&nbsp;
-                    <p>{{ $order->data }}</p>
+                    <p>{{ \Carbon\Carbon::parse($order->data)->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Data de Saída:</strong></span>&nbsp;
-                    <p>{{ $order->dataSaida }}</p>
+                    <p>{{ \Carbon\Carbon::parse($order->dataSaida)->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Cliente:</strong></span>&nbsp;

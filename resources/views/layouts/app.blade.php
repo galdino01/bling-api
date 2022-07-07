@@ -28,6 +28,23 @@
                                     <a class="nav-link" aria-current="page" href="{{ route('products.index') }}">Produtos</a>
                                 </li>
                             </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ route('orders.index') }}">Pedidos</a>
+                                </li>
+                            </ul>
+                        @endif
+                        @if (Route::getCurrentRoute()->getName() == 'orders.show' || Route::getCurrentRoute()->getName() == 'orders.index')
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ route('products.index') }}">Produtos</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ route('orders.index') }}">Pedidos</a>
+                                </li>
+                            </ul>
                         @endif
                     </div>
                     <a href="https://github.com/galdino01/bling-api">

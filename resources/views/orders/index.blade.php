@@ -20,9 +20,9 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Código</th>
-                        <th scope="col">Descrição</th>
-                        <th scope="col">Data Inclusão</th>
+                        <th scope="col">Total da Venda</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Data de Saída</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
@@ -30,8 +30,8 @@
                     @foreach ($orders as $order)
                         <tr>
                             <th>{{ $order->id }}</th>
-                            <td>{{ $order->totalvenda }}</td>
-                            <td>{{ $order->data  }}</td>
+                            <td>R$ {{ number_format($order->totalVenda, 2, ',', '.') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($order->data)->format('d/m/Y')  }}</td>
                             <td>{{ \Carbon\Carbon::parse($order->dataSaida)->format('d/m/Y') }}</td>
                             <td>
                                 <a class="btn btn-outline-primary" href="{{route('orders.show', ['id' => $order->id])}}">
@@ -65,23 +65,19 @@
                 <div class="p-1 col-md-4">
                     <div class="card">
                         <div class="card-body row">
-                            <div class="col-md-3">
-                                <span><strong>ID:</strong></span>&nbsp;
-                                <p class="card-text">{{ $api_order['id'] }}</p>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-12 d-flex">
                                 <span><strong>Total da Venda:</strong></span>&nbsp;
-                                <p class="card-text">{{ $api_order['totalVenda'] }}</p>
+                                <p class="card-text">R$ {{ number_format($api_order['totalvenda'], 2, ',', '.') }}</p>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-12 d-flex">
                                 <span><strong>Data:</strong></span>&nbsp;
-                                <p class="card-text">{{ $api_order['data'] }}</p>
+                                <p class="card-text">{{ \Carbon\Carbon::parse($api_order['data'])->format('d/m/Y') }}</p>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-12 d-flex">
                                 <span><strong>Data de Saída:</strong></span>&nbsp;
-                                <p class="card-text">{{ $api_order['dataSaida'] }}</p>
+                                <p class="card-text">{{ \Carbon\Carbon::parse($api_order['dataSaida'])->format('d/m/Y') }}</p>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-12 d-flex">
                                 <span><strong>Cliente:</strong></span>&nbsp;
                                 <p class="card-text">{{ $api_order['cliente']['nome'] }}</p>
                             </div>
