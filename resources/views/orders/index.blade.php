@@ -9,7 +9,7 @@
             @if ($orders->count() > 0)
                 <form class="w-50" action="{{ route('orders.index') }}" method="GET">
                     <div class="input-group w-100">
-                        <input type="text" name="search" class="form-control" placeholder="ID Produto" aria-label="Use o ID aqui" aria-describedby="btn-search">
+                        <input type="text" name="search" class="form-control" placeholder="ID Pedido" aria-label="Use o ID aqui" aria-describedby="btn-search">
                         <button class="btn btn-outline-primary" type="submit" id="btn-search">Pesquisar</button>
                     </div>
                 </form>
