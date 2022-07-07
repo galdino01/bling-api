@@ -22,3 +22,9 @@ Route::prefix('products')->group(function () {
     Route::post('/store',[\App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
     Route::get('/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
 });
+
+Route::prefix('orders')->group(function () {
+    Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('orders.index');
+    Route::post('/store',[\App\Http\Controllers\ProductController::class, 'store'])->name('orders.store');
+    Route::get('/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('orders.show');
+});
