@@ -27,4 +27,8 @@ class Order extends Model {
         'data',
         'dataSaida'
     ];
+
+    public function customer() {
+        return $this->belongsTo(Customer::class, 'idCliente');
+    }
 }
