@@ -10,7 +10,8 @@ class CategorySeeder extends Seeder {
         Category::create([
             'id' => '4208042',
             'description' => 'Produtos de Venda',
-        ],[
+        ]);
+        Category::create([
             'id' => '3720248',
             'description' => 'Categoria padrão',
         ]);

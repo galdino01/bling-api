@@ -14,13 +14,13 @@ class Address extends Model {
 
         'customer_id',
 
+        'cep',
         'street',
         'number',
         'adjunct',
-        'city',
         'district',
-        'cep',
-        'uf',
+        'city',
+        'state',
 
         'created_at',
         'updated_at',

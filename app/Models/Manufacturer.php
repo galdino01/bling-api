@@ -9,14 +9,18 @@ use Illuminate\Database\Eloquent\Model;
 class Manufacturer extends Model {
     use HasFactory, SoftDeletes;
 
-    public $timestamps = false;
-
     protected $fillable = [
         'id',
 
         'code',
         'name',
 
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
+    protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at'

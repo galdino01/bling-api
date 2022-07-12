@@ -9,13 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model {
     use HasFactory, SoftDeletes;
 
-    public $timestamps = false;
-
     protected $fillable = [
         'id',
 
         'description',
 
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
+    protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at'

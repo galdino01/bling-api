@@ -9,13 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 class ProductGroup extends Model {
     use HasFactory, SoftDeletes;
 
-    public $timestamps = false;
-
     protected $fillable = [
         'id',
 
         'name',
 
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
+    protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at'

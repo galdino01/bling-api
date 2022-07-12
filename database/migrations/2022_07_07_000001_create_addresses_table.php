@@ -11,13 +11,13 @@ return new class extends Migration {
 
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
 
+            $table->string('cep')->nullable();
             $table->string('street')->nullable();
             $table->string('number')->nullable();
             $table->string('adjunct')->nullable();
-            $table->string('city')->nullable();
             $table->string('district')->nullable();
-            $table->string('cep')->nullable();
-            $table->string('uf')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
