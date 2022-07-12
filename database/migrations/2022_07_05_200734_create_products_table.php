@@ -10,55 +10,53 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary()->unique();
 
-            $table->string('idFabricante')->nullable();
-            $table->string('idGrupoProduto')->nullable();
-            $table->unsignedBigInteger('idCategoria')->nullable();
-            $table->foreign('idCategoria')->references('id')->on('categories')->onDelete('cascade');
+            $table->string('manufacturer_id')->nullable();
+            $table->string('product_group_id')->nullable();
+            $table->string('provider_id')->nullable();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
 
-            $table->string('codigo')->nullable();
-
-            $table->string('descricao')->nullable();
-            $table->string('tipo')->nullable();
-            $table->string('situacao')->nullable();
-            $table->string('unidade')->nullable();
-            $table->string('preco')->nullable();
-            $table->string('precoCusto')->nullable();
-            $table->string('descricaoCurta')->nullable();
-            $table->string('descricaoComplementar')->nullable();
-            $table->string('dataInclusao')->nullable();
-            $table->string('dataAlteracao')->nullable();
-            $table->string('imageThumbnail')->nullable();
-            $table->string('urlVideo')->nullable();
-            $table->string('nomeFornecedor')->nullable();
-            $table->string('codigoFabricante')->nullable();
-            $table->string('marca')->nullable();
-            $table->string('class_fiscal')->nullable();
+            $table->string('code')->nullable();
+            $table->string('description')->nullable();
+            $table->string('type')->nullable();
+            $table->string('status')->nullable();
+            $table->string('brand')->nullable();
+            $table->string('unity')->nullable();
+            $table->string('price')->nullable();
+            $table->string('price_cost')->nullable();
+            $table->string('short_description')->nullable();
+            $table->string('supp_description')->nullable();
+            $table->string('tax_class')->nullable();
             $table->string('cest')->nullable();
-            $table->string('origem')->nullable();
-            $table->string('linkExterno')->nullable();
-            $table->string('observacoes')->nullable();
-            $table->string('grupoProduto')->nullable();
-            $table->string('garantia')->nullable();
-            $table->string('descricaoFornecedor')->nullable();
-            $table->string('pesoLiq')->nullable();
-            $table->string('pesoBruto')->nullable();
-            $table->string('estoqueMinimo')->nullable();
-            $table->string('estoqueMaximo')->nullable();
-            $table->string('gtin')->nullable()->nullable();
-            $table->string('gtinEmbalagem')->nullable();
-            $table->string('larguraProduto')->nullable();
-            $table->string('alturaProduto')->nullable();
-            $table->string('profundidadeProduto')->nullable();
-            $table->string('unidadeMedida')->nullable();
-            $table->integer('itensPorCaixa')->nullable();
+            $table->string('origin')->nullable();
+            $table->string('external_link')->nullable();
+            $table->string('notes')->nullable();
+            $table->string('warranty')->nullable();
+            $table->string('net_weight')->nullable();
+            $table->string('gross_weight')->nullable();
+            $table->string('min_stock')->nullable();
+            $table->string('max_stock')->nullable();
+            $table->string('width')->nullable();
+            $table->string('height')->nullable();
+            $table->string('depth')->nullable();
+            $table->string('unit_of_measure')->nullable();
+            $table->integer('items_per_box')->nullable();
             $table->integer('volumes')->nullable();
-            $table->string('localizacao')->nullable();
-            $table->string('crossdocking')->nullable();
-            $table->string('condicao')->nullable();
-            $table->string('freteGratis')->nullable();
-            $table->string('producao')->nullable();
-            $table->string('dataValidade')->nullable();
-            $table->string('spedTipoItem')->nullable();
+            $table->string('localization')->nullable();
+            $table->string('cross_docking')->nullable();
+            $table->string('free_shipping')->nullable();
+            $table->string('production')->nullable();
+            $table->string('sped_item_type')->nullable();
+
+            $table->string('image_thumbnail')->nullable();
+            $table->string('url_video')->nullable();
+
+            $table->string('gtin_code')->nullable()->nullable();
+            $table->string('gtin_package')->nullable();
+
+            $table->string('inclusion_date')->nullable();
+            $table->string('expiration_date')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

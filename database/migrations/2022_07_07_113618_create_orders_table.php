@@ -9,22 +9,23 @@ return new class extends Migration {
         Schema::create('orders', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary()->unique();
 
-            $table->unsignedBigInteger('idCliente');
-            $table->foreign('idCliente')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
 
-            $table->string('desconto')->nullable();
-            $table->string('observacoes')->nullable();
-            $table->string('observacaoInterna')->nullable();
-            $table->string('numero')->nullable();
-            $table->string('numeroOrdemCompra')->nullable();
-            $table->string('vendedor')->nullable();
-            $table->string('valorFrete')->nullable();
-            $table->string('outrasDespesas')->nullable();
-            $table->string('totalProdutos')->nullable();
-            $table->string('totalVenda')->nullable();
-            $table->string('situacao')->nullable();
-            $table->string('data')->nullable();
-            $table->string('dataSaida')->nullable();
+            $table->string('discount')->nullable();
+            $table->string('notes')->nullable();
+            $table->string('internal_notes')->nullable();
+            $table->string('number')->nullable();
+            $table->string('order_number')->nullable();
+            $table->string('seller')->nullable();
+            $table->string('cost_of_freight')->nullable();
+            $table->string('other_expenses')->nullable();
+            $table->string('total_of_products')->nullable();
+            $table->string('total_sale')->nullable();
+            $table->string('status')->nullable();
+
+            $table->string('output_date')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

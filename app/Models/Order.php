@@ -14,7 +14,7 @@ class Order extends Model {
 
         'customer_id',
 
-        'description',
+        'discount',
         'notes',
         'internal_notes',
         'number',
@@ -25,8 +25,8 @@ class Order extends Model {
         'total_of_products',
         'total_sale',
         'status',
-        'output_date',
 
+        'output_date',
         'created_at',
         'updated_at',
         'deleted_at'

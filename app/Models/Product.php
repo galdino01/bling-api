@@ -32,7 +32,6 @@ class Product extends Model {
         'price_cost',
         'short_description',
         'supp_description',
-        'inclusion_date',
         'image_thumbnail',
         'url_video',
         'tax_class',
@@ -52,7 +51,7 @@ class Product extends Model {
         'product_width',
         'product_height',
         'product_depth',
-        'unitOf_measure',
+        'unit_of_measure',
         'items_per_box',
         'volumes',
         'localization',
@@ -62,6 +61,7 @@ class Product extends Model {
         'production',
         'sped_item_type',
 
+        'inclusion_date',
         'expiration_date',
         'created_at',
         'updated_at',
@@ -69,6 +69,7 @@ class Product extends Model {
     ];
 
     protected $dates = [
+        'inclusion_date',
         'expiration_date',
         'created_at',
         'updated_at',
@@ -76,6 +77,6 @@ class Product extends Model {
     ];
 
     public function category() {
-        return $this->belongsTo(Category::class, 'idCategoria');
+        return $this->belongsTo(Category::class);
     }
 }
