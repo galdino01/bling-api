@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->string('internal_notes')->nullable();
             $table->string('number')->nullable();
             $table->string('order_number')->nullable();
-            $table->string('seller')->nullable();
             $table->string('cost_of_freight')->nullable();
             $table->string('other_expenses')->nullable();
             $table->string('total_of_products')->nullable();

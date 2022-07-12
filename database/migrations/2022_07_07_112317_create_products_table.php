@@ -15,6 +15,9 @@ return new class extends Migration {
             $table->string('provider_id')->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
 
+            $table->string('gtin_code')->nullable()->nullable();
+            $table->string('gtin_package')->nullable();
+
             $table->string('code')->nullable();
             $table->string('description')->nullable();
             $table->string('type')->nullable();
@@ -35,6 +38,7 @@ return new class extends Migration {
             $table->string('gross_weight')->nullable();
             $table->string('min_stock')->nullable();
             $table->string('max_stock')->nullable();
+
             $table->string('width')->nullable();
             $table->string('height')->nullable();
             $table->string('depth')->nullable();
@@ -49,9 +53,6 @@ return new class extends Migration {
 
             $table->string('image_thumbnail')->nullable();
             $table->string('url_video')->nullable();
-
-            $table->string('gtin_code')->nullable()->nullable();
-            $table->string('gtin_package')->nullable();
 
             $table->string('inclusion_date')->nullable();
             $table->string('expiration_date')->nullable();

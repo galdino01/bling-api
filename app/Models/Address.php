@@ -6,18 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model {
+class Address extends Model {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'id',
 
-        'address_id',
-
-        'name',
-        'cnpj',
-        'ie',
-        'rg',
+        'street',
+        'number',
+        'adjunct',
+        'city',
+        'district',
+        'cep',
+        'uf',
 
         'created_at',
         'updated_at',
@@ -30,15 +31,7 @@ class Customer extends Model {
         'deleted_at'
     ];
 
-    public function address() {
-        return $this->belongsTo(Address::class);
-    }
-
-    public function contact() {
-        return $this->hasOne(Contact::class);
-    }
-
-    public function orders() {
-        return $this->hasMany(Order::class);
+    public function customers() {
+        return $this->hasMany(Customer::class);
     }
 }

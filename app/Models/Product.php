@@ -14,13 +14,11 @@ class Product extends Model {
 
         'manufacturer_id',
         'product_group_id',
+        'provider_id',
         'category_id',
 
-        'product_group',
-        'manufacturer_name',
-
-        'provider_name',
-        'provider_description',
+        'gtin_code',
+        'gtin_package',
 
         'code',
         'description',
@@ -32,8 +30,6 @@ class Product extends Model {
         'price_cost',
         'short_description',
         'supp_description',
-        'image_thumbnail',
-        'url_video',
         'tax_class',
         'cest',
         'origin',
@@ -44,9 +40,6 @@ class Product extends Model {
         'gross_weight',
         'min_stock',
         'max_stock',
-
-        'gtin_code',
-        'gtin_package',
 
         'product_width',
         'product_height',
@@ -60,6 +53,9 @@ class Product extends Model {
         'free_shipping',
         'production',
         'sped_item_type',
+
+        'image_thumbnail',
+        'url_video',
 
         'inclusion_date',
         'expiration_date',

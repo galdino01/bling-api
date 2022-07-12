@@ -9,22 +9,12 @@ return new class extends Migration {
         Schema::create('customers', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary()->unique();
 
+            $table->foreignId('address_id')->constrained()->onDelete('cascade');
+
             $table->string('name')->nullable();
-            $table->string('rg')->nullable();
             $table->string('cnpj')->nullable();
+            $table->string('rg')->nullable();
             $table->string('ie')->nullable();
-
-            $table->string('email')->nullable();
-            $table->string('cell')->nullable();
-            $table->string('telephone')->nullable();
-
-            $table->string('address')->nullable();
-            $table->string('number')->nullable();
-            $table->string('adjunct')->nullable();
-            $table->string('city')->nullable();
-            $table->string('district')->nullable();
-            $table->string('cep')->nullable();
-            $table->string('uf')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

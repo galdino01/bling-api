@@ -6,10 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up() {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('sellers', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary()->unique();
 
-            $table->string('description');
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+
+            $table->string('name')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
@@ -17,6 +19,6 @@ return new class extends Migration {
     }
 
     public function down() {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('sellers');
     }
 };
