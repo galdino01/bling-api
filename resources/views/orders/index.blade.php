@@ -31,8 +31,8 @@
                         <tr>
                             <th>{{ $order->id }}</th>
                             <td>R$ {{ number_format($order->totalVenda, 2, ',', '.') }}</td>
-                            <td>{{ \Carbon\Carbon::parse($order->data)->format('d/m/Y')  }}</td>
-                            <td>{{ \Carbon\Carbon::parse($order->dataSaida)->format('d/m/Y') }}</td>
+                            <td>{{ $order->data->format('d/m/Y')  }}</td>
+                            <td>{{ $order->dataSaida->format('d/m/Y') }}</td>
                             <td>
                                 <a class="btn btn-outline-primary" href="{{route('orders.show', ['id' => $order->id])}}">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>

@@ -9,7 +9,7 @@
             @if ($products->count() > 0)
                 <form class="w-50" action="{{ route('products.index') }}" method="GET">
                     <div class="input-group w-100">
-                        <input type="text" name="search" class="form-control" placeholder="ID Pedido" aria-label="Use o ID aqui" aria-describedby="btn-search">
+                        <input type="text" name="search" class="form-control" placeholder="ID Produto" aria-label="Use o ID aqui" aria-describedby="btn-search">
                         <button class="btn btn-outline-primary" type="submit" id="btn-search">Pesquisar</button>
                     </div>
                 </form>
@@ -32,7 +32,7 @@
                             <th>{{ $product->id }}</th>
                             <td>{{ $product->codigo ?? 'Sem Código' }}</td>
                             <td>{{ $product->descricao ?? 'Sem Descrição' }}</td>
-                            <td>{{ \Carbon\Carbon::parse($product->dataInclusao)->format('d/m/Y') }}</td>
+                            <td>{{ $product->dataInclusao->format('d/m/Y') }}</td>
                             <td>
                                 <a class="btn btn-outline-primary" href="{{route('products.show', ['id' => $product->id])}}">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>

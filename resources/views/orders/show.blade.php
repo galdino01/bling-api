@@ -18,11 +18,11 @@
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Data:</strong></span>&nbsp;
-                    <p>{{ \Carbon\Carbon::parse($order->data)->format('d/m/Y') }}</p>
+                    <p>{{ $order->data->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Data de Saída:</strong></span>&nbsp;
-                    <p>{{ \Carbon\Carbon::parse($order->dataSaida)->format('d/m/Y') }}</p>
+                    <p>{{ $order->dataSaida->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Cliente:</strong></span>&nbsp;

@@ -3,29 +3,41 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model {
-    use HasFactory;
-
-    public $timestamps = false;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'id',
-        'nome',
+
+        'name',
         'cnpj',
         'ie',
         'rg',
-        'endereco',
-        'numero',
-        'complemento',
-        'cidade',
-        'bairro',
+
+        'email',
+        'cell',
+        'telephone',
+
+        'address',
+        'number',
+        'adjunct',
+        'city',
+        'district',
         'cep',
         'uf',
-        'email',
-        'celular',
-        'fone'
+
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
     ];
 
     public function orders() {

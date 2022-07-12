@@ -52,11 +52,11 @@
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Data de Inclusão:</strong></span>&nbsp;
-                    <p>{{ \Carbon\Carbon::parse($product->dataInclusao)->format('d/m/Y') }}</p>
+                    <p>{{ $product->dataInclusao->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Data de Alteração:</strong></span>&nbsp;
-                    <p>{{ \Carbon\Carbon::parse($product->dataAlteracao)->format('d/m/Y') }}</p>
+                    <p>{{ $product->dataAlteracao->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Preço:</strong></span>&nbsp;

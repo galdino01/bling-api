@@ -3,61 +3,76 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model {
-    use HasFactory;
-
-    public $timestamps = false;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'id',
-        'codigo',
-        'descricao',
-        'tipo',
-        'situacao',
-        'marca',
-        'idFabricante',
-        'idGrupoProduto',
-        'idCategoria',
-        'unidade',
-        'preco',
-        'precoCusto',
-        'descricaoCurta',
-        'descricaoComplementar',
-        'dataInclusao',
-        'dataAlteracao',
-        'imageThumbnail',
-        'urlVideo',
-        'nomeFornecedor',
-        'codigoFabricante',
-        'class_fiscal',
+
+        'manufacturer_id',
+        'product_group_id',
+        'category_id',
+
+        'product_group',
+        'manufacturer_name',
+
+        'provider_name',
+        'provider_description',
+
+        'code',
+        'description',
+        'type',
+        'situation',
+        'brand',
+        'unity',
+        'price',
+        'price_cost',
+        'short_description',
+        'supp_description',
+        'inclusion_date',
+        'image_thumbnail',
+        'url_video',
+        'tax_class',
         'cest',
-        'origem',
-        'linkExterno',
-        'observacoes',
-        'grupoProduto',
-        'garantia',
-        'descricaoFornecedor',
-        'pesoLiq',
-        'pesoBruto',
-        'estoqueMinimo',
-        'estoqueMaximo',
-        'gtin',
-        'gtinEmbalagem',
-        'larguraProduto',
-        'alturaProduto',
-        'profundidadeProduto',
-        'unidadeMedida',
-        'itensPorCaixa',
+        'origin',
+        'external_link',
+        'notes',
+        'warranty',
+        'net_weight',
+        'gross_weight',
+        'min_stock',
+        'max_stock',
+
+        'gtin_code',
+        'gtin_package',
+
+        'product_width',
+        'product_height',
+        'product_depth',
+        'unitOf_measure',
+        'items_per_box',
         'volumes',
-        'localizacao',
-        'crossdocking',
-        'condicao',
-        'freteGratis',
-        'producao',
-        'dataValidade',
-        'spedTipoItem',
+        'localization',
+        'cross_docking',
+        'status',
+        'free_shipping',
+        'production',
+        'sped_item_type',
+
+        'expiration_date',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    protected $dates = [
+        'expiration_date',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     public function category() {

@@ -9,11 +9,10 @@ class CategorySeeder extends Seeder {
     public function run() {
         Category::create([
             'id' => '4208042',
-            'descricao' => 'Produtos de Venda',
-        ]);
-        Category::create([
+            'description' => 'Produtos de Venda',
+        ],[
             'id' => '3720248',
-            'descricao' => 'Categoria padrão',
+            'description' => 'Categoria padrão',
         ]);
     }
 }
