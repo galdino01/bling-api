@@ -12,6 +12,8 @@ class Address extends Model {
     protected $fillable = [
         'id',
 
+        'customer_id',
+
         'street',
         'number',
         'adjunct',
@@ -31,7 +33,7 @@ class Address extends Model {
         'deleted_at'
     ];
 
-    public function customers() {
-        return $this->hasMany(Customer::class);
+    public function customer() {
+        return $this->belongsTo(Customer::class);
     }
 }

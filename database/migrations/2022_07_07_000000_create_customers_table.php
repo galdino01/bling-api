@@ -9,8 +9,6 @@ return new class extends Migration {
         Schema::create('customers', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary()->unique();
 
-            $table->foreignId('address_id')->constrained()->onDelete('cascade');
-
             $table->string('name')->nullable();
             $table->string('cnpj')->nullable();
             $table->string('rg')->nullable();

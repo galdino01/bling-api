@@ -12,8 +12,6 @@ class Customer extends Model {
     protected $fillable = [
         'id',
 
-        'address_id',
-
         'name',
         'cnpj',
         'ie',
@@ -31,7 +29,7 @@ class Customer extends Model {
     ];
 
     public function address() {
-        return $this->belongsTo(Address::class);
+        return $this->hasOne(Address::class);
     }
 
     public function contact() {
