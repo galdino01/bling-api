@@ -14,7 +14,7 @@ class Product extends Model {
 
         'manufacturer_id',
         'product_group_id',
-        'provider_id',
+        'supplier_id',
         'category_id',
 
         'gtin_code',
@@ -74,5 +74,17 @@ class Product extends Model {
 
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+    public function manufacturer() {
+        return $this->belongsTo(Manufacturer::class);
+    }
+
+    public function product_group() {
+        return $this->belongsTo(ProductGroup::class);
+    }
+
+    public function supplier() {
+        return $this->belongsTo(Supplier::class);
     }
 }
