@@ -57,7 +57,6 @@ class Product extends Model {
         'image_thumbnail',
         'url_video',
 
-        'inclusion_date',
         'expiration_date',
         'created_at',
         'updated_at',

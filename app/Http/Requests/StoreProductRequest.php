@@ -51,7 +51,6 @@ class StoreProductRequest extends FormRequest {
             'sped_item_type' => ['required'],
             'image_thumbnail' => ['required', 'nullable'],
             'url_video' => ['required', 'nullable'],
-            'inclusion_date' => ['required'],
             'expiration_date' => ['required']
         ];
     }
