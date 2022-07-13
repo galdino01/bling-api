@@ -6,21 +6,35 @@
             {{ session('message') }}
         </div>
     @endif
-    <div class="mt-3 mb-5 d-flex flex-column justify-content-center align-items-center rounded shadow p-2">
-        <div class="d-flex flex-row align-items-center justify-content-between w-100 mb-5">
-            <div class="w-50">
-                <h3>Produtos no Banco de Dados</h3>
-            </div>
-            @if ($products->count() > 0)
-                <form class="w-50" action="{{ route('products.index') }}" method="GET">
-                    <div class="input-group w-100">
-                        <input type="text" name="search" class="form-control" placeholder="ID Produto" aria-label="Use o ID aqui" aria-describedby="btn-search">
-                        <button class="btn btn-outline-primary" type="submit" id="btn-search">Pesquisar</button>
-                    </div>
-                </form>
-            @endif
+    <div class="d-flex flex-row align-items-center justify-content-between w-100 mt-5">
+        <div class="w-50">
+            <h4>Produtos</h4>
         </div>
-        @if($products->count() != 0)
+        @if ($products->count() > 0)
+            <form class="w-50" action="{{ route('products.index') }}" method="GET">
+                <div class="input-group w-100">
+                    <input type="text" name="search" class="form-control" placeholder="ID Produto" aria-label="Use o ID aqui" aria-describedby="btn-search">
+                    <button class="btn btn-outline-primary" type="submit" id="btn-search">Pesquisar</button>
+                </div>
+            </form>
+        @endif
+    </div>
+    @if(!$products->count() != 0)
+        <div class="d-flex flex-column justify-content-center align-items-center rounded shadow p-2 mb-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="text" class="form-controll filter-input" placeholder="Search by ID..." data-column="0" />
+                        </th>
+                        <th>
+                            <input type="text" class="form-controll filter-input" placeholder="Search by name..." data-column="1" />
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center rounded shadow p-2">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -47,13 +61,10 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="p-2">
-                {{ $products->links() }}
-            </div>
-        @else
-            <div class="alert alert-warning" role="alert">
-                Nenhum registro encontrado.
-            </div>
-        @endif
-    </div>
+        </div>
+    @else
+        <div class="alert alert-warning" role="alert">
+            Nenhum registro encontrado.
+        </div>
+    @endif
 @endsection

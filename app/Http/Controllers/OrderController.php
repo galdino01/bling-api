@@ -17,15 +17,9 @@ class OrderController extends Controller {
         $this->api_link = 'https://bling.com.br/Api/v2/pedidos/json/&apikey='.$this->api_key;
     }
 
-    public function index(Request $request) {
+    public function index() {
         try {
-            if($request->search) {
-                $orders = Order::where([
-                    ['id', 'like', '%' . $request->search . '%']
-                ])->simplePaginate(1);
-            } else {
-                $orders = Order::orderBy('created_at', 'asc')->simplePaginate(5);
-            }
+            $orders = Order::orderBy('created_at', 'asc')->get();
 
             return view('orders.index', compact('orders'));
         } catch (\Exception $ex) {

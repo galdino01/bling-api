@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mt-3 p-2 d-flex flex-column justify-content-center align-items-center rounded shadow">
+    <div class="d-flex flex-column justify-content-center align-items-center rounded shadow mt-3 p-2">
         <div class="d-flex flex-row justify-content-start">
-            <div style="height: 300px;" class="roudend border w-25 me-3 d-flex justify-content-center align-items-center">
+            <div style="height: 300px;" class="d-flex justify-content-center align-items-center roudend border w-25 me-3">
                 @if ($product->imageThumbnail != null)
                     <img src="{{ $product->imageThumbnail }}" class="card-img-top" alt="Product Image">
                 @else

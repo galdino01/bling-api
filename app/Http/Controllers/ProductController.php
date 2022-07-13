@@ -16,15 +16,9 @@ class ProductController extends Controller {
         $this->api_link = 'https://bling.com.br/Api/v2/produtos/json/&apikey='.$this->api_key;
     }
 
-    public function index(Request $request) {
+    public function index() {
         try {
-            if($request->search) {
-                $products = Product::where([
-                    ['id', 'like', '%' . $request->search . '%']
-                ])->simplePaginate(1);
-            } else {
-                $products = Product::orderBy('inclusion_date', 'asc')->simplePaginate(5);
-            }
+            $products = Product::orderBy('inclusion_date', 'asc')->get();
 
             return view('products.index', compact('products'));
         } catch (\Exception $ex) {

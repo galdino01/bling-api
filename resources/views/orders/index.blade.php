@@ -6,7 +6,7 @@
             {{ session('message') }}
         </div>
     @endif
-    <div class="mt-3 mb-5 d-flex flex-column justify-content-center align-items-center rounded shadow p-2">
+    <div class="d-flex flex-column justify-content-center align-items-center rounded shadow p-2 mt-3 mb-5">
         <div class="d-flex flex-row align-items-center justify-content-between w-100 mb-5">
             <div class="w-50">
                 <h3>Pedidos no Banco de Dados</h3>
@@ -47,9 +47,6 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="p-2">
-                {{ $orders->links() }}
-            </div>
         @else
             <div class="alert alert-warning" role="alert">
                 Nenhum registro encontrado.
