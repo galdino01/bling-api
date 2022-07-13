@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -11,15 +10,14 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class AddressFactory extends Factory {
     public function definition() {
         return [
-            'id' => $this->faker->isbn13(),
-            'customer_id' => $this->faker->randomElement(Customer::pluck('id')->toArray()),
+            'id' => $this->faker->unique()->isbn13(),
             'cep' => makeCep(),
             'street' => $this->faker->streetName,
-            'number' => makeNumber(),
-            'adjunct' => $this->faker->randomElement(['Casa', 'Apto', 'Estabelecimento']),
+            'number' => $this->faker->buildingNumber,
+            'adjunct' => $this->faker->secondaryAddress,
             'district' => $this->faker->randomElement(['Centro','Sul','Norte','Leste','Oeste','Sudeste','Sudoeste','Nordeste','Noroeste']),
             'city' => $this->faker->city,
-            'state' => $this->faker->randomElement(['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SE', 'SP', 'TO']),
+            'state' => $this->faker->stateAbbr,
         ];
     }
 }

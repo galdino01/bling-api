@@ -12,8 +12,6 @@ class Address extends Model {
     protected $fillable = [
         'id',
 
-        'customer_id',
-
         'cep',
         'street',
         'number',

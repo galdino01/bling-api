@@ -1,18 +1,5 @@
 <?php
 
-if(!function_exists('makeCnpj')) {
-    function makeNumber() {
-        $n1 = rand(0, 9);
-        $n2 = rand(0, 9);
-        $n3 = rand(0, 9);
-        $n4 = rand(0, 9);;
-
-        $ret = $n1 . $n2 . $n3 . $n4;
-
-        return $ret;
-    }
-}
-
 if(!function_exists('makeCep')) {
     function makeCep() {
         $n1 = rand(0, 9);
@@ -22,8 +9,9 @@ if(!function_exists('makeCep')) {
         $n5 = rand(0, 9);
         $n6 = rand(0, 9);
         $n7 = rand(0, 9);
+        $n8 = rand(0, 9);
 
-        $ret = $n1 . $n2 . $n3 . $n4 . $n5 . $n6 . $n7;
+        $ret = $n1 . $n2 . $n3 . $n4 . $n5 . $n6 . $n7 . $n8;
 
         return $ret;
     }
@@ -74,8 +62,9 @@ if(!function_exists('makeRg')) {
         $n6 = rand(0, 9);
         $n7 = rand(0, 9);
         $n8 = rand(0, 9);
+        $n9 = rand(0, 9);
 
-        $ret = $n1 . $n2 . $n3 . $n4 . $n5 . $n6 . $n7 . $n8;
+        $ret = $n1 . $n2 . $n3 . $n4 . $n5 . $n6 . $n7 . $n8 . $n9;
 
         return $ret;
     }
