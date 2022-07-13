@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Http\Requests\StoreOrderRequest;
 
 class OrderController extends Controller {
     protected $api_key;
@@ -43,9 +44,9 @@ class OrderController extends Controller {
         }
     }
 
-    public function store(Request $request) {
+    public function store(StoreOrderRequest $request) {
         try {
-            $order = Order::create($request->all());
+            $order = Order::create($request->validated());
 
             $order->save();
 

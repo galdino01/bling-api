@@ -45,7 +45,7 @@ class ProductController extends Controller {
 
     public function store(Request $request) {
         try {
-            $product = Product::create($request->all());
+            $product = Product::create($request->validated());
 
             $product->save();
 
