@@ -14,7 +14,9 @@ class Seller extends Model {
 
         'order_id',
 
+        'code',
         'name',
+        'description',
 
         'created_at',
         'updated_at',

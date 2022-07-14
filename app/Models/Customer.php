@@ -15,7 +15,9 @@ class Customer extends Model {
         'name',
         'cnpj',
         'ie',
+
         'rg',
+        'cpf',
 
         'created_at',
         'updated_at',

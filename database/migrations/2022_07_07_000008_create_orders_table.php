@@ -11,18 +11,17 @@ return new class extends Migration {
 
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
 
-            $table->string('discount')->nullable();
-            $table->string('notes')->nullable();
-            $table->string('internal_notes')->nullable();
-            $table->string('number')->nullable();
-            $table->string('order_number')->nullable();
-            $table->string('cost_of_freight')->nullable();
-            $table->string('other_expenses')->nullable();
-            $table->string('total_of_products')->nullable();
-            $table->string('total_sale')->nullable();
-            $table->string('status')->nullable();
+            $table->string('number');
 
-            $table->string('output_date')->nullable();
+            $table->string('status');
+            $table->string('discount')->nullable();
+            $table->string('cost_of_freight')->nullable();
+            $table->string('other_expenses');
+            $table->string('total_of_products');
+            $table->string('total_sale');
+            $table->string('notes')->nullable();
+
+            $table->string('output_date');
             $table->timestamps();
             $table->softDeletes();
         });

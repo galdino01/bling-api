@@ -14,6 +14,7 @@ class Manufacturer extends Model {
 
         'code',
         'name',
+        'description',
 
         'created_at',
         'updated_at',

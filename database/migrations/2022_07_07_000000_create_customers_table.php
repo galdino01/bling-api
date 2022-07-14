@@ -9,10 +9,12 @@ return new class extends Migration {
         Schema::create('customers', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary()->unique();
 
-            $table->string('name')->nullable();
-            $table->string('cnpj')->nullable();
-            $table->string('rg')->nullable();
-            $table->string('ie')->nullable();
+            $table->string('name');
+            $table->string('cnpj');
+            $table->string('ie');
+
+            $table->string('rg');
+            $table->string('cpf');
 
             $table->timestamps();
             $table->softDeletes();

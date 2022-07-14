@@ -14,16 +14,15 @@ class Order extends Model {
 
         'customer_id',
 
-        'discount',
-        'notes',
-        'internal_notes',
         'number',
-        'order_number',
+
+        'status',
+        'discount',
         'cost_of_freight',
         'other_expenses',
         'total_of_products',
         'total_sale',
-        'status',
+        'notes',
 
         'output_date',
         'created_at',

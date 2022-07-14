@@ -9,8 +9,9 @@ return new class extends Migration {
         Schema::create('manufacturers', function (Blueprint $table) {
             $table->id();
 
-            $table->string('code')->nullable();
-            $table->string('name')->nullable();
+            $table->string('code');
+            $table->string('name');
+            $table->string('description');
 
             $table->timestamps();
             $table->softDeletes();
