@@ -28,4 +28,7 @@ Route::prefix('orders')->group(function () {
     Route::get('/', [\App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
     Route::post('/store',[\App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
     Route::get('/{id}', [\App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
+    Route::get('/{id}/edit', [\App\Http\Controllers\OrderController::class, 'edit'])->name('orders.edit');
+    Route::patch('/{id}/update', [\App\Http\Controllers\OrderController::class, 'update'])->name('orders.update');
+    Route::patch('/{id}/destroy', [\App\Http\Controllers\OrderController::class, 'destroy'])->name('orders.destroy');
 });

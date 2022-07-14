@@ -9,32 +9,28 @@
                     <p>{{ $order->id }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Situação:</strong></span>&nbsp;
-                    <p>{{ $order->situacao }}</p>
+                    <span><strong>Status:</strong></span>&nbsp;
+                    <p>{{ $order->status }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Total da Venda:</strong></span>&nbsp;
-                    <p>{{ $order->totalVenda }}</p>
+                    <p>{{ $order->total_sale }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Data:</strong></span>&nbsp;
-                    <p>{{ $order->data->format('d/m/Y') }}</p>
+                    <p>{{ $order->created_at>format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Data de Saída:</strong></span>&nbsp;
-                    <p>{{ $order->dataSaida->format('d/m/Y') }}</p>
+                    <p>{{ $order->output_date->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Cliente:</strong></span>&nbsp;
-                    <p>{{ $order->customer->nome }}</p>
+                    <p>{{ $order->user->name }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Número:</strong></span>&nbsp;
-                    <p>{{ $order->numero }}</p>
-                </div>
-                <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Número Ordem Compra:</strong></span>&nbsp;
-                    <p>{{ $order->numeroOrdemCompra ?? 'Sem número' }}</p>
+                    <p>{{ $order->number }}</p>
                 </div>
             </div>
         </div>

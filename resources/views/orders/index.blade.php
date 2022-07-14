@@ -37,7 +37,7 @@
                             <th>{{ $order->id }}</th>
                             <td>R$ {{ number_format($order->total_sale, 2, ',', '.') }}</td>
                             <td>{{ $order->created_at->format('d/m/Y')  }}</td>
-                            <td>{{ $order->output_date>format('d/m/Y') }}</td>
+                            <td>{{ $order->output_date->format('d/m/Y') }}</td>
                             <td>
                                 <a class="btn btn-outline-primary" href="{{route('orders.show', ['id' => $order->id])}}">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
