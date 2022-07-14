@@ -20,47 +20,43 @@
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Código:</strong></span>&nbsp;
-                    <p>{{ $product->codigo ?? 'Sem Código' }}</p>
+                    <p>{{ $product->code ?? 'Sem Código' }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Tipo:</strong></span>&nbsp;
-                    <p>{{ $product->tipo }}</p>
+                    <p>{{ $product->type }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Situação:</strong></span>&nbsp;
-                    <p>{{ $product->situacao }}</p>
+                    <span><strong>Status:</strong></span>&nbsp;
+                    <p>{{ $product->status }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Categoria:</strong></span>&nbsp;
-                    <p>{{ $product->category->descricao }}</p>
+                    <p>{{ $product->category->name }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Fabricante:</strong></span>&nbsp;
-                    <p>{{ $product->idFabricante ?? '_' }}</p>
+                    <p>{{ $product->user->name ?? '_' }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Código Fabricante:</strong></span>&nbsp;
-                    <p>{{ $product->codigoFabricante ?? '_' }}</p>
+                    <p>{{ $product->user->id ?? '_' }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Class. Fiscal:</strong></span>&nbsp;
-                    <p>{{ $product->class_fiscal }}</p>
-                </div>
-                <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Unidade:</strong></span>&nbsp;
-                    <p>{{ $product->unidade }}</p>
+                    <span><strong>Quantidade:</strong></span>&nbsp;
+                    <p>{{ $product->quantity }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Data de Inclusão:</strong></span>&nbsp;
-                    <p>{{ $product->dataInclusao->format('d/m/Y') }}</p>
+                    <p>{{ $product->created_at->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Data de Alteração:</strong></span>&nbsp;
-                    <p>{{ $product->dataAlteracao->format('d/m/Y') }}</p>
+                    <p>{{ $product->updated_at->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Preço:</strong></span>&nbsp;
-                    <p> R$ {{ number_format($product->preco, 2, ',', '.') }}</p>
+                    <p> R$ {{ number_format($product->price, 2, ',', '.') }}</p>
                 </div>
             </div>
         </div>
@@ -68,7 +64,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <span><strong>Descrição</strong></span>
-                    <p>{{ $product->descricao }}</p>
+                    <p>{{ $product->description }}</p>
                 </div>
             </div>
         </div>

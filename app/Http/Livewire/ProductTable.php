@@ -46,6 +46,7 @@ final class ProductTable extends PowerGridComponent {
             ->addColumn('code')
             ->addColumn('type')
             ->addColumn('status')
+            ->addColumn('quantity')
             ->addColumn('items_per_box')
             ->addColumn('boxes')
             ->addColumn('expiration_date')
@@ -58,6 +59,7 @@ final class ProductTable extends PowerGridComponent {
             Column::make('CODE', 'code')->searchable()->makeInputText(),
             Column::make('TYPE', 'type')->sortable()->searchable()->makeInputText(),
             Column::make('STATUS', 'status')->sortable()->searchable()->makeInputText(),
+            Column::make('QUANTITY', 'quantity')->sortable()->searchable()->makeInputText(),
             Column::make('ITEMS PER BOX', 'items_per_box')->sortable()->searchable()->makeInputText(),
             Column::make('BOXES', 'boxes')->sortable()->searchable()->makeInputText(),
             Column::make('EXPIRATION DATE', 'expiration_date')->sortable()->searchable()->makeInputDatePicker(),
@@ -69,7 +71,12 @@ final class ProductTable extends PowerGridComponent {
 
     public function actions(): array {
         return [
-            Button::make('edit', 'Edit')->class('btn btn-outline-primary cursor-pointer m-1 rounded text-sm')
+            Button::make('show', 'Show')
+                ->class('btn btn-outline-primary cursor-pointer m-1 rounded text-sm')
+                ->route('products.show', ['id' => 'id']),
+
+            Button::make('edit', 'Edit')
+                ->class('btn btn-outline-warning cursor-pointer m-1 rounded text-sm')
                 ->route('products.edit', ['id' => 'id']),
 
             Button::make('destroy', 'Delete')
