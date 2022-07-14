@@ -12,7 +12,7 @@ class AddressFactory extends Factory {
             'street' => $this->faker->streetName,
             'number' => $this->faker->buildingNumber,
             'adjunct' => $this->faker->secondaryAddress,
-            'district' => $this->faker->randomElement(['Centro','Sul','Norte','Leste','Oeste','Sudeste','Sudoeste','Nordeste','Noroeste']),
+            'district' => $this->faker->randomElement(['center', 'south', 'north', 'west', 'east']),
             'city' => $this->faker->city,
             'state' => $this->faker->stateAbbr,
         ];

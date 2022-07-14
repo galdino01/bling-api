@@ -36,6 +36,7 @@ return new class extends Migration {
             $table->string('net_weight');
             $table->string('gross_weight');
 
+            $table->string('quantity');
             $table->string('items_per_box');
             $table->string('boxes');
             $table->string('localization');

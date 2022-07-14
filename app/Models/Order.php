@@ -37,11 +37,11 @@ class Order extends Model {
         'deleted_at'
     ];
 
-    public function customer() {
-        return $this->belongsTo(Customer::class);
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 
-    public function seller() {
-        return $this->hasOne(Seller::class);
+    public function products() {
+        return $this->belongsToMany(Product::class)->using(OrderProduct::class);
     }
 }

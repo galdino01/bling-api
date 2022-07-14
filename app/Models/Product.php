@@ -38,6 +38,7 @@ class Product extends Model {
         'net_weight',
         'gross_weight',
 
+        'quantity',
         'items_per_box',
         'boxes',
         'localization',
@@ -64,5 +65,9 @@ class Product extends Model {
 
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+    public function orders() {
+        return $this->belongsToMany(Order::class)->using(OrderProduct::class);;
     }
 }
