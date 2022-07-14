@@ -9,7 +9,7 @@
     <div class="d-flex flex-row align-items-center justify-content-between w-100 mt-5">
         <h4>Produtos</h4>
     </div>
-    @if(!$products->count() != 0)
+    @if($products->count() != 0)
         <div class="rounded shadow p-2 bg-white">
             @livewire('product-table')
         </div>

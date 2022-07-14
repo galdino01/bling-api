@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('status');
             $table->string('discount')->nullable();
             $table->string('cost_of_freight')->nullable();
-            $table->string('other_expenses');
+            $table->string('other_expenses')->nullable();
             $table->string('total_of_products');
             $table->string('total_sale');
             $table->string('notes')->nullable();

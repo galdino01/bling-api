@@ -11,18 +11,19 @@ class StoreOrderRequest extends FormRequest {
 
     public function rules() {
         return [
-            'customer_id' => ['required'],
-            'discount' => ['required', 'nullable'],
-            'notes' => ['required', 'nullable'],
-            'internal_notes' => ['required', 'nullable'],
+            'user_id' => ['required'],
+
             'number' => ['required'],
-            'order_number' => ['required'],
-            'cost_of_freight' => ['required'],
+
+            'status' => ['required'],
+            'discount' => ['required', 'nullable'],
+            'cost_of_freight' => ['required', 'nullable'],
             'other_expenses' => ['required', 'nullable'],
             'total_of_products' => ['required'],
             'total_sale' => ['required'],
-            'status' => ['required'],
-            'output_date' => ['required']
+            'notes' => ['required', 'nullable'],
+
+            'output_date' => ['required'],
         ];
     }
 }

@@ -11,47 +11,40 @@ class StoreProductRequest extends FormRequest {
 
     public function rules(){
         return [
-            'manufacturer_id' => ['required'],
-            'product_group_id' => ['required'],
-            'supplier_id' => ['required'],
+            'user_id' => ['required'],
             'category_id' => ['required'],
+
             'gtin_code' => ['required'],
             'gtin_package' => ['required'],
+            'cest' => ['required'],
+
+            'status' => ['required'],
             'code' => ['required'],
+            'origin' => ['required'],
             'description' => ['required'],
             'type' => ['required'],
-            'situation' => ['required'],
             'brand' => ['required'],
-            'unity' => ['required'],
             'price' => ['required'],
             'price_cost' => ['required'],
-            'short_description' => ['required'],
-            'supp_description' => ['required'],
-            'tax_class' => ['required'],
-            'cest' => ['required'],
-            'origin' => ['required'],
-            'external_link' => ['required'],
-            'notes' => ['required', 'nullable'],
-            'warranty' => ['required', 'nullable'],
+            'warranty' => ['nullable'],
+            'free_shipping' => ['nullable'],
+            'notes' => ['nullable'],
+
+            'unit_of_measure' => ['required'],
+            'width' => ['required'],
+            'height' => ['required'],
+            'depth' => ['required'],
             'net_weight' => ['required'],
             'gross_weight' => ['required'],
-            'min_stock' => ['required'],
-            'max_stock' => ['required'],
-            'product_width' => ['required'],
-            'product_height' => ['required'],
-            'product_depth' => ['required'],
-            'unit_of_measure' => ['required'],
+
             'items_per_box' => ['required'],
-            'volumes' => ['required'],
+            'boxes' => ['required'],
             'localization' => ['required'],
-            'cross_docking' => ['required'],
-            'status' => ['required'],
-            'free_shipping' => ['required'],
-            'production' => ['required'],
-            'sped_item_type' => ['required'],
+
             'image_thumbnail' => ['required', 'nullable'],
             'url_video' => ['required', 'nullable'],
-            'expiration_date' => ['required']
+
+            'expiration_date' => ['required', 'nullable'],
         ];
     }
 }
