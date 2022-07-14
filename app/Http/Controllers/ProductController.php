@@ -22,7 +22,7 @@ class ProductController extends Controller {
 
             $product->save();
 
-            return redirect(route('products.index'))->with('message', 'Product created!');
+            return redirect(route('products.index'))->with('success', 'Product created!');
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong', 'error' => $ex->getMessage()], 500);
         }
@@ -54,7 +54,7 @@ class ProductController extends Controller {
 
             $product->update($request->validated());
 
-            return redirect(route('products.index'))->with('message', 'Product updated!');
+            return redirect(route('products.index'))->with('success', 'Product updated!');
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong'], 500);
         }
@@ -66,7 +66,7 @@ class ProductController extends Controller {
 
             $product->update(['deleted_at' => now()]);
 
-            return redirect(route('products.index'))->with('message', 'Product deleted!');
+            return redirect(route('products.index'))->with('success', 'Product deleted!');
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong'], 500);
         }

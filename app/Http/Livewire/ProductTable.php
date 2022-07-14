@@ -49,7 +49,7 @@ final class ProductTable extends PowerGridComponent {
             ->addColumn('quantity')
             ->addColumn('items_per_box')
             ->addColumn('boxes')
-            ->addColumn('expiration_date')
+            ->addColumn('expiration_date_formatted', fn (Product $model) => Carbon::parse($model->expiration_date)->format('d/m/Y H:i:s'))
             ->addColumn('created_at_formatted', fn (Product $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
             ->addColumn('updated_at_formatted', fn (Product $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
     }
@@ -62,7 +62,7 @@ final class ProductTable extends PowerGridComponent {
             Column::make('QUANTITY', 'quantity')->sortable()->searchable()->makeInputText(),
             Column::make('ITEMS PER BOX', 'items_per_box')->sortable()->searchable()->makeInputText(),
             Column::make('BOXES', 'boxes')->sortable()->searchable()->makeInputText(),
-            Column::make('EXPIRATION DATE', 'expiration_date')->sortable()->searchable()->makeInputDatePicker(),
+            Column::make('EXPIRATION DATE', 'expiration_date_formatted', 'expiration_date')->sortable()->searchable()->makeInputDatePicker(),
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')->sortable()->searchable()->makeInputDatePicker(),
             Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')->sortable()->searchable()->makeInputDatePicker(),
         ]
@@ -73,25 +73,19 @@ final class ProductTable extends PowerGridComponent {
         return [
             Button::make('show', 'Show')
                 ->class('btn btn-outline-primary cursor-pointer m-1 rounded text-sm')
-                ->route('products.show', ['id' => 'id']),
+                ->route('products.show', ['id' => 'id'])
+                ->target('_self'),
 
             Button::make('edit', 'Edit')
                 ->class('btn btn-outline-warning cursor-pointer m-1 rounded text-sm')
-                ->route('products.edit', ['id' => 'id']),
+                ->route('products.edit', ['id' => 'id'])
+                ->target('_self'),
 
             Button::make('destroy', 'Delete')
                 ->class('btn btn-outline-danger cursor-pointer m-1 rounded text-sm')
                 ->route('products.destroy', ['id' => 'id'])
                 ->method('patch')
+                ->target('_self')
         ];
     }
-
-    // public function actionRules(): array {
-    //    return [
-    //         //Hide button edit for ID 1
-    //          Rule::button('edit')
-    //              ->when(fn($product) => $product->id === 1)
-    //              ->hide(),
-    //     ];
-    // }
 }

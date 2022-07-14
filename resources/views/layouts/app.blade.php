@@ -67,6 +67,22 @@
             </section>
         </nav>
         <main>
+            @if (\Session::has('success'))
+                <div aria-live="polite" aria-atomic="true" class="position-relative">
+                    <div class="toast-container top-0 end-0 p-3">
+                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <img src="..." class="rounded me-2" alt="...">
+                                <strong class="me-auto">System</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                {{ \Session::get('message') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
             <section class="row m-0 p-0">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-5 sidebar m-0 p-0 ">
                     <nav class="nav flex-column custom-nav mt-5">
@@ -96,6 +112,14 @@
     <!-- Powergrid and Livewire Scripts -->
     @livewireScripts
     @powerGridScripts
+
+    <!-- Custom Scripts -->
+    <script>
+        $(document).ready(function() {
+            const toastElList = document.querySelectorAll('.toast')
+            const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))
+        });
+    </script>
 </body>
 
 </html>

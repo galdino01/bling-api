@@ -24,7 +24,7 @@ class OrderController extends Controller {
 
             $order->save();
 
-            return redirect(route('orders.index'))->with('message', 'Order created!');
+            return redirect(route('orders.index'))->with('success', 'Order created!');
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong', 'error' => $ex->getMessage()], 500);
         }
@@ -56,7 +56,7 @@ class OrderController extends Controller {
 
             $order->update($request->validated());
 
-            return redirect(route('orders.index'))->with('message', 'Order updated!');
+            return redirect(route('orders.index'))->with('success', 'Order updated!');
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong', 'error' => $ex->getMessage()], 500);
         }
@@ -68,7 +68,7 @@ class OrderController extends Controller {
 
             $order->update(['deleted_at' => now()]);
 
-            return redirect(route('orders.index'))->with('message', 'Order deleted!');
+            return redirect(route('orders.index'))->with('success', 'Order deleted!');
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong', 'error' => $ex->getMessage()], 500);
         }
