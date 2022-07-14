@@ -8,15 +8,6 @@ use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreOrderRequest;
 
 class OrderController extends Controller {
-    protected $api_key;
-    protected $api_link;
-    protected $api_orders_list;
-
-    public function __construct() {
-        $this->api_key = env('BLING_API_KEY', '/');
-        $this->api_link = 'https://bling.com.br/Api/v2/pedidos/json/&apikey='.$this->api_key;
-    }
-
     public function index() {
         try {
             $orders = Order::orderBy('created_at', 'asc')->get();

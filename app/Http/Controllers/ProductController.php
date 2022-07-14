@@ -7,18 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class ProductController extends Controller {
-    protected $api_key;
-    protected $api_link;
-    protected $api_products_list;
-
-    public function __construct() {
-        $this->api_key = env('BLING_API_KEY', '/');
-        $this->api_link = 'https://bling.com.br/Api/v2/produtos/json/&apikey='.$this->api_key;
-    }
-
     public function index() {
         try {
-            $products = Product::orderBy('inclusion_date', 'asc')->get();
+            $products = Product::orderBy('inclusion_date', 'asc')->paginate(10);
 
             return view('products.index', compact('products'));
         } catch (\Exception $ex) {

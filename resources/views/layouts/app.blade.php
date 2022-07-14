@@ -19,6 +19,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
+    <!-- Powegrid and Livewire Styles -->
+    @livewireStyles
+    @powerGridStyles
+
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -54,13 +58,15 @@
 <body>
     <div>
         <nav class="navbar navbar-expand-lg shadow supbar">
-            <section class="container-fluid d-flex justify-content-between align-items-center">
-                <div class="w-50 d-flex align-items-center">
+            <section class="row m-0 p-0">
+                <div class="col-md-3 m-0 p-0">
                     <a class="navbar-brand fw-bold text-light" href="/">Bling Api</a>
                 </div>
-                <a href="https://github.com/galdino01/bling-api">
-                    <img class="img-thumbnail" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original-wordmark.svg" alt="Github Link" width="45" height="45">
-                </a>
+                <div class="col-md-9 m-0 p-0">
+                    <a href="https://github.com/galdino01/bling-api">
+                        <img class="img-thumbnail" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original-wordmark.svg" alt="Github Link" width="45" height="45">
+                    </a>
+                </div>
             </section>
         </nav>
         <main>
@@ -84,9 +90,16 @@
         </main>
     </div>
 
+    <!-- JQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
     </script>
+
+    <!-- Powergrid and Livewire Scripts -->
+    @livewireScripts
+    @powerGridScripts
 </body>
 
 </html>
