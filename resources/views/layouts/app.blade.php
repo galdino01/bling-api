@@ -36,10 +36,6 @@
             background-color: #0745a3;
         }
 
-        .supbar section {
-            width: calc(100vw - 8rem);
-        }
-
         .selected-link {
             border-left: 5px solid #f8f9fa;
             background-color: #4a93ff;
@@ -58,14 +54,14 @@
 <body>
     <div>
         <nav class="navbar navbar-expand-lg shadow supbar">
-            <section class="row m-0 p-0">
-                <div class="col-md-3 m-0 p-0">
+            <section class="row w-100 m-0">
+                <div class="col-md-3 d-flex justify-content-start align-items-center">
                     <a class="navbar-brand fw-bold text-light" href="/">Bling Api</a>
                 </div>
                 <div class="col-md-9 m-0 p-0">
-                    <a href="https://github.com/galdino01/bling-api">
-                        <img class="img-thumbnail" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original-wordmark.svg" alt="Github Link" width="45" height="45">
-                    </a>
+                    <div class="bg-secondary d-flex justify-content-end align-items-center">
+
+                    </div>
                 </div>
             </section>
         </nav>
