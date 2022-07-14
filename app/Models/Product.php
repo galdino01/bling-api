@@ -12,8 +12,7 @@ class Product extends Model {
     protected $fillable = [
         'id',
 
-        'manufacturer_id',
-        'supplier_id',
+        'user_id',
         'category_id',
 
         'gtin_code',
@@ -22,6 +21,7 @@ class Product extends Model {
 
         'status',
         'code',
+        'origin',
         'description',
         'type',
         'brand',
@@ -52,26 +52,17 @@ class Product extends Model {
     ];
 
     protected $dates = [
-        'inclusion_date',
         'expiration_date',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
     public function category() {
         return $this->belongsTo(Category::class);
-    }
-
-    public function manufacturer() {
-        return $this->belongsTo(Manufacturer::class);
-    }
-
-    public function product_group() {
-        return $this->belongsTo(ProductGroup::class);
-    }
-
-    public function supplier() {
-        return $this->belongsTo(Supplier::class);
     }
 }

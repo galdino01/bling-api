@@ -4,14 +4,11 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Address>
- */
 class AddressFactory extends Factory {
     public function definition() {
         return [
             'id' => $this->faker->unique()->isbn13(),
-            'cep' => makeCep(),
+            'cep' => $this->faker->randomNumber(8),
             'street' => $this->faker->streetName,
             'number' => $this->faker->buildingNumber,
             'adjunct' => $this->faker->secondaryAddress,

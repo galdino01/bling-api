@@ -12,7 +12,7 @@ class Address extends Model {
     protected $fillable = [
         'id',
 
-        'customer_id',
+        'user_id',
 
         'cep',
         'street',
@@ -33,7 +33,7 @@ class Address extends Model {
         'deleted_at'
     ];
 
-    public function customer() {
-        return $this->belongsTo(Customer::class);
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

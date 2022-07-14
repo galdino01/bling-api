@@ -9,7 +9,7 @@ return new class extends Migration {
         Schema::create('orders', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary()->unique();
 
-            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('number');
 
@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string('total_sale');
             $table->string('notes')->nullable();
 
-            $table->string('output_date');
+            $table->timestamp('output_date');
             $table->timestamps();
             $table->softDeletes();
         });

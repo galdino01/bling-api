@@ -7,13 +7,6 @@ use App\Models\Category;
 
 class CategorySeeder extends Seeder {
     public function run() {
-        Category::create([
-            'id' => '4208042',
-            'description' => 'Produtos de Venda',
-        ]);
-        Category::create([
-            'id' => '3720248',
-            'description' => 'Categoria padrão',
-        ]);
+        Category::factory()->count(3)->create();
     }
 }

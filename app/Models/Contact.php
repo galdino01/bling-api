@@ -12,7 +12,7 @@ class Contact extends Model {
     protected $fillable = [
         'id',
 
-        'customer_id',
+        'user_id',
 
         'email',
         'cell',
@@ -29,7 +29,7 @@ class Contact extends Model {
         'deleted_at'
     ];
 
-    public function customer() {
-        return $this->belongsTo(Customer::class);
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

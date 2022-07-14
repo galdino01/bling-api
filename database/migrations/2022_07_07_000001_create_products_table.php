@@ -10,9 +10,8 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary()->unique();
 
-            $table->foreignId('manufacturer_id')->constrained()->onDelete('cascade');
-            $table->foreignId('supplier_id')->constrained()->onDelete('cascade');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('gtin_code');
             $table->string('gtin_package');
@@ -20,6 +19,7 @@ return new class extends Migration {
 
             $table->string('status');
             $table->string('code');
+            $table->string('origin');
             $table->string('description');
             $table->string('type');
             $table->string('brand');
@@ -43,7 +43,7 @@ return new class extends Migration {
             $table->string('image_thumbnail')->nullable();
             $table->string('url_video')->nullable();
 
-            $table->string('expiration_date')->nullable();
+            $table->timestamp('expiration_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
