@@ -50,7 +50,7 @@ class ProductController extends Controller {
 
     public function update(StoreProductRequest $request, $id) {
         try {
-            $product = Product::findOrFail($id);
+            $product = Product::with('category', 'user')->findOrFail($id)->first();
 
             $product->update($request->validated());
 
@@ -64,9 +64,7 @@ class ProductController extends Controller {
         try {
             $product = Product::findOrFail($id);
 
-            $product->update([
-                'deleted_at' => now()
-            ]);
+            $product->update(['deleted_at' => now()]);
 
             return redirect(route('products.index'))->with('message', 'Product deleted!');
         } catch (\Exception $ex) {
