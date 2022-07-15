@@ -12,15 +12,15 @@ class Product extends Model {
     protected $fillable = [
         'id',
 
-        'user_id',
         'category_id',
 
         'gtin_code',
         'gtin_package',
         'cest',
 
-        'status',
         'code',
+
+        'status',
         'origin',
         'description',
         'type',
@@ -58,10 +58,6 @@ class Product extends Model {
         'updated_at',
         'deleted_at',
     ];
-
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
 
     public function category() {
         return $this->belongsTo(Category::class);

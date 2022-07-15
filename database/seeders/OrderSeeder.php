@@ -20,7 +20,7 @@ class OrderSeeder extends Seeder {
         $orders = Order::all();
 
         foreach ($orders as $order) {
-            $products = Product::take(3)->get();
+            $products = Product::take(50)->get();
             $order->products()->saveMany($products);
         }
 

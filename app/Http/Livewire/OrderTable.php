@@ -54,16 +54,16 @@ final class OrderTable extends PowerGridComponent {
 
     public function columns(): array {
         return [
-            Column::make('NUMBER', 'number')->sortable()->searchable()->makeInputText(),
-            Column::make('STATUS', 'status')->sortable()->searchable()->makeInputText(),
-            Column::make('DISCOUNT', 'discount')->sortable()->searchable()->makeInputText(),
-            Column::make('COST OF FREIGHT', 'cost_of_freight')->sortable()->searchable()->makeInputText(),
-            Column::make('OTHER EXPENSES', 'other_expenses')->sortable()->searchable()->makeInputText(),
-            Column::make('TOTAL OF PRODUCTS', 'total_of_products')->sortable()->searchable()->makeInputText(),
-            Column::make('TOTAL SALE', 'total_sale')->sortable()->searchable()->makeInputText(),
-            Column::make('OUTPUT DATE', 'output_date_formatted', 'output_date')->searchable()->sortable()->makeInputDatePicker(),
-            Column::make('CREATED AT', 'created_at_formatted', 'created_at')->searchable()->sortable()->makeInputDatePicker(),
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')->searchable()->sortable()->makeInputDatePicker(),
+            Column::make('NUMBER', 'number')->searchable()->makeInputText(),
+            Column::make('STATUS', 'status')->sortable()->makeInputText(),
+            Column::make('DISCOUNT', 'discount')->sortable()->makeInputText(),
+            Column::make('COST OF FREIGHT', 'cost_of_freight')->sortable()->makeInputText(),
+            Column::make('OTHER EXPENSES', 'other_expenses')->sortable()->makeInputText(),
+            Column::make('TOTAL OF PRODUCTS', 'total_of_products')->sortable()->makeInputText(),
+            Column::make('TOTAL SALE', 'total_sale')->sortable()->makeInputText(),
+            Column::make('OUTPUT DATE', 'output_date_formatted', 'output_date')->sortable()->makeInputDatePicker(),
+            Column::make('CREATED AT', 'created_at_formatted', 'created_at')->sortable()->makeInputDatePicker(),
+            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')->sortable()->makeInputDatePicker(),
         ];
     }
 

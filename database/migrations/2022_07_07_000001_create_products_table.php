@@ -11,14 +11,14 @@ return new class extends Migration {
             $table->unsignedBigInteger('id')->primary()->unique();
 
             $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('gtin_code');
             $table->string('gtin_package');
             $table->string('cest');
 
-            $table->string('status');
             $table->string('code');
+
+            $table->string('status');
             $table->string('origin');
             $table->string('description');
             $table->string('type');

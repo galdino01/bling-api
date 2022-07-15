@@ -25,7 +25,7 @@ final class ProductTable extends PowerGridComponent {
     }
 
     public function datasource(): Builder {
-        return Product::query()->with('category', 'user');
+        return Product::query()->with('category');
     }
 
     public function relationSearch(): array {
@@ -34,12 +34,7 @@ final class ProductTable extends PowerGridComponent {
                 'id',
                 'name',
                 'description'
-            ],
-            'user' => [
-                'id',
-                'type',
-                'name'
-            ],
+            ]
         ];
     }
 
@@ -47,6 +42,7 @@ final class ProductTable extends PowerGridComponent {
         return PowerGrid::eloquent()
             ->addColumn('code')
             ->addColumn('type')
+            ->addColumn('category.name')
             ->addColumn('status')
             ->addColumn('quantity')
             ->addColumn('items_per_box')
@@ -59,31 +55,32 @@ final class ProductTable extends PowerGridComponent {
     public function columns(): array {
         return [
             Column::make('CODE', 'code')->searchable()->makeInputText(),
-            Column::make('TYPE', 'type')->sortable()->searchable()->makeInputText(),
-            Column::make('STATUS', 'status')->sortable()->searchable()->makeInputText(),
-            Column::make('QUANTITY', 'quantity')->sortable()->searchable()->makeInputText(),
-            Column::make('ITEMS PER BOX', 'items_per_box')->sortable()->searchable()->makeInputText(),
-            Column::make('BOXES', 'boxes')->sortable()->searchable()->makeInputText(),
-            Column::make('EXPIRATION DATE', 'expiration_date_formatted', 'expiration_date')->sortable()->searchable()->makeInputDatePicker(),
-            Column::make('CREATED AT', 'created_at_formatted', 'created_at')->sortable()->searchable()->makeInputDatePicker(),
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')->sortable()->searchable()->makeInputDatePicker(),
+            Column::make('TYPE', 'type')->sortable()->makeInputText(),
+            Column::make('CATEGORY', 'category.name')->sortable()->makeInputText(),
+            Column::make('STATUS', 'status', 'status')->sortable()->makeInputText(),
+            Column::make('QUANTITY', 'quantity')->sortable()->makeInputText(),
+            Column::make('ITEMS PER BOX', 'items_per_box')->sortable()->makeInputText(),
+            Column::make('BOXES', 'boxes')->sortable()->makeInputText(),
+            Column::make('EXPIRATION DATE', 'expiration_date_formatted', 'expiration_date')->sortable()->makeInputDatePicker(),
+            Column::make('CREATED AT', 'created_at_formatted', 'created_at')->sortable()->makeInputDatePicker(),
+            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')->sortable()->makeInputDatePicker(),
         ]
 ;
     }
 
     public function actions(): array {
         return [
-            Button::make('show', 'Show')
+            Button::make('show', 'Ver')
                 ->class('btn btn-outline-primary cursor-pointer m-1 rounded text-sm')
                 ->route('products.show', ['id' => 'id'])
                 ->target('_self'),
 
-            Button::make('edit', 'Edit')
+            Button::make('edit', 'Editar')
                 ->class('btn btn-outline-warning cursor-pointer m-1 rounded text-sm')
                 ->route('products.edit', ['id' => 'id'])
                 ->target('_self'),
 
-            Button::make('destroy', 'Delete')
+            Button::make('destroy', 'Apagar')
                 ->class('btn btn-outline-danger cursor-pointer m-1 rounded text-sm')
                 ->route('products.destroy', ['id' => 'id'])
                 ->method('patch')

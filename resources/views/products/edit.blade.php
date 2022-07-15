@@ -35,14 +35,6 @@
                     <p>{{ $product->category->name }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Fabricante:</strong></span>&nbsp;
-                    <p>{{ $product->user->name ?? '_' }}</p>
-                </div>
-                <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Código Fabricante:</strong></span>&nbsp;
-                    <p>{{ $product->user->id ?? '_' }}</p>
-                </div>
-                <div class="col-md-4 d-flex flex-row">
                     <span><strong>Quantidade:</strong></span>&nbsp;
                     <p>{{ $product->quantity }}</p>
                 </div>
