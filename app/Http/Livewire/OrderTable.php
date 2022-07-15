@@ -12,13 +12,15 @@ use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Heade
 final class OrderTable extends PowerGridComponent {
     use ActionButton;
 
+    public array $perPageValues = [3, 5, 10];
+
     public function setUp(): array {
         $this->showCheckBox();
 
         return [
             Exportable::make('export')->striped()->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showSearchInput()->showToggleColumns(),
-            Footer::make()->showPerPage()->showRecordCount(),
+            Footer::make()->showPerPage(5, $this->perPageValues)->showRecordCount(),
         ];
     }
 

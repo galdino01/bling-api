@@ -27,9 +27,10 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
+            overflow: hidden;
         }
         .sidebar {
-            height: calc(100vh - 4rem);
+            height: 100vh;
             background-color: #0d6efd;
         }
 
@@ -67,22 +68,6 @@
             </section>
         </nav>
         <main>
-            @if (\Session::has('success'))
-                <div aria-live="polite" aria-atomic="true" class="position-relative">
-                    <div class="toast-container top-0 end-0 p-3">
-                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                            <div class="toast-header">
-                                <img src="..." class="rounded me-2" alt="...">
-                                <strong class="me-auto">System</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                            </div>
-                            <div class="toast-body">
-                                {{ \Session::get('message') }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endif
             <section class="row m-0 p-0">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-5 sidebar m-0 p-0 ">
                     <nav class="nav flex-column custom-nav mt-5">
@@ -97,6 +82,22 @@
                     </nav>
                 </div>
                 <div class="col-lg-10 col-md-9 col-sm-8 col-xs-7 bg-light ps-4 pe-4">
+                    @if (Session::has('success'))
+                        <div class="w-25 mt-3 float-end sticky-top">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                                <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                </symbol>
+                            </svg>
+
+                            <div class="alert alert-success d-flex align-items-center" role="alert">
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                <div>
+                                    <strong>Success.</strong> {{ Session::get('success') }}
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     @yield('content')
                 </div>
             </section>
@@ -112,14 +113,6 @@
     <!-- Powergrid and Livewire Scripts -->
     @livewireScripts
     @powerGridScripts
-
-    <!-- Custom Scripts -->
-    <script>
-        $(document).ready(function() {
-            const toastElList = document.querySelectorAll('.toast')
-            const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))
-        });
-    </script>
 </body>
 
 </html>
