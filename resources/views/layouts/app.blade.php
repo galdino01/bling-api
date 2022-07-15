@@ -27,7 +27,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            overflow: hidden;
+            overflow: auto;
         }
         .sidebar {
             height: 100vh;
@@ -55,7 +55,7 @@
 
 <body>
     <div>
-        <nav class="navbar navbar-expand-lg shadow supbar">
+        <nav class="navbar navbar-expand-lg shadow supbar sticky-top">
             <section class="row w-100 m-0">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-5 d-flex justify-content-start align-items-center">
                     <a class="navbar-brand fw-bold text-light" href="/">Armazene Aqui</a>
@@ -69,7 +69,7 @@
         </nav>
         <main>
             <section class="row m-0 p-0">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-5 sidebar m-0 p-0 ">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-5 sidebar m-0 p-0">
                     <nav class="nav flex-column custom-nav mt-5">
                         <a class="nav-link text-light p-3 @if (Route::getCurrentRoute()->getName() == 'products.index') selected-link @endif" href="{{ route('products.index') }}">
                             <i class="fa-solid fa-cart-shopping"></i>
