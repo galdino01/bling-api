@@ -14,8 +14,6 @@ class Order extends Model {
 
         'user_id',
 
-        'number',
-
         'status',
         'discount',
         'cost_of_freight',

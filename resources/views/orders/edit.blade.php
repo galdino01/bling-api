@@ -28,10 +28,6 @@
                     <span><strong>Cliente:</strong></span>&nbsp;
                     <p>{{ $order->user->name }}</p>
                 </div>
-                <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Número:</strong></span>&nbsp;
-                    <p>{{ $order->number }}</p>
-                </div>
             </div>
         </div>
     </div>

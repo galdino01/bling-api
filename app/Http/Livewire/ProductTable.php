@@ -28,22 +28,20 @@ final class ProductTable extends PowerGridComponent {
     public function relationSearch(): array {
         return [
             'category' => [
-                'id',
-                'name',
-                'description'
+                'name'
             ]
         ];
     }
 
     public function addColumns(): PowerGridEloquent {
         return PowerGrid::eloquent()
-            ->addColumn('code')
+            ->addColumn('id')
             ->addColumn('type')
             ->addColumn('category.name')
             ->addColumn('status')
             ->addColumn('quantity')
-            ->addColumn('items_per_box')
-            ->addColumn('boxes')
+            ->addColumn('net_price')
+            ->addColumn('gross_price')
             ->addColumn('expiration_date_formatted', fn (Product $model) => Carbon::parse($model->expiration_date)->format('d/m/Y H:i:s'))
             ->addColumn('created_at_formatted', fn (Product $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
             ->addColumn('updated_at_formatted', fn (Product $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
@@ -51,13 +49,13 @@ final class ProductTable extends PowerGridComponent {
 
     public function columns(): array {
         return [
-            Column::make('CODE', 'code')->searchable()->makeInputText(),
+            Column::make('ID', 'id')->searchable()->makeInputText(),
             Column::make('TYPE', 'type')->sortable()->makeInputText(),
             Column::make('CATEGORY', 'category.name')->sortable()->makeInputText(),
-            Column::make('STATUS', 'status', 'status')->sortable()->makeInputText(),
+            Column::make('STATUS', 'status')->sortable()->makeInputText(),
             Column::make('QUANTITY', 'quantity')->sortable()->makeInputText(),
-            Column::make('ITEMS PER BOX', 'items_per_box')->sortable()->makeInputText(),
-            Column::make('BOXES', 'boxes')->sortable()->makeInputText(),
+            Column::make('NET PRICE', 'net_price')->sortable()->makeInputText(),
+            Column::make('GROSS PRICE', 'gross_price')->sortable()->makeInputText(),
             Column::make('EXPIRATION DATE', 'expiration_date_formatted', 'expiration_date')->sortable()->makeInputDatePicker(),
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')->sortable()->makeInputDatePicker(),
             Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')->sortable()->makeInputDatePicker(),
@@ -66,17 +64,17 @@ final class ProductTable extends PowerGridComponent {
 
     public function actions(): array {
         return [
-            Button::make('show', 'Ver')
-                ->class('btn btn-outline-primary cursor-pointer m-1 rounded text-sm')
+            Button::make('show', '<i class="fas fa-eye"></i>')
+                ->class('btn btn-outline-info cursor-pointer m-1 rounded text-sm')
                 ->route('products.show', ['id' => 'id'])
                 ->target('_self'),
 
-            Button::make('edit', 'Editar')
-                ->class('btn btn-outline-warning cursor-pointer m-1 rounded text-sm')
+            Button::make('edit', '<i class="fas fa-edit"></i>')
+                ->class('btn btn-outline-primary cursor-pointer m-1 rounded text-sm')
                 ->route('products.edit', ['id' => 'id'])
                 ->target('_self'),
 
-            Button::make('destroy', 'Apagar')
+            Button::make('destroy', '<i class="fas fa-trash"></i>')
                 ->class('btn btn-outline-danger cursor-pointer m-1 rounded text-sm')
                 ->route('products.destroy', ['id' => 'id'])
                 ->method('patch')

@@ -11,8 +11,6 @@ return new class extends Migration {
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
-            $table->string('number');
-
             $table->string('status');
             $table->string('discount')->nullable();
             $table->string('cost_of_freight')->nullable();

@@ -71,11 +71,11 @@
             <section class="row m-0 p-0">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-5 sidebar m-0 p-0">
                     <nav class="nav flex-column custom-nav mt-5">
-                        <a class="nav-link text-light p-3 @if (Route::getCurrentRoute()->getName() == 'products.index') selected-link @endif" href="{{ route('products.index') }}">
+                        <a class="nav-link text-light p-3 @if (Route::getCurrentRoute()->getName() == 'products.index') selected-link @endif" href="{{ route('products.index') }}" title="Área de Produtos">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <span class="ps-3">Produtos</span>
                         </a>
-                        <a class="nav-link text-light p-3 @if (Route::getCurrentRoute()->getName() == 'orders.index') selected-link @endif" href="{{ route('orders.index') }}">
+                        <a class="nav-link text-light p-3 @if (Route::getCurrentRoute()->getName() == 'orders.index') selected-link @endif" href="{{ route('orders.index') }}" title="Área de Pedidos">
                             <i class="fa-solid fa-boxes-packing"></i>
                             <span class="ps-3">Pedidos</span>
                         </a>

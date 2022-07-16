@@ -14,21 +14,13 @@ class Product extends Model {
 
         'category_id',
 
-        'gtin_code',
-        'gtin_package',
-        'cest',
-
-        'code',
-
         'status',
         'origin',
         'description',
-        'type',
         'brand',
         'price',
         'price_cost',
         'warranty',
-        'free_shipping',
         'notes',
 
         'unit_of_measure',
@@ -39,12 +31,9 @@ class Product extends Model {
         'gross_weight',
 
         'quantity',
-        'items_per_box',
-        'boxes',
         'localization',
 
-        'image_thumbnail',
-        'url_video',
+        'images',
 
         'expiration_date',
         'created_at',

@@ -1,4 +1,4 @@
-<button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProducts" type="button">
+<button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProducts" type="button" title="Cadastrar novo produto">
     <i class="fa fa-plus" aria-hidden="true"></i>
 </button>
 

@@ -12,10 +12,9 @@ class User extends Model {
     protected $fillable = [
         'id',
 
-        'name',
         'type',
+        'name',
 
-        'cnpj',
         'rg',
         'cpf',
 
@@ -40,9 +39,5 @@ class User extends Model {
 
     public function orders() {
         return $this->hasMany(Order::class);
-    }
-
-    public function products() {
-        return $this->hasMany(Product::class);
     }
 }

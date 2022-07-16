@@ -4,8 +4,8 @@
     <div class="d-flex flex-column justify-content-center align-items-center rounded shadow mt-3 p-2">
         <div class="d-flex flex-row justify-content-start">
             <div style="height: 300px;" class="d-flex justify-content-center align-items-center roudend border w-25 me-3">
-                @if ($product->imageThumbnail != null)
-                    <img src="{{ $product->imageThumbnail }}" class="card-img-top" alt="Product Image">
+                @if ($product->images != null)
+                    <img src="{{ $product->images }}" class="card-img-top" alt="Product Image">
                 @else
                     <div class="d-flex justify-content-center align-items-center p-3">
                         <i class="fa-solid fa-image"></i>&nbsp;
@@ -17,14 +17,6 @@
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>ID:</strong></span>&nbsp;
                     <p>{{ $product->id }}</p>
-                </div>
-                <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Código:</strong></span>&nbsp;
-                    <p>{{ $product->code ?? 'Sem Código' }}</p>
-                </div>
-                <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Tipo:</strong></span>&nbsp;
-                    <p>{{ $product->type }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Status:</strong></span>&nbsp;

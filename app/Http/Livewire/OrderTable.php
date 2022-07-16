@@ -28,8 +28,6 @@ final class OrderTable extends PowerGridComponent {
     public function relationSearch(): array {
         return [
             'user' => [
-                'id',
-                'type',
                 'name'
             ],
         ];
@@ -37,7 +35,8 @@ final class OrderTable extends PowerGridComponent {
 
     public function addColumns(): PowerGridEloquent {
         return PowerGrid::eloquent()
-            ->addColumn('number')
+            ->addColumn('id')
+            ->addColumn('user.name')
             ->addColumn('status')
             ->addColumn('discount')
             ->addColumn('cost_of_freight')
@@ -51,7 +50,8 @@ final class OrderTable extends PowerGridComponent {
 
     public function columns(): array {
         return [
-            Column::make('NUMBER', 'number')->searchable()->makeInputText(),
+            Column::make('ID', 'id')->searchable()->makeInputText(),
+            Column::make('USER', 'user.name')->sortable()->makeInputText(),
             Column::make('STATUS', 'status')->sortable()->makeInputText(),
             Column::make('DISCOUNT', 'discount')->sortable()->makeInputText(),
             Column::make('COST OF FREIGHT', 'cost_of_freight')->sortable()->makeInputText(),
