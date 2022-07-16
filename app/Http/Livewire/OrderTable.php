@@ -68,16 +68,19 @@ final class OrderTable extends PowerGridComponent {
         return [
             Button::make('show', 'Show')
                 ->class('btn btn-outline-primary cursor-pointer m-1 rounded text-sm')
+                ->tooltip('Mostrar Pedido')
                 ->route('orders.show', ['id' => 'id'])
                 ->target('_self'),
 
             Button::make('edit', 'Edit')
                 ->class('btn btn-outline-warning cursor-pointer m-1 rounded text-sm')
+                ->tooltip('Editar Pedido')
                 ->route('orders.edit', ['id' => 'id'])
                 ->target('_self'),
 
             Button::make('destroy', 'Delete')
                 ->class('btn btn-outline-danger cursor-pointer m-1 rounded text-sm')
+                ->tooltip('Eliminar Pedido')
                 ->route('orders.destroy', ['id' => 'id'])
                 ->method('patch')
                 ->target('_self')

@@ -66,7 +66,7 @@ class OrderController extends Controller {
         try {
             $order = Order::findOrFail($id);
 
-            $order->update(['deleted_at' => now()]);
+            $order->update(['deleted_at' => now(), 'status' => 'inactive']);
 
             return redirect(route('orders.index'))->with('success', 'Order deleted!');
         } catch (\Exception $ex) {

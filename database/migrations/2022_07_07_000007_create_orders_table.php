@@ -11,7 +11,7 @@ return new class extends Migration {
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
-            $table->string('status');
+            $table->string('status')->default('active');
             $table->string('discount')->nullable();
             $table->string('cost_of_freight')->nullable();
             $table->string('other_expenses')->nullable();

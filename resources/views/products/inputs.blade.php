@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="file">Imagem do produto:</label>
-    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="images" placeholder="Imagem do produto">
+    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="images[]" placeholder="Imagem do produto" multiple>
     @error('image')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Image;
 use App\Http\Requests\StoreProductRequest;
+use CaliCastle\Cuid;
 
 class ProductController extends Controller {
     public function index() {
@@ -21,6 +23,23 @@ class ProductController extends Controller {
     public function store(StoreProductRequest $request) {
         try {
             $product = Product::create($request->validated());
+
+            $product->id = Cuid::make('product|');
+
+            // Handle File Upload
+            if($request->hasFile('images')) {
+                foreach($request->file('images') as $image) {
+                    if ($image->isValid()) {
+                        $filePath = $request->file('images')->store('public');
+
+                        Image::create([
+                            'product_id' => $product->id,
+                            'name' => $image->getClientOriginalName(),
+                            'path' => $filePath,
+                        ]);
+                    }
+                }
+            }
 
             $product->save();
 
@@ -66,7 +85,7 @@ class ProductController extends Controller {
         try {
             $product = Product::findOrFail($id);
 
-            $product->update(['deleted_at' => now()]);
+            $product->update(['deleted_at' => now(), 'status' => 'inactive']);
 
             return redirect(route('products.index'))->with('success', 'Product deleted!');
         } catch (\Exception $ex) {

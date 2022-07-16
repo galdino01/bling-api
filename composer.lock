@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d183af349273a8adee5f1029879cf8d4",
+    "content-hash": "5e37b8901368b17c7fe6375e9ce261ae",
     "packages": [
         {
             "name": "brick/math",
@@ -65,6 +65,52 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "calicastle/cuid",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CaliCastle/cuid.git",
+                "reference": "de6ea3ae7a71209a44b9536408e0a72c35ca98fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CaliCastle/cuid/zipball/de6ea3ae7a71209a44b9536408e0a72c35ca98fc",
+                "reference": "de6ea3ae7a71209a44b9536408e0a72c35ca98fc",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CaliCastle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cali Castle",
+                    "email": "cali@calicastle.com"
+                }
+            ],
+            "description": "A CUID generator",
+            "keywords": [
+                "Unique ID",
+                "collision free id",
+                "cuid",
+                "uuid"
+            ],
+            "support": {
+                "issues": "https://github.com/CaliCastle/cuid/issues",
+                "source": "https://github.com/CaliCastle/cuid/tree/v2.0.0"
+            },
+            "time": "2021-03-19T07:45:28+00:00"
         },
         {
             "name": "dflydev/dot-access-data",

@@ -12,7 +12,7 @@ return new class extends Migration {
 
             $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
-            $table->string('status');
+            $table->string('status')->default('active');
             $table->string('origin');
             $table->string('description');
             $table->string('brand');

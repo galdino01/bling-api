@@ -7,31 +7,33 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use CaliCastle\Concerns\HasCuid;
 
-class Category extends Model {
+class Image extends Model {
     use HasFactory, SoftDeletes, HasCuid;
 
     protected $fillable = [
         'id',
 
+        'product_id',
+
         'name',
-        'description',
+        'path',
 
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     public static function getCuidPrefix() {
-        return 'category|';
+        return 'image|';
     }
 
-    public function products() {
-        return $this->hasMany(Product::class);
+    public function product() {
+        return $this->belongsTo(Product::class);
     }
 }

@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use CaliCastle\Concerns\HasCuid;
 
 class Product extends Model {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, HasCuid;
 
     protected $fillable = [
         'id',
@@ -48,8 +49,16 @@ class Product extends Model {
         'deleted_at',
     ];
 
+    public static function getCuidPrefix() {
+        return 'product|';
+    }
+
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+    public function images() {
+        return $this->hasMany(Image::class);
     }
 
     public function orders() {

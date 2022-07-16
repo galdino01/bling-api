@@ -13,17 +13,14 @@ class StoreOrderRequest extends FormRequest {
         return [
             'user_id' => ['required'],
 
-            'number' => ['required'],
+            'discount' => ['nullable', 'numeric'],
+            'cost_of_freight' => ['nullable', 'numeric'],
+            'other_expenses' => ['nullable', 'numeric'],
+            'total_of_products' => ['required', 'integer'],
+            'total_sale' => ['required', 'numeric'],
+            'notes' => ['nullable', 'string', 'max:255'],
 
-            'status' => ['required'],
-            'discount' => ['required', 'nullable'],
-            'cost_of_freight' => ['required', 'nullable'],
-            'other_expenses' => ['required', 'nullable'],
-            'total_of_products' => ['required'],
-            'total_sale' => ['required'],
-            'notes' => ['required', 'nullable'],
-
-            'output_date' => ['required'],
+            'output_date' => ['required', 'date'],
         ];
     }
 }

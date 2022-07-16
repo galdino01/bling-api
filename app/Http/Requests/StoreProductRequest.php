@@ -11,40 +11,29 @@ class StoreProductRequest extends FormRequest {
 
     public function rules(){
         return [
-            'user_id' => ['required'],
             'category_id' => ['required'],
 
-            'gtin_code' => ['required'],
-            'gtin_package' => ['required'],
-            'cest' => ['required'],
+            'origin' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            'brand' => ['required', 'string', 'max:255'],
+            'price' => ['required', 'numeric'],
+            'price_cost' => ['required', 'numeric'],
+            'warranty' => ['nullable', 'string', 'max:32'],
+            'notes' => ['nullable', 'string', 'max:255'],
 
-            'status' => ['required'],
-            'code' => ['required'],
-            'origin' => ['required'],
-            'description' => ['required'],
-            'type' => ['required'],
-            'brand' => ['required'],
-            'price' => ['required'],
-            'price_cost' => ['required'],
-            'warranty' => ['nullable'],
-            'free_shipping' => ['nullable'],
-            'notes' => ['nullable'],
+            'unit_of_measure' => ['nullable', 'string', 'max:3'],
+            'width' => ['nullable', 'numeric'],
+            'height' => ['nullable', 'numeric'],
+            'depth' => ['nullable', 'numeric'],
+            'net_weight' => ['nullable', 'numeric'],
+            'gross_weight' => ['nullable', 'numeric'],
 
-            'unit_of_measure' => ['required'],
-            'width' => ['required'],
-            'height' => ['required'],
-            'depth' => ['required'],
-            'net_weight' => ['required'],
-            'gross_weight' => ['required'],
+            'quantity' => ['required', 'integer'],
+            'localization' => ['required', 'string', 'max:255'],
 
-            'items_per_box' => ['required'],
-            'boxes' => ['required'],
-            'localization' => ['required'],
+            'images' => ['nullable', 'array'],
 
-            'image_thumbnail' => ['required', 'nullable'],
-            'url_video' => ['required', 'nullable'],
-
-            'expiration_date' => ['required', 'nullable'],
+            'expiration_date' => ['nullable', 'date'],
         ];
     }
 }

@@ -1,7 +1,3 @@
-<button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProducts" type="button" title="Cadastrar novo produto">
-    <i class="fa fa-plus" aria-hidden="true"></i>
-</button>
-
 <div class="modal fade" id="modalProducts" tabindex="-1" aria-labelledby="products" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
