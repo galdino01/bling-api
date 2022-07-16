@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use App\Http\Requests\StoreProductRequest;
 
 class ProductController extends Controller {
     public function index() {
         try {
             $products = Product::orderBy('created_at', 'asc')->whereNull('deleted_at')->paginate(10);
+            $categories = Category::orderBy('name', 'asc')->whereNull('deleted_at')->get();
 
-            return view('products.index', compact('products'));
+            return view('products.index', compact('products', 'categories'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong'], 500);
         }
