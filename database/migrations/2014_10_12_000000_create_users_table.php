@@ -9,14 +9,12 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary()->unique();
 
+            $table->string('name');
             $table->string('type');
 
-            $table->string('name');
-            $table->string('ie');
-
-            $table->string('cnpj');
-            $table->string('rg');
-            $table->string('cpf');
+            $table->string('cnpj')->nullable();
+            $table->string('rg')->nullable();
+            $table->string('cpf')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

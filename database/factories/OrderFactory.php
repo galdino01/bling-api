@@ -11,7 +11,7 @@ class OrderFactory extends Factory {
 
             'number' => $this->faker->numberBetween(1, 100),
 
-            'status' => $this->faker->randomElement(['pending', 'processing', 'completed', 'cancelled']),
+            'status' => $this->faker->randomElement(['pendente', 'cancelado', 'finalizado']),
             'discount' => $this->faker->randomFloat(2, 0, 100),
             'cost_of_freight' => $this->faker->randomFloat(2, 0, 100),
             'other_expenses' => $this->faker->randomFloat(2, 0, 100),

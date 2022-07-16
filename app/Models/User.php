@@ -12,10 +12,8 @@ class User extends Model {
     protected $fillable = [
         'id',
 
-        'type',
-
         'name',
-        'ie',
+        'type',
 
         'cnpj',
         'rg',

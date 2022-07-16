@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory {
-    public function definition(){
+    public function definition() {
         return [
             'id' => $this->faker->unique()->isbn13(),
 
@@ -13,16 +13,16 @@ class ProductFactory extends Factory {
             'gtin_package' => $this->faker->unique()->isbn13(),
             'cest' => $this->faker->unique()->isbn13(),
 
-            'status' => $this->faker->randomElement(['active', 'inactive']),
+            'status' => $this->faker->randomElement(['ativo', 'inativo']),
             'code' => $this->faker->unique()->isbn13(),
-            'origin' => $this->faker->randomElement(['national', 'imported']),
+            'origin' => $this->faker->randomElement(['nacional', 'importado']),
             'description' => $this->faker->text,
-            'type' => $this->faker->randomElement(['unity', 'package']),
+            'type' => $this->faker->randomElement(['unidade', 'pacote', 'caixa']),
             'brand' => $this->faker->name,
             'price' => $this->faker->randomFloat(2, 0, 100),
             'price_cost' => $this->faker->randomFloat(2, 0, 100),
             'warranty' => $this->faker->randomNumber(),
-            'free_shipping' => $this->faker->randomElement(['yes', 'no']),
+            'free_shipping' => $this->faker->randomElement(['sim', 'nao']),
             'notes' => $this->faker->text,
 
             'unit_of_measure' => $this->faker->randomElement(['m', 'cm', 'v', 'kg', 'g', 'ml', 'l', 'un']),
