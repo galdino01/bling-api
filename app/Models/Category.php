@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
-use CaliCastle\Concerns\HasCuid;
 
 class Category extends Model {
-    use HasFactory, SoftDeletes, HasCuid;
+    use HasFactory, SoftDeletes;
+
+    protected $keyType = 'string';
 
     protected $fillable = [
         'id',

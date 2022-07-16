@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up() {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary()->unique();
+            $table->uuid('id')->primary()->unique();
 
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->uuid('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('email')->unique();
             $table->string('cell');

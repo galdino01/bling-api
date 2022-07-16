@@ -8,9 +8,10 @@ return new class extends Migration {
 
     public function up() {
         Schema::create('products', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary()->unique();
+            $table->uuid('id')->primary()->unique();
 
-            $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->uuid('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('status')->default('active');
             $table->string('origin');

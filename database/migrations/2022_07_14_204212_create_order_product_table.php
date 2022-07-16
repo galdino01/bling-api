@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up() {
         Schema::create('order_product', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary()->unique();
+            $table->uuid('id')->primary()->unique();
 
-            $table->foreignId('order_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('product_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->uuid('order_id');
+            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
+            $table->uuid('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();
