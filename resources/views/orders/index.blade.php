@@ -4,13 +4,7 @@
     <div class="d-flex flex-row align-items-center justify-content-between w-100 mt-5">
         <h4>Pedidos</h4>
     </div>
-    @if($orders->count() != 0)
-        <div class="rounded shadow p-2 bg-white">
-            @livewire('order-table')
-        </div>
-    @else
-        <div class="alert alert-warning" role="alert">
-            Nenhum registro encontrado.
-        </div>
-    @endif
+    <div class="rounded shadow p-2 bg-white">
+        @livewire('order-table')
+    </div>
 @endsection

@@ -18,7 +18,7 @@ final class ProductTable extends PowerGridComponent {
         return [
             Exportable::make(now()->format('dmY_his'))->striped()->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showSearchInput()->showToggleColumns(),
-            Footer::make()->showPerPage(5, [10, 25, 50, 100])->showRecordCount('short'),
+            Footer::make()->showPerPage(5, [10, 25, 50, 100])->showRecordCount(),
         ];
     }
 
@@ -62,8 +62,7 @@ final class ProductTable extends PowerGridComponent {
             Column::make('EXPIRATION DATE', 'expiration_date_formatted', 'expiration_date')->sortable()->makeInputDatePicker(),
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')->sortable()->makeInputDatePicker(),
             Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')->sortable()->makeInputDatePicker(),
-        ]
-;
+        ];
     }
 
     public function actions(): array {
