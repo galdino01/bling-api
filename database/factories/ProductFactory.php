@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class ProductFactory extends Factory {
     public function definition() {
         return [
-            'id' => $this->faker->unique()->isbn13(),
+            'id' => $this->faker->uuid,
 
             'status' => $this->faker->randomElement(['ativo', 'inativo']),
             'origin' => $this->faker->randomElement(['nacional', 'importado']),

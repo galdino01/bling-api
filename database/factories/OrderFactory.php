@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class OrderFactory extends Factory {
     public function definition() {
         return [
-            'id' => $this->faker->unique()->isbn13(),
+            'id' => $this->faker->uuid,
 
             'status' => $this->faker->randomElement(['pendente', 'cancelado', 'finalizado']),
             'discount' => $this->faker->randomFloat(2, 0, 100),

@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class AddressFactory extends Factory {
     public function definition() {
         return [
-            'id' => $this->faker->unique()->isbn13(),
+            'id' => $this->faker->uuid,
+
             'cep' => $this->faker->randomNumber(8),
             'street' => $this->faker->streetName,
             'number' => $this->faker->buildingNumber,
