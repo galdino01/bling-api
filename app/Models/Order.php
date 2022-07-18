@@ -37,10 +37,6 @@ class Order extends Model {
         'deleted_at'
     ];
 
-    public static function getCuidPrefix() {
-        return 'order|';
-    }
-
     public function user() {
         return $this->belongsTo(User::class);
     }

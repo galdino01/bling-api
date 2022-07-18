@@ -50,10 +50,6 @@ class Product extends Model {
         'deleted_at',
     ];
 
-    public static function getCuidPrefix() {
-        return 'product|';
-    }
-
     public function category() {
         return $this->belongsTo(Category::class);
     }

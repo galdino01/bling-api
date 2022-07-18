@@ -30,10 +30,6 @@ class Image extends Model {
         'deleted_at',
     ];
 
-    public static function getCuidPrefix() {
-        return 'image|';
-    }
-
     public function product() {
         return $this->belongsTo(Product::class);
     }

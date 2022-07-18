@@ -28,10 +28,6 @@ class Category extends Model {
         'deleted_at'
     ];
 
-    public static function getCuidPrefix() {
-        return 'category|';
-    }
-
     public function products() {
         return $this->hasMany(Product::class);
     }

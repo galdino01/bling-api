@@ -1,20 +1,15 @@
-<div class="modal fade" id="modalProducts" tabindex="-1" aria-labelledby="products" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <form action="{{ route('products.store') }}" method="post">
-                @csrf
-                <div class="modal-header">
-                    <h5 class="modal-title" id="products">Novo produto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    @include('products.inputs')
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-success">Cadastrar</button>
-                </div>
-            </form>
-        </div>
+@extends('layouts.app')
+
+@section('content')
+    <div class="mt-5 mb-3">
+        <h3 class="modal-title" id="products">Novo produto</h3>
     </div>
-</div>
+    <form action="{{ route('products.store') }}" method="POST">
+        @csrf
+        @include('products.inputs')
+        <div class="d-flex flex-row justify-content-end mt-5 mb-5">
+            <a class="btn btn-danger" href="{{ route('products.index') }}">Cancelar</a>
+            <button type="submit" class="btn btn-success ms-2">Cadastrar</button>
+        </div>
+    </form>
+@endsection

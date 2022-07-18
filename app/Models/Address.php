@@ -35,10 +35,6 @@ class Address extends Model {
         'deleted_at'
     ];
 
-    public static function getCuidPrefix() {
-        return 'address|';
-    }
-
     public function user() {
         return $this->belongsTo(User::class);
     }

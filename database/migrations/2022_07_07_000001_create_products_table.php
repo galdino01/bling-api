@@ -31,7 +31,7 @@ return new class extends Migration {
             $table->string('quantity');
             $table->string('localization');
 
-            $table->string('images')->nullable();
+            $table->string('image')->nullable();
 
             $table->timestamp('expiration_date')->nullable();
             $table->timestamps();

@@ -28,10 +28,6 @@ class OrderProduct extends Pivot {
         'deleted_at',
     ];
 
-    public static function getCuidPrefix() {
-        return 'order_product|';
-    }
-
     public function order() {
         return $this->belongsTo(Order::class);
     }

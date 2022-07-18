@@ -4,17 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Image;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller {
     public function index() {
         try {
+            return view('products.index');
+        } catch (\Exception $ex) {
+            return response()->json(['message' => 'Something went wrong'], 500);
+        }
+    }
+
+    public function create() {
+        try {
             $products = Product::orderBy('created_at', 'asc')->whereNull('deleted_at')->paginate(10);
             $categories = Category::orderBy('name', 'asc')->whereNull('deleted_at')->get();
 
-            return view('products.index', compact('products', 'categories'));
+            return view('products.create', compact('products', 'categories'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong'], 500);
         }
@@ -22,39 +29,13 @@ class ProductController extends Controller {
 
     public function store(StoreProductRequest $request) {
         try {
-            dd($request->validated());
+            // TODO: Porque não cadastro usando uma custom request?
 
-            $product = Product::create($request->validated());
+            // $request->merge(['id' => Str::uuid()]);
 
-            $product->id = (string) Str::uuid();
+            // $product = Product::create($request->all());
 
-            // $product->price = str_replace(',', '.', $product->price);
-            // $product->price_cost = str_replace(',', '.', $product->price_cost);
-            // $product->width = str_replace(',', '.', $product->width);
-            // $product->height = str_replace(',', '.', $product->height);
-            // $product->depth = str_replace(',', '.', $product->depth);
-            // $product->net_weight = str_replace(',', '.', $product->net_weight);
-            // $product->gross_weight = str_replace(',', '.', $product->gross_weight);
-
-            // $product->quantity = strtolower($product->quantity);
-            // $product->warranty = strtolower($product->warranty);
-            // $product->unit_of_measure = strtolower($product->unit_of_measure);
-
-            if($request->hasFile('images')) {
-                foreach($request->file('images') as $image) {
-                    if ($image->isValid()) {
-                        $filePath = $request->file('images')->store('public');
-
-                        Image::create([
-                            'product_id' => $product->id,
-                            'name' => $image->getClientOriginalName(),
-                            'path' => $filePath,
-                        ]);
-                    }
-                }
-            }
-
-            $product->save();
+            // $product->save();
 
             return redirect(route('products.index'))->with('success', 'Product created!');
         } catch (\Exception $ex) {
@@ -62,9 +43,9 @@ class ProductController extends Controller {
         }
     }
 
-    public function show($id) {
+    public function show($code) {
         try {
-            $product = Product::with('category')->findOrFail($id)->first();
+            $product = Product::with('category')->findOrFail($code)->first();
 
             return view('products.show', compact('product'));
         } catch (\Exception $ex) {
@@ -72,9 +53,9 @@ class ProductController extends Controller {
         }
     }
 
-    public function edit($id) {
+    public function edit($code) {
         try {
-            $product = Product::with('category')->findOrFail($id)->first();
+            $product = Product::with('category')->findOrFail($code)->first();
 
             return view('products.edit', compact('product'));
         } catch (\Exception $ex) {
@@ -82,9 +63,9 @@ class ProductController extends Controller {
         }
     }
 
-    public function update(StoreProductRequest $request, $id) {
+    public function update(StoreProductRequest $request, $code) {
         try {
-            $product = Product::with('category')->findOrFail($id)->first();
+            $product = Product::with('category')->findOrFail($code)->first();
 
             $product->update($request->validated());
 
@@ -94,9 +75,9 @@ class ProductController extends Controller {
         }
     }
 
-    public function destroy($id) {
+    public function destroy($code) {
         try {
-            $product = Product::findOrFail($id);
+            $product = Product::findOrFail($code);
 
             $product->update(['deleted_at' => now(), 'status' => 'inactive']);
 

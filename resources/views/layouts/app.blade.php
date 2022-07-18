@@ -86,11 +86,11 @@
                         <i class="fa-solid fa-dolly"></i>
                         Armazene Aqui
                     </a>
-                    <div class="d-lg-block d-md-none">
+                    <div class="d-lg-block d-md-none d-sm-none d-none">
                         @include('layouts.supbar')
                     </div>
                 </div>
-                <div class="d-flex align-items-center text-light">
+                <div class="d-lg-block d-md-none d-sm-none d-none align-items-center text-light">
                     Futuramente aqui vai menu de usuário
                 </div>
             </div>

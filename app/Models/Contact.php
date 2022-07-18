@@ -31,10 +31,6 @@ class Contact extends Model {
         'deleted_at'
     ];
 
-    public static function getCuidPrefix() {
-        return 'contact|';
-    }
-
     public function user() {
         return $this->belongsTo(User::class);
     }
