@@ -22,7 +22,6 @@ return new class extends Migration {
             $table->string('warranty')->nullable();
             $table->string('notes')->nullable();
 
-            $table->string('unit_of_measure');
             $table->string('width');
             $table->string('height');
             $table->string('depth');

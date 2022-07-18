@@ -7,7 +7,7 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
     </div>
-    @include('products.modal')
+    @include('products.create')
     <div class="rounded shadow p-2 bg-white mb-5">
         @livewire('product-table')
     </div>

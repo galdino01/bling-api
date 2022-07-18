@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Image;
 use App\Http\Requests\StoreProductRequest;
-use CaliCastle\Cuid;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller {
     public function index() {
@@ -22,11 +22,24 @@ class ProductController extends Controller {
 
     public function store(StoreProductRequest $request) {
         try {
+            dd($request->validated());
+
             $product = Product::create($request->validated());
 
-            $product->id = Cuid::make('product|');
+            $product->id = (string) Str::uuid();
 
-            // Handle File Upload
+            // $product->price = str_replace(',', '.', $product->price);
+            // $product->price_cost = str_replace(',', '.', $product->price_cost);
+            // $product->width = str_replace(',', '.', $product->width);
+            // $product->height = str_replace(',', '.', $product->height);
+            // $product->depth = str_replace(',', '.', $product->depth);
+            // $product->net_weight = str_replace(',', '.', $product->net_weight);
+            // $product->gross_weight = str_replace(',', '.', $product->gross_weight);
+
+            // $product->quantity = strtolower($product->quantity);
+            // $product->warranty = strtolower($product->warranty);
+            // $product->unit_of_measure = strtolower($product->unit_of_measure);
+
             if($request->hasFile('images')) {
                 foreach($request->file('images') as $image) {
                     if ($image->isValid()) {

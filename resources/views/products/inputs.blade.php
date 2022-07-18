@@ -13,7 +13,7 @@
         <select class="form-select form-select-lg @error('category') is-invalid @enderror" id="category" name="category">
             <option disabled selected value="">Selecione a categoria</option>
             @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <option value="{{ $category->id }}">{{ ucwords($category->name) }}</option>
             @endforeach
         </select>
         @error('category')
@@ -68,15 +68,6 @@
         @enderror
     </div>
     <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-3">
-        <label for="unit_of_measure">Unidade de Medida:</label>
-        <input type="text" class="form-control @error('unit_of_measure') is-invalid @enderror" id="unit_of_measure" name="unit_of_measure" placeholder="Unidade de Medida">
-        @error('unit_of_measure')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-    <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-3">
         <label for="width">Largura:</label>
         <input type="text" class="form-control @error('width') is-invalid @enderror" id="width" name="width" placeholder="Largura">
         @error('width')
@@ -123,8 +114,17 @@
     </div>
     <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-3">
         <label for="localization">Localização:</label>
-        <textarea class="form-control @error('localization') is-invalid @enderror" id="localization" rows="3"></textarea>
+        <input type="text" class="form-control @error('localization') is-invalid @enderror" id="localization" name="localization" placeholder="Localização">
         @error('localization')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+    <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-3">
+        <label for="expiration_date">Data de Validade:</label>
+        <input type="date" class="form-control @error('expiration_date') is-invalid @enderror" id="expiration_date" name="expiration_date" placeholder="Data de Validade">
+        @error('expiration_date')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>

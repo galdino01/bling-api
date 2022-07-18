@@ -18,7 +18,6 @@ class ProductFactory extends Factory {
             'warranty' => $this->faker->randomNumber(),
             'notes' => $this->faker->text,
 
-            'unit_of_measure' => $this->faker->randomElement(['m', 'cm', 'v', 'kg', 'g', 'ml', 'l', 'un']),
             'width' => $this->faker->randomFloat(2, 0, 100),
             'height' => $this->faker->randomFloat(2, 0, 100),
             'depth' => $this->faker->randomFloat(2, 0, 100),
