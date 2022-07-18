@@ -2,7 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'index');
+Route::get('/', function () {
+    return redirect()->route('dashboard');
+});
+
+Route::view('/dashboard', 'dashboard')->name('dashboard');
+
+// Route::prefix('dashboard')->group(function () {
+//     Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+// });
 
 Route::prefix('products')->group(function () {
     Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
