@@ -34,7 +34,7 @@ final class ProductTable extends PowerGridComponent {
 
     public function addColumns(): PowerGridEloquent {
         return PowerGrid::eloquent()
-            ->addColumn('id')
+            ->addColumn('name')
             ->addColumn('category.name')
             ->addColumn('status')
             ->addColumn('quantity')
@@ -47,7 +47,7 @@ final class ProductTable extends PowerGridComponent {
 
     public function columns(): array {
         return [
-            Column::make('ID', 'id')->searchable()->makeInputText(),
+            Column::make('NAME', 'name')->searchable()->makeInputText(),
             Column::make('CATEGORY', 'category.name')->sortable()->makeInputText(),
             Column::make('STATUS', 'status')->sortable()->makeInputText(),
             Column::make('QUANTITY', 'quantity')->sortable()->makeInputText(),

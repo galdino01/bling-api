@@ -18,6 +18,7 @@ class Product extends Model {
         'category_id',
 
         'status',
+        'name',
         'origin',
         'description',
         'brand',

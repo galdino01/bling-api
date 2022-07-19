@@ -13,6 +13,7 @@ class StoreProductRequest extends FormRequest {
         return [
             'category_id' => 'required',
 
+            'name' => ['required', 'max:255'],
             'origin' => ['required', 'max:255'],
             'description' => ['required', 'max:255'],
             'brand' => ['required', 'max:255'],

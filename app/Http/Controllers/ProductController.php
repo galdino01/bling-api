@@ -11,7 +11,7 @@ class ProductController extends Controller {
         try {
             return view('products.index');
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong'], 500);
+            return response()->json(['message' => 'Something went wrong.'], 500);
         }
     }
 
@@ -21,13 +21,13 @@ class ProductController extends Controller {
 
             return view('products.create', compact('categories'));
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong'], 500);
+            return response()->json(['message' => 'Something went wrong.'], 500);
         }
     }
 
     public function store(StoreProductRequest $request) {
         try {
-            abort_if($request->origin !== 'nacional' && $request->origin !== 'importado', 400, 'Wrong entry for origin');
+            abort_if($request->origin !== 'nacional' && $request->origin !== 'importado', 400, 'Wrong entry for origin.');
 
             $product = Product::create($request->validated());
 
@@ -35,7 +35,7 @@ class ProductController extends Controller {
 
             return redirect(route('products.index'))->with('success', 'Product created!');
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong', 'error' => $ex->getMessage()], 500);
+            return response()->json(['message' => 'Something went wrong.'], 500);
         }
     }
 
@@ -45,7 +45,7 @@ class ProductController extends Controller {
 
             return view('products.show', compact('product'));
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong'], 500);
+            return response()->json(['message' => 'Something went wrong.'], 500);
         }
     }
 
@@ -55,7 +55,7 @@ class ProductController extends Controller {
 
             return view('products.edit', compact('product'));
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong'], 500);
+            return response()->json(['message' => 'Something went wrong.'], 500);
         }
     }
 
@@ -67,7 +67,7 @@ class ProductController extends Controller {
 
             return redirect(route('products.index'))->with('success', 'Product updated!');
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong'], 500);
+            return response()->json(['message' => 'Something went wrong.'], 500);
         }
     }
 
@@ -79,7 +79,7 @@ class ProductController extends Controller {
 
             return redirect(route('products.index'))->with('success', 'Product deleted!');
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong'], 500);
+            return response()->json(['message' => 'Something went wrong.'], 500);
         }
     }
 }
