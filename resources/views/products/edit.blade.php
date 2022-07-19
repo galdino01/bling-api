@@ -4,8 +4,8 @@
     <div class="d-flex flex-column justify-content-center align-items-center rounded shadow mt-3 p-2">
         <div class="d-flex flex-row justify-content-start">
             <div style="height: 300px;" class="d-flex justify-content-center align-items-center roudend border w-25 me-3">
-                @if ($product->images != null)
-                    <img src="{{ $product->images }}" class="card-img-top" alt="Product Image">
+                @if ($product->image != null)
+                    <img src="{{ $product->image }}" class="card-img-top" alt="Product Image">
                 @else
                     <div class="d-flex justify-content-center align-items-center p-3">
                         <i class="fa-solid fa-image"></i>&nbsp;
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Preço:</strong></span>&nbsp;
-                    <p> R$ {{ number_format($product->price, 2, ',', '.') }}</p>
+                    <p> R$ {{ $product->price }}</p>
                 </div>
             </div>
         </div>

@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, UUID;
 
     protected $keyType = 'string';
 
@@ -49,6 +50,22 @@ class Product extends Model {
         'updated_at',
         'deleted_at',
     ];
+
+    public function setPriceAttribute($value) {
+        $this->attributes['price'] = str_replace(',', '.', $value);
+    }
+
+    public function setPriceCostAttribute($value) {
+        $this->attributes['price_cost'] = str_replace(',', '.', $value);
+    }
+
+    public function getPriceAttribute() {
+        return str_replace('.', ',', $this->attributes['price']);
+    }
+
+    public function getPriceCostAttribute() {
+        return str_replace('.', ',', $this->attributes['price_cost']);
+    }
 
     public function category() {
         return $this->belongsTo(Category::class);

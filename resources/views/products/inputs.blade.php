@@ -13,7 +13,7 @@
         <select class="form-select form-select-lg @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
             <option disabled selected value="">Selecione a categoria</option>
             @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ ucwords($category->name) }}</option>
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
         </select>
         @error('category_id')

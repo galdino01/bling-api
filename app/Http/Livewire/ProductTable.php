@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Product;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
@@ -41,9 +40,9 @@ final class ProductTable extends PowerGridComponent {
             ->addColumn('quantity')
             ->addColumn('price')
             ->addColumn('price_cost')
-            ->addColumn('expiration_date_formatted', fn (Product $model) => Carbon::parse($model->expiration_date)->format('d/m/Y H:i:s'))
-            ->addColumn('created_at_formatted', fn (Product $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Product $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('expiration_date_formatted', fn (Product $model) => $model->expiration_date->format('d/m/Y H:i:s'))
+            ->addColumn('created_at_formatted', fn (Product $model) => $model->created_at->format('d/m/Y H:i:s'))
+            ->addColumn('updated_at_formatted', fn (Product $model) => $model->updated_at->format('d/m/Y H:i:s'));
     }
 
     public function columns(): array {

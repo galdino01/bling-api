@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Support\Str;
 use App\Http\Requests\StoreProductRequest;
 
 class ProductController extends Controller {
@@ -28,7 +27,7 @@ class ProductController extends Controller {
 
     public function store(StoreProductRequest $request) {
         try {
-            // TODO: Cadastro usando uma custom request não funciona
+            abort_if($request->origin !== 'nacional' && $request->origin !== 'importado', 400, 'Wrong entry for origin');
 
             $product = Product::create($request->validated());
 
@@ -40,9 +39,9 @@ class ProductController extends Controller {
         }
     }
 
-    public function show($code) {
+    public function show($id) {
         try {
-            $product = Product::with('category')->findOrFail($code)->first();
+            $product = Product::with('category')->findOrFail($id)->first();
 
             return view('products.show', compact('product'));
         } catch (\Exception $ex) {
@@ -50,9 +49,9 @@ class ProductController extends Controller {
         }
     }
 
-    public function edit($code) {
+    public function edit($id) {
         try {
-            $product = Product::with('category')->findOrFail($code)->first();
+            $product = Product::with('category')->findOrFail($id)->first();
 
             return view('products.edit', compact('product'));
         } catch (\Exception $ex) {
@@ -60,9 +59,9 @@ class ProductController extends Controller {
         }
     }
 
-    public function update(StoreProductRequest $request, $code) {
+    public function update(StoreProductRequest $request, $id) {
         try {
-            $product = Product::with('category')->findOrFail($code)->first();
+            $product = Product::with('category')->findOrFail($id)->first();
 
             $product->update($request->validated());
 
@@ -72,9 +71,9 @@ class ProductController extends Controller {
         }
     }
 
-    public function destroy($code) {
+    public function destroy($id) {
         try {
-            $product = Product::findOrFail($code);
+            $product = Product::with('category')->findOrFail($id)->first();
 
             $product->update(['deleted_at' => now(), 'status' => 'inactive']);
 

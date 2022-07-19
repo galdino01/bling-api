@@ -9,7 +9,7 @@ return new class extends Migration {
 
     public function up() {
         Schema::create('products', function (Blueprint $table) {
-            $table->uuid('id')->primary()->unique()->default(Str::uuid()->toString());
+            $table->uuid('id')->primary()->unique();
 
             $table->uuid('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
