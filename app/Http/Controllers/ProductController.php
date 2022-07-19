@@ -9,7 +9,7 @@ use App\Http\Requests\StoreProductRequest;
 class ProductController extends Controller {
     public function index() {
         try {
-            return view('products.index', ['metaTitle' => 'Products']);
+            return view('products.index', ['metaTitle' => 'Produtos']);
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong.'], 500);
         }
@@ -19,7 +19,7 @@ class ProductController extends Controller {
         try {
             $categories = Category::orderBy('name', 'asc')->whereNull('deleted_at')->get();
 
-            return view('products.create', ['metaTitle' => 'Create Product'], compact('categories'));
+            return view('products.create', ['metaTitle' => 'Novo Produto'], compact('categories'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong.'], 500);
         }
@@ -31,7 +31,18 @@ class ProductController extends Controller {
 
             $product = Product::create($request->validated());
 
-            $product->save();
+            if($request->hasFile('image') && $request->file('image')->isValid()) {
+                $name = uniqid(date('YmdHis'));
+                $extension = $request->image->extension();
+                $file_name = "{$name}.{$extension}";
+                $upload = $request->image->storeAs("images/products/{$product->id}", $file_name);
+
+                if(!$upload) {
+                    return redirect()->back()->with('message', 'Falha ao fazer upload.')->withInput();
+                }
+
+                $product->update(['image' => $upload]);
+            }
 
             return redirect(route('products.index'))->with('success', 'Product created!');
         } catch (\Exception $ex) {
@@ -43,7 +54,7 @@ class ProductController extends Controller {
         try {
             $product = Product::findOrFail($id)->first();
 
-            return view('products.show', ['metaTitle' => 'Show Product'], compact('product'));
+            return view('products.show', ['metaTitle' => 'Ver Produto'], compact('product'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong.'], 500);
         }
@@ -53,7 +64,7 @@ class ProductController extends Controller {
         try {
             $product = Product::findOrFail($id)->first();
 
-            return view('products.edit', ['metaTitle' => 'Edit Product'], compact('product'));
+            return view('products.edit', ['metaTitle' => 'Editar Produto'], compact('product'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong.'], 500);
         }

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="form-group col-lg-8 col-md-12 col-sm-12 col-xs-12 mt-3">
-        <label for="file">Imagem:</label>
-        <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" placeholder="Imagem" multiple/>
+        <label for="image">Imagem:</label>
+        <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" placeholder="Imagem"/>
         @error('image')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

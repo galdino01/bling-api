@@ -47,15 +47,15 @@ final class ProductTable extends PowerGridComponent {
 
     public function columns(): array {
         return [
-            Column::make('NAME', 'name')->searchable()->makeInputText(),
-            Column::make('CATEGORY', 'category.name')->sortable()->makeInputText(),
+            Column::make('NOME', 'name')->searchable()->makeInputText(),
+            Column::make('CATEGORIA', 'category.name')->sortable()->makeInputText(),
             Column::make('STATUS', 'status')->sortable()->makeInputText(),
-            Column::make('QUANTITY', 'quantity')->sortable()->makeInputText(),
-            Column::make('PRICE', 'price')->sortable()->makeInputText(),
-            Column::make('PRICE COST', 'price_cost')->sortable()->makeInputText(),
-            Column::make('EXPIRATION DATE', 'expiration_date_formatted', 'expiration_date')->sortable()->makeInputDatePicker(),
-            Column::make('CREATED AT', 'created_at_formatted', 'created_at')->sortable()->makeInputDatePicker(),
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')->sortable()->makeInputDatePicker(),
+            Column::make('QUANTIDADE', 'quantity')->sortable()->makeInputText(),
+            Column::make('PREÇO', 'price')->sortable()->makeInputText(),
+            Column::make('PREÇO CUSTO', 'price_cost')->sortable()->makeInputText(),
+            Column::make('DATA DE VALIDADE', 'expiration_date_formatted', 'expiration_date')->sortable()->makeInputDatePicker(),
+            Column::make('CRIADO EM', 'created_at_formatted', 'created_at')->sortable()->makeInputDatePicker(),
+            Column::make('ATUALIZADO EM', 'updated_at_formatted', 'updated_at')->sortable()->makeInputDatePicker(),
         ];
     }
 
