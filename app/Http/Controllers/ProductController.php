@@ -9,7 +9,7 @@ use App\Http\Requests\StoreProductRequest;
 class ProductController extends Controller {
     public function index() {
         try {
-            return view('products.index');
+            return view('products.index', ['metaTitle' => 'Products']);
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong.'], 500);
         }
@@ -19,7 +19,7 @@ class ProductController extends Controller {
         try {
             $categories = Category::orderBy('name', 'asc')->whereNull('deleted_at')->get();
 
-            return view('products.create', compact('categories'));
+            return view('products.create', ['metaTitle' => 'Create Product'], compact('categories'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong.'], 500);
         }
@@ -43,7 +43,7 @@ class ProductController extends Controller {
         try {
             $product = Product::findOrFail($id)->first();
 
-            return view('products.show', compact('product'));
+            return view('products.show', ['metaTitle' => 'Show Product'], compact('product'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong.'], 500);
         }
@@ -53,7 +53,7 @@ class ProductController extends Controller {
         try {
             $product = Product::findOrFail($id)->first();
 
-            return view('products.edit', compact('product'));
+            return view('products.edit', ['metaTitle' => 'Edit Product'], compact('product'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong.'], 500);
         }

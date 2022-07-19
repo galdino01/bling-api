@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- APP Title -->
-    <title>{{ config('app.name', 'Armazene Aqui') }}</title>
+    <title>@isset($metaTitle){{ config('app.name', 'Armazene Aqui') . ' | ' . $metaTitle }}@else{{ config('app.name', 'Armazene Aqui') }}@endisset</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"

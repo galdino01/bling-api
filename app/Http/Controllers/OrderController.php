@@ -10,7 +10,7 @@ class OrderController extends Controller {
         try {
             $orders = Order::orderBy('created_at', 'asc')->get();
 
-            return view('orders.index', compact('orders'));
+            return view('orders.index', ['metaTitle' => 'Orders'], compact('orders'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong'], 500);
         }
@@ -32,7 +32,7 @@ class OrderController extends Controller {
         try {
             $order = Order::with('user')->findOrFail($id)->first();
 
-            return view('orders.show', compact('order'));
+            return view('orders.show', ['metaTitle' => 'Show Order'], compact('order'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong'], 500);
         }
@@ -40,9 +40,9 @@ class OrderController extends Controller {
 
     public function edit($id) {
         try {
-            $order = Order::with('user')->findOrFail($id)->first();
+            $order = Order::findOrFail($id)->first();
 
-            return view('orders.edit', compact('order'));
+            return view('orders.edit', ['metaTitle' => 'Edit Order'], compact('order'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong'], 500);
         }
@@ -50,7 +50,7 @@ class OrderController extends Controller {
 
     public function update(StoreOrderRequest $request, $id) {
         try {
-            $order = Order::with('user')->findOrFail($id)->first();
+            $order = Order::findOrFail($id)->first();
 
             $order->update($request->validated());
 
