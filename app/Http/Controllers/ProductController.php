@@ -41,7 +41,7 @@ class ProductController extends Controller {
 
     public function show($id) {
         try {
-            $product = Product::with('category')->findOrFail($id)->first();
+            $product = Product::findOrFail($id)->first();
 
             return view('products.show', compact('product'));
         } catch (\Exception $ex) {
@@ -51,7 +51,7 @@ class ProductController extends Controller {
 
     public function edit($id) {
         try {
-            $product = Product::with('category')->findOrFail($id)->first();
+            $product = Product::findOrFail($id)->first();
 
             return view('products.edit', compact('product'));
         } catch (\Exception $ex) {
@@ -61,7 +61,7 @@ class ProductController extends Controller {
 
     public function update(StoreProductRequest $request, $id) {
         try {
-            $product = Product::with('category')->findOrFail($id)->first();
+            $product = Product::findOrFail($id)->first();
 
             $product->update($request->validated());
 
@@ -73,7 +73,7 @@ class ProductController extends Controller {
 
     public function destroy($id) {
         try {
-            $product = Product::with('category')->findOrFail($id)->first();
+            $product = Product::findOrFail($id)->first();
 
             $product->update(['deleted_at' => now(), 'status' => 'inactive']);
 
