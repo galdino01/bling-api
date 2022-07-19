@@ -29,7 +29,7 @@ class ProductController extends Controller {
 
     public function store(StoreProductRequest $request) {
         try {
-            // TODO: Porque não cadastro usando uma custom request?
+            // TODO: Cadastro usando uma custom request não funciona
 
             // $request->merge(['id' => Str::uuid()]);
 
