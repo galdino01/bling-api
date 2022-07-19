@@ -37,7 +37,7 @@ class Product extends Model {
         'quantity',
         'localization',
 
-        'images',
+        'image',
 
         'expiration_date',
         'created_at',
@@ -72,8 +72,8 @@ class Product extends Model {
         return $this->belongsTo(Category::class);
     }
 
-    public function images() {
-        return $this->hasMany(Image::class);
+    public function image() {
+        return $this->hasOne(Image::class);
     }
 
     public function orders() {

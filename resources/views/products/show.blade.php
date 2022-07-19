@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="d-flex flex-column justify-content-center align-items-center rounded shadow mt-3 p-2">
-        <div class="d-flex flex-row justify-content-start">
-            <div style="height: 300px;" class="d-flex justify-content-center align-items-center roudend border w-25 me-3">
-                @if ($product->image != null)
-                    <img src="{{ $product->image }}" class="card-img-top" alt="Product Image">
+        <div class="d-flex flex-row w-100">
+            <div class="d-flex justify-content-center align-items-center w-25 me-3">
+                @if ($product->image)
+                    <img class="img-fluid w-100 h-100 rounded" src="{{ url("storage/{$product->image}") }}" alt="Imagem do Produto" />
                 @else
                     <div class="d-flex justify-content-center align-items-center p-3">
                         <i class="fa-solid fa-image"></i>&nbsp;
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-row justify-content-start w-100 mt-3">
+        <div class="d-flex flex-row w-100 mt-3">
             <div class="row">
                 <div class="col-md-12">
                     <span><strong>Descrição</strong></span>

@@ -31,7 +31,7 @@ class StoreProductRequest extends FormRequest {
             'quantity' => 'required',
             'localization' => ['required', 'max:255'],
 
-            'image' => 'nullable',
+            'image' => ['nullable', 'image'],
 
             'expiration_date' => 'nullable',
         ];
