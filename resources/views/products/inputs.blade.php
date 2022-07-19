@@ -9,14 +9,14 @@
         @enderror
     </div>
     <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-3">
-        <label for="category">Categoria:</label>
-        <select class="form-select form-select-lg @error('category') is-invalid @enderror" id="category" name="category_id">
+        <label for="category_id">Categoria:</label>
+        <select class="form-select form-select-lg @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
             <option disabled selected value="">Selecione a categoria</option>
             @foreach ($categories as $category)
                 <option value="{{ $category->id }}">{{ ucwords($category->name) }}</option>
             @endforeach
         </select>
-        @error('category')
+        @error('category_id')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
@@ -34,7 +34,7 @@
     <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-3">
         <label for="origin">Origem:</label>
         <select class="form-select form-select-lg @error('origin') is-invalid @enderror" id="origin" name="origin">
-            <option disabled selected value="">Selecione a categoria</option>
+            <option disabled selected value="">Selecione a origem</option>
             <option value="nacional">Nacional</option>
             <option value="importado">Importado</option>
         </select>
@@ -46,7 +46,7 @@
     </div>
     <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-3">
         <label for="brand">Marca:</label>
-        <input type="text" class="form-control @error('name') is-invalid @enderror" id="brand" name="brand" placeholder="Marca" value="{{ old('brand') }}"/>
+        <input type="text" class="form-control @error('brand') is-invalid @enderror" id="brand" name="brand" placeholder="Marca" value="{{ old('brand') }}"/>
         @error('brand')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

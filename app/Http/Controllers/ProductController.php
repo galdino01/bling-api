@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-use App\Http\Requests\StoreProductRequest;
 use Illuminate\Support\Str;
+use App\Http\Requests\StoreProductRequest;
 
 class ProductController extends Controller {
     public function index() {
@@ -18,10 +18,9 @@ class ProductController extends Controller {
 
     public function create() {
         try {
-            $products = Product::orderBy('created_at', 'asc')->whereNull('deleted_at')->paginate(10);
             $categories = Category::orderBy('name', 'asc')->whereNull('deleted_at')->get();
 
-            return view('products.create', compact('products', 'categories'));
+            return view('products.create', compact('categories'));
         } catch (\Exception $ex) {
             return response()->json(['message' => 'Something went wrong'], 500);
         }
@@ -31,11 +30,9 @@ class ProductController extends Controller {
         try {
             // TODO: Cadastro usando uma custom request não funciona
 
-            // $request->merge(['id' => Str::uuid()]);
+            $product = Product::create($request->validated());
 
-            // $product = Product::create($request->all());
-
-            // $product->save();
+            $product->save();
 
             return redirect(route('products.index'))->with('success', 'Product created!');
         } catch (\Exception $ex) {
