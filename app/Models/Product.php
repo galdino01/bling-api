@@ -20,14 +20,13 @@ class Product extends Model {
         'status',
         'name',
         'origin',
-        'description',
         'brand',
         'price',
         'price_cost',
         'warranty',
+        'description',
         'notes',
 
-        'unit_of_measure',
         'width',
         'height',
         'depth',
@@ -52,12 +51,24 @@ class Product extends Model {
         'deleted_at',
     ];
 
+    public function setNameAttribute($value) {
+        $this->attributes['name'] = str_replace(' ', '_', strtolower($value));
+    }
+
     public function setPriceAttribute($value) {
         $this->attributes['price'] = str_replace(',', '.', $value);
     }
 
     public function setPriceCostAttribute($value) {
         $this->attributes['price_cost'] = str_replace(',', '.', $value);
+    }
+
+    public function setWarrantyAttribute($value) {
+        $this->attributes['warranty'] = str_replace(' ', '_', strtolower($value));
+    }
+
+    public function getNameAttribute() {
+        return ucwords(str_replace('_', ' ', $this->attributes['name']));
     }
 
     public function getPriceAttribute() {
@@ -68,12 +79,18 @@ class Product extends Model {
         return str_replace('.', ',', $this->attributes['price_cost']);
     }
 
-    public function category() {
-        return $this->belongsTo(Category::class);
+    public function getWarrantyAttribute() {
+        return ucwords(str_replace('_', ' ', $this->attributes['warranty']));
     }
 
-    public function image() {
-        return $this->hasOne(Image::class);
+    public function getStatusAttribute() {
+        return ucwords(str_replace('_', ' ', $this->attributes['status']));
+    }
+
+    // TODO: CONTINUAR OS GETTERS AND SETTERS
+
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 
     public function orders() {

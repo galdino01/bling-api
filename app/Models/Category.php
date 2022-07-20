@@ -29,6 +29,10 @@ class Category extends Model {
         'deleted_at'
     ];
 
+    public function getNameAttribute() {
+        return ucwords(str_replace('_', ' ', $this->attributes['name']));
+    }
+
     public function products() {
         return $this->hasMany(Product::class);
     }

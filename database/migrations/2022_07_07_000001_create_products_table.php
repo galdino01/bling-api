@@ -17,11 +17,11 @@ return new class extends Migration {
             $table->string('status')->default('active');
             $table->string('name');
             $table->string('origin');
-            $table->string('description');
             $table->string('brand');
             $table->string('price');
             $table->string('price_cost');
             $table->string('warranty')->nullable();
+            $table->string('description');
             $table->string('notes')->nullable();
 
             $table->string('width');

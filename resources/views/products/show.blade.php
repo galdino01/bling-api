@@ -42,6 +42,10 @@
                     <span><strong>Preço:</strong></span>&nbsp;
                     <p> R$ {{ $product->price }}</p>
                 </div>
+                <div class="col-md-4 d-flex flex-row">
+                    <span><strong>Garantia:</strong></span>&nbsp;
+                    <p> {{ $product->warranty }}</p>
+                </div>
             </div>
         </div>
         <div class="d-flex flex-row w-100 mt-3">
