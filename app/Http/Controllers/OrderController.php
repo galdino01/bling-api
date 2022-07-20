@@ -8,33 +8,37 @@ use App\Http\Requests\StoreOrderRequest;
 class OrderController extends Controller {
     public function index() {
         try {
-            $orders = Order::orderBy('created_at', 'asc')->get();
-
-            return view('orders.index', ['metaTitle' => 'Orders'], compact('orders'));
+            return view('orders.index', ['metaTitle' => 'Pedidos']);
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong'], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
+        }
+    }
+
+    public function create() {
+        try {
+            return view('orders.create', ['metaTitle' => 'Novo pedido']);
+        } catch (\Exception $ex) {
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 
     public function store(StoreOrderRequest $request) {
         try {
-            $order = Order::create($request->validated());
+            Order::create($request->validated());
 
-            $order->save();
-
-            return redirect(route('orders.index'))->with('success', 'Order created!');
+            return redirect(route('orders.index'))->with('success', 'Pedido criado!');
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong', 'error' => $ex->getMessage()], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 
     public function show($id) {
         try {
-            $order = Order::with('user')->findOrFail($id)->first();
+            $order = Order::findOrFail($id)->first();
 
-            return view('orders.show', ['metaTitle' => 'Show Order'], compact('order'));
+            return view('orders.show', ['metaTitle' => 'Ver Pedido'], compact('order'));
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong'], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 
@@ -42,9 +46,9 @@ class OrderController extends Controller {
         try {
             $order = Order::findOrFail($id)->first();
 
-            return view('orders.edit', ['metaTitle' => 'Edit Order'], compact('order'));
+            return view('orders.edit', ['metaTitle' => 'Editar Pedido'], compact('product'));
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong'], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 
@@ -54,21 +58,21 @@ class OrderController extends Controller {
 
             $order->update($request->validated());
 
-            return redirect(route('orders.index'))->with('success', 'Order updated!');
+            return redirect(route('orders.index'))->with('success', 'Pedido atualizado!');
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong', 'error' => $ex->getMessage()], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 
     public function destroy($id) {
         try {
-            $order = Order::findOrFail($id);
+            $order = Order::findOrFail($id)->first();
 
             $order->update(['deleted_at' => now(), 'status' => 'inactive']);
 
-            return redirect(route('orders.index'))->with('success', 'Order deleted!');
+            return redirect(route('orders.index'))->with('success', 'Pedido deletado!');
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong', 'error' => $ex->getMessage()], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 }

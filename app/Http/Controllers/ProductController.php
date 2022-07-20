@@ -11,7 +11,7 @@ class ProductController extends Controller {
         try {
             return view('products.index', ['metaTitle' => 'Produtos']);
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 
@@ -21,32 +21,25 @@ class ProductController extends Controller {
 
             return view('products.create', ['metaTitle' => 'Novo Produto'], compact('categories'));
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 
     public function store(StoreProductRequest $request) {
         try {
-            abort_if($request->origin !== 'nacional' && $request->origin !== 'importado', 400, 'Wrong entry for origin.');
+            abort_if($request->origin !== 'nacional' && $request->origin !== 'importado', 400, 'Alguma coisa deu errado.');
 
             $product = Product::create($request->validated());
 
-            if($request->hasFile('image') && $request->file('image')->isValid()) {
-                $name = uniqid(date('YmdHis'));
-                $extension = $request->image->extension();
-                $file_name = "{$name}.{$extension}";
-                $upload = $request->image->storeAs("images/products/{$product->id}", $file_name);
+            $upload = $this->storeImage($request, $product->id);
 
-                if(!$upload) {
-                    return redirect()->back()->with('message', 'Falha ao fazer upload.')->withInput();
-                }
+            if(!$upload) return redirect()->back()->with('message', 'Falha ao fazer upload.')->withInput();
 
-                $product->update(['image' => $upload]);
-            }
+            $product->update(['image' => $upload]);
 
-            return redirect(route('products.index'))->with('success', 'Product created!');
+            return redirect(route('products.index'))->with('success', 'Produto criado!');
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 
@@ -56,7 +49,7 @@ class ProductController extends Controller {
 
             return view('products.show', ['metaTitle' => 'Ver Produto'], compact('product'));
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 
@@ -66,7 +59,7 @@ class ProductController extends Controller {
 
             return view('products.edit', ['metaTitle' => 'Editar Produto'], compact('product'));
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 
@@ -76,9 +69,9 @@ class ProductController extends Controller {
 
             $product->update($request->validated());
 
-            return redirect(route('products.index'))->with('success', 'Product updated!');
+            return redirect(route('products.index'))->with('success', 'Produto atualizado!');
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
         }
     }
 
@@ -88,9 +81,20 @@ class ProductController extends Controller {
 
             $product->update(['deleted_at' => now(), 'status' => 'inactive']);
 
-            return redirect(route('products.index'))->with('success', 'Product deleted!');
+            return redirect(route('products.index'))->with('success', 'Produto deletado!');
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return response()->json(['message' => 'Alguma coisa deu errado.'], 500);
+        }
+    }
+
+    private function storeImage($request, $id) {
+        if($request->hasFile('image') && $request->file('image')->isValid()) {
+            $name = uniqid(date('YmdHis'));
+            $extension = $request->image->extension();
+            $file_name = "{$name}.{$extension}";
+            $upload = $request->image->storeAs("images/products/{$id}", $file_name);
+
+            return $upload;
         }
     }
 }

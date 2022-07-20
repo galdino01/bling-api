@@ -1,7 +1,7 @@
 <ul class="navbar-nav justify-content-start flex-grow-1 sidebar">
     <li class="nav-item">
         <a class="nav-link text-light fw-bold p-3 d-flex align-items-center @if (Route::getCurrentRoute()->getName() == 'dashboard') sidebar-selected-link @endif" href="{{ route('dashboard') }}" title="Área da Dashboard">
-            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-chart-line"></i>
             <span class="ms-3">Dashboard</span>
         </a>
     </li>
