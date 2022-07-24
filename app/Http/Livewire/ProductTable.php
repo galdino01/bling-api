@@ -3,24 +3,23 @@
 namespace App\Http\Livewire;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
-use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
-use PowerComponents\LivewirePowerGrid\Exportable;
 use PowerComponents\LivewirePowerGrid\Footer;
 use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
-use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Exportable;
 use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
+use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
 final class ProductTable extends PowerGridComponent {
     use ActionButton;
 
     public function setUp(): array {
         $this->showCheckBox();
-
-        $this->persist(['columns', 'filters']);
 
         return [
             Exportable::make(now()->format('dmY_his'))->striped()->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
@@ -30,21 +29,15 @@ final class ProductTable extends PowerGridComponent {
     }
 
     public function datasource(): Builder {
-        return Product::query()->with('category');
-    }
-
-    public function relationSearch(): array {
-        return [
-            'category' => [
-                'name'
-            ]
-        ];
+        return Product::query()
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', 'categories.name as category');
     }
 
     public function addColumns(): PowerGridEloquent {
         return PowerGrid::eloquent()
             ->addColumn('name')
-            ->addColumn('category.name')
+            ->addColumn('category_formatted', fn (Product $model) => ucwords(str_replace('_', ' ', $model->category)))
             ->addColumn('status')
             ->addColumn('quantity')
             ->addColumn('price_formatted', fn (Product $model) => 'R$ ' . $model->price)
@@ -57,7 +50,7 @@ final class ProductTable extends PowerGridComponent {
     public function columns(): array {
         return [
             Column::make('NAME', 'name')->searchable()->makeInputText(),
-            Column::make('CATEGORY', 'category.name')->sortable()->makeInputText(),
+            Column::make('CATEGORY', 'category_formatted', 'categories.name')->sortable()->makeInputMultiSelect(Category::all(), 'name', 'category_id'),
             Column::make('STATUS', 'status')->sortable()->makeInputText(),
             Column::make('QUANTITY', 'quantity')->sortable()->makeInputText(),
             Column::make('PRICE', 'price_formatted', 'price')->sortable()->makeInputText(),

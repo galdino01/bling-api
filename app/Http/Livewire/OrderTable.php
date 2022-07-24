@@ -2,26 +2,25 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use App\Models\Order;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
-use PowerComponents\LivewirePowerGrid\Exportable;
 use PowerComponents\LivewirePowerGrid\Footer;
 use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
-use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Exportable;
 use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
+use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
 final class OrderTable extends PowerGridComponent {
     use ActionButton;
 
     public function setUp(): array {
         $this->showCheckBox();
-
-        $this->persist(['columns', 'filters']);
 
         return [
             Exportable::make(now()->format('dmY_his'))->striped()->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
@@ -31,21 +30,15 @@ final class OrderTable extends PowerGridComponent {
     }
 
     public function datasource(): Builder {
-        return Order::query()->with('user');
-    }
-
-    public function relationSearch(): array {
-        return [
-            'user' => [
-                'name'
-            ],
-        ];
+        return Order::query()
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->select('orders.*', 'users.name as user');
     }
 
     public function addColumns(): PowerGridEloquent {
         return PowerGrid::eloquent()
             ->addColumn('id')
-            ->addColumn('user.name')
+            ->addColumn('user_formatted', fn (Order $model) => ucwords(str_replace('_', ' ', $model->user)))
             ->addColumn('status')
             ->addColumn('discount_formatted', fn (Order $model) => $model->discount . '%')
             ->addColumn('cost_of_freight_formatted', fn (Order $model) => 'R$ ' . $model->cost_of_freight)
@@ -60,7 +53,7 @@ final class OrderTable extends PowerGridComponent {
     public function columns(): array {
         return [
             Column::make('ID', 'id')->searchable()->makeInputText(),
-            Column::make('USER', 'user.name')->sortable()->makeInputText(),
+            Column::make('USER', 'user', 'users.name')->sortable()->makeInputMultiSelect(User::all(), 'name', 'user_id'),
             Column::make('STATUS', 'status')->sortable()->makeInputText(),
             Column::make('DISCOUNT', 'discount_formatted', 'discount')->sortable()->makeInputText(),
             Column::make('COST OF FREIGHT', 'cost_of_freight_formatted', 'cost_of_freight')->sortable()->makeInputText(),
