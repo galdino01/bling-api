@@ -38,8 +38,8 @@
         <label for="origin">Origin:</label>
         <select class="form-select form-select-lg @error('origin') is-invalid @enderror" id="origin" name="origin">
             <option disabled selected value="">Select Origin</option>
-            <option value="nacional">Nacional</option>
-            <option value="importado">Importado</option>
+            <option value="national">National</option>
+            <option value="imported">Imported</option>
         </select>
         @error('category')
             <span class="invalid-feedback" role="alert">

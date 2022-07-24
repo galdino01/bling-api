@@ -15,12 +15,10 @@ use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
 
-final class OrderTable extends PowerGridComponent
-{
+final class OrderTable extends PowerGridComponent {
     use ActionButton;
 
-    public function setUp(): array
-    {
+    public function setUp(): array {
         $this->showCheckBox();
 
         return [
@@ -30,13 +28,11 @@ final class OrderTable extends PowerGridComponent
         ];
     }
 
-    public function datasource(): Builder
-    {
+    public function datasource(): Builder {
         return Order::query()->with('user');
     }
 
-    public function relationSearch(): array
-    {
+    public function relationSearch(): array {
         return [
             'user' => [
                 'name'
@@ -44,8 +40,7 @@ final class OrderTable extends PowerGridComponent
         ];
     }
 
-    public function addColumns(): PowerGridEloquent
-    {
+    public function addColumns(): PowerGridEloquent {
         return PowerGrid::eloquent()
             ->addColumn('id')
             ->addColumn('user.name')
@@ -55,13 +50,12 @@ final class OrderTable extends PowerGridComponent
             ->addColumn('other_expenses')
             ->addColumn('total_of_products')
             ->addColumn('total_sale')
-            ->addColumn('output_date_formatted', fn (Order $model) => Carbon::parse($model->output_date)->format('d/m/Y H:i:s'))
-            ->addColumn('created_at_formatted', fn (Order $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Order $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('output_date_formatted', fn (Order $model) => $model->getOutputDateAttribute())
+            ->addColumn('created_at_formatted', fn (Order $model) => $model->getCreatedAtAttribute())
+            ->addColumn('updated_at_formatted', fn (Order $model) => $model->getUpdatedAtAttribute());
     }
 
-    public function columns(): array
-    {
+    public function columns(): array {
         return [
             Column::make('ID', 'id')->searchable()->makeInputText(),
             Column::make('USER', 'user.name')->sortable()->makeInputText(),
@@ -77,8 +71,7 @@ final class OrderTable extends PowerGridComponent
         ];
     }
 
-    public function actions(): array
-    {
+    public function actions(): array {
         return [
             Button::make('show', 'Show')
                 ->class('btn btn-outline-primary cursor-pointer m-1 rounded text-sm')

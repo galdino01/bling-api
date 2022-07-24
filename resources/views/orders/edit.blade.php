@@ -18,11 +18,11 @@
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Created At:</strong></span>&nbsp;
-                    <p>{{ $order->created_at->format('d/m/Y') }}</p>
+                    <p>{{ $order->created_at }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Output Date:</strong></span>&nbsp;
-                    <p>{{ $order->output_date->format('d/m/Y') }}</p>
+                    <p>{{ $order->output_date }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Customer:</strong></span>&nbsp;

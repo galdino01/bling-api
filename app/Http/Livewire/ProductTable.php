@@ -14,12 +14,10 @@ use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
 
-final class ProductTable extends PowerGridComponent
-{
+final class ProductTable extends PowerGridComponent {
     use ActionButton;
 
-    public function setUp(): array
-    {
+    public function setUp(): array {
         $this->showCheckBox();
 
         return [
@@ -29,13 +27,11 @@ final class ProductTable extends PowerGridComponent
         ];
     }
 
-    public function datasource(): Builder
-    {
+    public function datasource(): Builder {
         return Product::query()->with('category');
     }
 
-    public function relationSearch(): array
-    {
+    public function relationSearch(): array {
         return [
             'category' => [
                 'name'
@@ -43,8 +39,7 @@ final class ProductTable extends PowerGridComponent
         ];
     }
 
-    public function addColumns(): PowerGridEloquent
-    {
+    public function addColumns(): PowerGridEloquent {
         return PowerGrid::eloquent()
             ->addColumn('name')
             ->addColumn('category.name')
@@ -52,13 +47,12 @@ final class ProductTable extends PowerGridComponent
             ->addColumn('quantity')
             ->addColumn('price')
             ->addColumn('price_cost')
-            ->addColumn('expiration_date_formatted', fn (Product $model) => $model->expiration_date->format('d/m/Y H:i:s'))
-            ->addColumn('created_at_formatted', fn (Product $model) => $model->created_at->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Product $model) => $model->updated_at->format('d/m/Y H:i:s'));
+            ->addColumn('expiration_date_formatted', fn (Product $model) => $model->getExpirationDateAttribute())
+            ->addColumn('created_at_formatted', fn (Product $model) => $model->getCreatedAtAttribute())
+            ->addColumn('updated_at_formatted', fn (Product $model) => $model->getUpdatedAtAttribute());
     }
 
-    public function columns(): array
-    {
+    public function columns(): array {
         return [
             Column::make('NAME', 'name')->searchable()->makeInputText(),
             Column::make('CATEGORY', 'category.name')->sortable()->makeInputText(),
@@ -72,8 +66,7 @@ final class ProductTable extends PowerGridComponent
         ];
     }
 
-    public function actions(): array
-    {
+    public function actions(): array {
         return [
             Button::make('show', '<i class="fas fa-eye"></i>')
                 ->class('btn btn-outline-info cursor-pointer m-1 rounded text-sm')

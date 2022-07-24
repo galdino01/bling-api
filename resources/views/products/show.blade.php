@@ -24,28 +24,56 @@
                     <p>{{ $product->status }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Category:</strong></span>&nbsp;
-                    <p>{{ $product->category->name }}</p>
+                    <span><strong>Name:</strong></span>&nbsp;
+                    <p>{{ $product->name }}</p>
+                </div>
+                <div class="col-md-4 d-flex flex-row">
+                    <span><strong>Origin:</strong></span>&nbsp;
+                    <p>{{ $product->origin }}</p>
+                </div>
+                <div class="col-md-4 d-flex flex-row">
+                    <span><strong>Price:</strong></span>&nbsp;
+                    <p>{{ $product->price }}</p>
+                </div>
+                <div class="col-md-4 d-flex flex-row">
+                    <span><strong>Brand:</strong></span>&nbsp;
+                    <p>{{ $product->brand }}</p>
+                </div>
+                <div class="col-md-4 d-flex flex-row">
+                    <span><strong>Price Cost:</strong></span>&nbsp;
+                    <p>{{ $product->price_cost }}</p>
+                </div>
+                <div class="col-md-4 d-flex flex-row">
+                    <span><strong>Warranty:</strong></span>&nbsp;
+                    <p>{{ $product->warranty }}</p>
+                </div>
+                <div class="col-md-4 d-flex flex-row">
+                    <span><strong>Width:</strong></span>&nbsp;
+                    <p>{{ $product->width }}</p>
+                </div>
+                <div class="col-md-4 d-flex flex-row">
+                    <span><strong>Height:</strong></span>&nbsp;
+                    <p>{{ $product->height }}</p>
+                </div>
+                <div class="col-md-4 d-flex flex-row">
+                    <span><strong>Deph:</strong></span>&nbsp;
+                    <p>{{ $product->depth }}</p>
+                </div>
+                <div class="col-md-4 d-flex flex-row">
+                    <span><strong>Net Weight:</strong></span>&nbsp;
+                    <p>{{ $product->net_weight }}</p>
+                </div>
+                <div class="col-md-4 d-flex flex-row">
+                    <span><strong>Gross Weight:</strong></span>&nbsp;
+                    <p>{{ $product->gross_weight }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Quantity:</strong></span>&nbsp;
                     <p>{{ $product->quantity }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Created At:</strong></span>&nbsp;
-                    <p>{{ $product->created_at->format('d/m/Y') }}</p>
-                </div>
-                <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Updated At:</strong></span>&nbsp;
-                    <p>{{ $product->updated_at->format('d/m/Y') }}</p>
-                </div>
-                <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Price:</strong></span>&nbsp;
-                    <p> R$ {{ $product->price }}</p>
-                </div>
-                <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Warranty:</strong></span>&nbsp;
-                    <p> {{ $product->warranty }}</p>
+                    <span><strong>Localization:</strong></span>&nbsp;
+                    <p>{{ $product->localization }}</p>
                 </div>
             </div>
         </div>
@@ -54,6 +82,10 @@
                 <div class="col-md-12">
                     <span><strong>Description</strong></span>
                     <p>{{ $product->description }}</p>
+                </div>
+                <div class="col-md-12">
+                    <span><strong>Notes</strong></span>
+                    <p>{{ $product->notes }}</p>
                 </div>
             </div>
         </div>

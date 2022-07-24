@@ -32,11 +32,11 @@
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Created At:</strong></span>&nbsp;
-                    <p>{{ $product->created_at->format('d/m/Y') }}</p>
+                    <p>{{ $product->created_at }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Updated At:</strong></span>&nbsp;
-                    <p>{{ $product->updated_at->format('d/m/Y') }}</p>
+                    <p>{{ $product->updated_at }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
                     <span><strong>Price:</strong></span>&nbsp;
