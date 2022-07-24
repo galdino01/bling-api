@@ -72,7 +72,7 @@
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <i class="fa-solid fa-bars"></i>
                     </button>
-                    <a class="navbar-brand fw-bold text-light" href="/" title="Página Inicial Armazene Aqui">
+                    <a class="navbar-brand fw-bold text-light" href="/" title="Store Here Home Page">
                         <i class="fa-solid fa-dolly"></i>
                         {{ config('app.name', 'Store Here') }}
                     </a>
@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="d-lg-block d-md-none d-sm-none d-none align-items-center text-light">
-                    Futuramente aqui vai menu de usuário
+                    User Menu
                 </div>
             </div>
             <div class="offcanvas offcanvas-start bg-primary" tabindex="-1" id="offcanvasNavbar"

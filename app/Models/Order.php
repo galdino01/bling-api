@@ -62,12 +62,8 @@ class Order extends Model {
         $this->attributes['other_expenses'] = str_replace(',', '.', $value);
     }
 
-    public function setTotalOfProductsAttribute($value) {
-        $this->attributes['total_of_products'] = str_replace(',', '.', $value);
-    }
-
     public function setTotalSaleAttribute($value) {
-        $this->attributes['total_sale'] = str_replace(',', '.', $value);
+        $this->attributes['total_sale'] = 'R$ ' .  str_replace(',', '.', $value);
     }
 
     public function setNotesAttribute($value) {
@@ -79,19 +75,15 @@ class Order extends Model {
     }
 
     public function getDiscountAttribute() {
-        return $this->attributes['discount'] ? str_replace(',', '.', $this->attributes['discount']) : null;
+        return $this->attributes['discount'] ? 'R$ ' .  str_replace(',', '.', $this->attributes['discount']) : null;
     }
 
     public function getCostOfFreightAttribute() {
-        return $this->attributes['cost_of_freight'] ? str_replace(',', '.', $this->attributes['cost_of_freight']) : null;
+        return $this->attributes['cost_of_freight'] ? 'R$ ' .  str_replace(',', '.', $this->attributes['cost_of_freight']) : null;
     }
 
     public function getOtherExpensesAttribute() {
-        return $this->attributes['other_expanses'] ? str_replace(',', '.', $this->attributes['other_expanses']) : null;
-    }
-
-    public function getTotalOfProductsAttribute() {
-        return $this->attributes['total_of_products'] ? str_replace(',', '.', $this->attributes['total_of_products']) : null;
+        return $this->attributes['other_expanses'] ? 'R$ ' .  str_replace(',', '.', $this->attributes['other_expanses']) : null;
     }
 
     public function getTotalSaleAttribute() {

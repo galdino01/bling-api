@@ -45,11 +45,11 @@ final class ProductTable extends PowerGridComponent {
             ->addColumn('category.name')
             ->addColumn('status')
             ->addColumn('quantity')
-            ->addColumn('price')
-            ->addColumn('price_cost')
-            ->addColumn('expiration_date_formatted', fn (Product $model) => $model->getExpirationDateAttribute())
-            ->addColumn('created_at_formatted', fn (Product $model) => $model->getCreatedAtAttribute())
-            ->addColumn('updated_at_formatted', fn (Product $model) => $model->getUpdatedAtAttribute());
+            ->addColumn('price_formatted', fn (Product $model) => 'R$ ' . $model->price)
+            ->addColumn('price_cost_formatted', fn (Product $model) => 'R$ ' . $model->price_cost)
+            ->addColumn('expiration_date_formatted', fn (Product $model) => $model->expiration_date)
+            ->addColumn('created_at_formatted', fn (Product $model) => $model->created_at)
+            ->addColumn('updated_at_formatted', fn (Product $model) => $model->updated_at);
     }
 
     public function columns(): array {
@@ -58,8 +58,8 @@ final class ProductTable extends PowerGridComponent {
             Column::make('CATEGORY', 'category.name')->sortable()->makeInputText(),
             Column::make('STATUS', 'status')->sortable()->makeInputText(),
             Column::make('QUANTITY', 'quantity')->sortable()->makeInputText(),
-            Column::make('PRICE', 'price')->sortable()->makeInputText(),
-            Column::make('PRICE COST', 'price_cost')->sortable()->makeInputText(),
+            Column::make('PRICE', 'price_formatted', 'price')->sortable()->makeInputText(),
+            Column::make('PRICE COST', 'price_cost_formatted', 'price_cost')->sortable()->makeInputText(),
             Column::make('EXPIRATION DATE', 'expiration_date_formatted', 'expiration_date')->sortable()->makeInputDatePicker(),
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')->sortable()->makeInputDatePicker(),
             Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')->sortable()->makeInputDatePicker(),

@@ -45,14 +45,14 @@ final class OrderTable extends PowerGridComponent {
             ->addColumn('id')
             ->addColumn('user.name')
             ->addColumn('status')
-            ->addColumn('discount')
-            ->addColumn('cost_of_freight')
-            ->addColumn('other_expenses')
+            ->addColumn('discount_formatted', fn (Order $model) => $model->discount . '%')
+            ->addColumn('cost_of_freight_formatted', fn (Order $model) => 'R$ ' . $model->cost_of_freight)
+            ->addColumn('other_expenses_formatted', fn (Order $model) => 'R$ ' . $model->other_expenses)
             ->addColumn('total_of_products')
-            ->addColumn('total_sale')
-            ->addColumn('output_date_formatted', fn (Order $model) => $model->getOutputDateAttribute())
-            ->addColumn('created_at_formatted', fn (Order $model) => $model->getCreatedAtAttribute())
-            ->addColumn('updated_at_formatted', fn (Order $model) => $model->getUpdatedAtAttribute());
+            ->addColumn('total_sale_formatted', fn (Order $model) => 'R$ ' . $model->total_sale)
+            ->addColumn('output_date_formatted', fn (Order $model) => $model->output_date)
+            ->addColumn('created_at_formatted', fn (Order $model) => $model->created_at)
+            ->addColumn('updated_at_formatted', fn (Order $model) => $model->updated_at);
     }
 
     public function columns(): array {
@@ -60,11 +60,11 @@ final class OrderTable extends PowerGridComponent {
             Column::make('ID', 'id')->searchable()->makeInputText(),
             Column::make('USER', 'user.name')->sortable()->makeInputText(),
             Column::make('STATUS', 'status')->sortable()->makeInputText(),
-            Column::make('DISCOUNT', 'discount')->sortable()->makeInputText(),
-            Column::make('COST OF FREIGHT', 'cost_of_freight')->sortable()->makeInputText(),
-            Column::make('OTHER EXPENSES', 'other_expenses')->sortable()->makeInputText(),
+            Column::make('DISCOUNT', 'discount_formatted', 'discount')->sortable()->makeInputText(),
+            Column::make('COST OF FREIGHT', 'cost_of_freight_formatted', 'cost_of_freight')->sortable()->makeInputText(),
+            Column::make('OTHER EXPENSES', 'other_expenses_formatted', 'other_expenses')->sortable()->makeInputText(),
             Column::make('TOTAL OF PRODUCTS', 'total_of_products')->sortable()->makeInputText(),
-            Column::make('TOTAL SALE', 'total_sale')->sortable()->makeInputText(),
+            Column::make('TOTAL SALE', 'total_sale_formatted', 'total_sale')->sortable()->makeInputText(),
             Column::make('OUTPUT DATE', 'output_date_formatted', 'output_date')->sortable()->makeInputDatePicker(),
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')->sortable()->makeInputDatePicker(),
             Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')->sortable()->makeInputDatePicker(),
