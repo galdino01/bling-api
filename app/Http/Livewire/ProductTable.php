@@ -5,12 +5,21 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
-use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
+use PowerComponents\LivewirePowerGrid\Button;
+use PowerComponents\LivewirePowerGrid\Column;
+use PowerComponents\LivewirePowerGrid\Exportable;
+use PowerComponents\LivewirePowerGrid\Footer;
+use PowerComponents\LivewirePowerGrid\Header;
+use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
 
-final class ProductTable extends PowerGridComponent {
+final class ProductTable extends PowerGridComponent
+{
     use ActionButton;
 
-    public function setUp(): array {
+    public function setUp(): array
+    {
         $this->showCheckBox();
 
         return [
@@ -20,11 +29,13 @@ final class ProductTable extends PowerGridComponent {
         ];
     }
 
-    public function datasource(): Builder {
+    public function datasource(): Builder
+    {
         return Product::query()->with('category');
     }
 
-    public function relationSearch(): array {
+    public function relationSearch(): array
+    {
         return [
             'category' => [
                 'name'
@@ -32,7 +43,8 @@ final class ProductTable extends PowerGridComponent {
         ];
     }
 
-    public function addColumns(): PowerGridEloquent {
+    public function addColumns(): PowerGridEloquent
+    {
         return PowerGrid::eloquent()
             ->addColumn('name')
             ->addColumn('category.name')
@@ -45,37 +57,39 @@ final class ProductTable extends PowerGridComponent {
             ->addColumn('updated_at_formatted', fn (Product $model) => $model->updated_at->format('d/m/Y H:i:s'));
     }
 
-    public function columns(): array {
+    public function columns(): array
+    {
         return [
-            Column::make('NOME', 'name')->searchable()->makeInputText(),
-            Column::make('CATEGORIA', 'category.name')->sortable()->makeInputText(),
+            Column::make('NAME', 'name')->searchable()->makeInputText(),
+            Column::make('CATEGORY', 'category.name')->sortable()->makeInputText(),
             Column::make('STATUS', 'status')->sortable()->makeInputText(),
-            Column::make('QUANTIDADE', 'quantity')->sortable()->makeInputText(),
-            Column::make('PREÇO', 'price')->sortable()->makeInputText(),
-            Column::make('PREÇO CUSTO', 'price_cost')->sortable()->makeInputText(),
-            Column::make('DATA DE VALIDADE', 'expiration_date_formatted', 'expiration_date')->sortable()->makeInputDatePicker(),
-            Column::make('CRIADO EM', 'created_at_formatted', 'created_at')->sortable()->makeInputDatePicker(),
-            Column::make('ATUALIZADO EM', 'updated_at_formatted', 'updated_at')->sortable()->makeInputDatePicker(),
+            Column::make('QUANTITY', 'quantity')->sortable()->makeInputText(),
+            Column::make('PRICE', 'price')->sortable()->makeInputText(),
+            Column::make('PRICE COST', 'price_cost')->sortable()->makeInputText(),
+            Column::make('EXPIRATION DATE', 'expiration_date_formatted', 'expiration_date')->sortable()->makeInputDatePicker(),
+            Column::make('CREATED AT', 'created_at_formatted', 'created_at')->sortable()->makeInputDatePicker(),
+            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')->sortable()->makeInputDatePicker(),
         ];
     }
 
-    public function actions(): array {
+    public function actions(): array
+    {
         return [
             Button::make('show', '<i class="fas fa-eye"></i>')
                 ->class('btn btn-outline-info cursor-pointer m-1 rounded text-sm')
-                ->tooltip('Mostrar Produto')
+                ->tooltip('See Product')
                 ->route('products.show', ['id' => 'id'])
                 ->target('_self'),
 
             Button::make('edit', '<i class="fas fa-edit"></i>')
                 ->class('btn btn-outline-primary cursor-pointer m-1 rounded text-sm')
-                ->tooltip('Editar Produto')
+                ->tooltip('Edit Product')
                 ->route('products.edit', ['id' => 'id'])
                 ->target('_self'),
 
             Button::make('destroy', '<i class="fas fa-trash"></i>')
                 ->class('btn btn-outline-danger cursor-pointer m-1 rounded text-sm')
-                ->tooltip('Excluir Produto')
+                ->tooltip('Delete Product')
                 ->route('products.destroy', ['id' => 'id'])
                 ->method('patch')
                 ->target('_self')

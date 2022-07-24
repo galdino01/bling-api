@@ -6,12 +6,21 @@ use App\Models\Order;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
-use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
+use PowerComponents\LivewirePowerGrid\Button;
+use PowerComponents\LivewirePowerGrid\Column;
+use PowerComponents\LivewirePowerGrid\Exportable;
+use PowerComponents\LivewirePowerGrid\Footer;
+use PowerComponents\LivewirePowerGrid\Header;
+use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
 
-final class OrderTable extends PowerGridComponent {
+final class OrderTable extends PowerGridComponent
+{
     use ActionButton;
 
-    public function setUp(): array {
+    public function setUp(): array
+    {
         $this->showCheckBox();
 
         return [
@@ -21,11 +30,13 @@ final class OrderTable extends PowerGridComponent {
         ];
     }
 
-    public function datasource(): Builder {
+    public function datasource(): Builder
+    {
         return Order::query()->with('user');
     }
 
-    public function relationSearch(): array {
+    public function relationSearch(): array
+    {
         return [
             'user' => [
                 'name'
@@ -33,7 +44,8 @@ final class OrderTable extends PowerGridComponent {
         ];
     }
 
-    public function addColumns(): PowerGridEloquent {
+    public function addColumns(): PowerGridEloquent
+    {
         return PowerGrid::eloquent()
             ->addColumn('id')
             ->addColumn('user.name')
@@ -48,7 +60,8 @@ final class OrderTable extends PowerGridComponent {
             ->addColumn('updated_at_formatted', fn (Order $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
     }
 
-    public function columns(): array {
+    public function columns(): array
+    {
         return [
             Column::make('ID', 'id')->searchable()->makeInputText(),
             Column::make('USER', 'user.name')->sortable()->makeInputText(),
@@ -64,23 +77,24 @@ final class OrderTable extends PowerGridComponent {
         ];
     }
 
-    public function actions(): array {
+    public function actions(): array
+    {
         return [
             Button::make('show', 'Show')
                 ->class('btn btn-outline-primary cursor-pointer m-1 rounded text-sm')
-                ->tooltip('Mostrar Pedido')
+                ->tooltip('See Product')
                 ->route('orders.show', ['id' => 'id'])
                 ->target('_self'),
 
             Button::make('edit', 'Edit')
                 ->class('btn btn-outline-warning cursor-pointer m-1 rounded text-sm')
-                ->tooltip('Editar Pedido')
+                ->tooltip('Edit Product')
                 ->route('orders.edit', ['id' => 'id'])
                 ->target('_self'),
 
             Button::make('destroy', 'Delete')
                 ->class('btn btn-outline-danger cursor-pointer m-1 rounded text-sm')
-                ->tooltip('Eliminar Pedido')
+                ->tooltip('Delete Product')
                 ->route('orders.destroy', ['id' => 'id'])
                 ->method('patch')
                 ->target('_self')

@@ -13,19 +13,19 @@
                     <p>{{ $order->status }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Total da Venda:</strong></span>&nbsp;
+                    <span><strong>Total Sale:</strong></span>&nbsp;
                     <p>{{ $order->total_sale }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Data:</strong></span>&nbsp;
+                    <span><strong>Created At:</strong></span>&nbsp;
                     <p>{{ $order->created_at->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Data de Saída:</strong></span>&nbsp;
+                    <span><strong>Output Date:</strong></span>&nbsp;
                     <p>{{ $order->output_date->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Cliente:</strong></span>&nbsp;
+                    <span><strong>Customer:</strong></span>&nbsp;
                     <p>{{ $order->user->name }}</p>
                 </div>
             </div>

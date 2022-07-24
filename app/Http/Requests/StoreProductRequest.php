@@ -9,7 +9,7 @@ class StoreProductRequest extends FormRequest {
         return true;
     }
 
-    public function rules(){
+    public function rules() {
         return [
             'category_id' => 'required',
 
@@ -39,8 +39,9 @@ class StoreProductRequest extends FormRequest {
 
     public function messages() {
         return [
-            'required' => 'Este campo é obrigatório',
-            'max' => 'Este campo aceita somente 255 caracteres'
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be :max characters.',
+            'image' => 'The :attribute field must be an image.',
         ];
     }
 }

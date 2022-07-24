@@ -5,11 +5,12 @@
         <div class="d-flex flex-row w-100">
             <div class="d-flex justify-content-center align-items-center w-25 me-3">
                 @if ($product->image)
-                    <img class="img-fluid w-100 h-100 rounded" src="{{ url("storage/{$product->image}") }}" alt="Imagem do Produto" />
+                    <img class="img-fluid w-100 h-100 rounded" src="{{ url("storage/{$product->image}") }}"
+                        alt="Imagem do Produto" />
                 @else
                     <div class="d-flex justify-content-center align-items-center p-3">
                         <i class="fa-solid fa-image"></i>&nbsp;
-                        <span>Sem Imagem</span>
+                        <span>No Image</span>
                     </div>
                 @endif
             </div>
@@ -23,27 +24,27 @@
                     <p>{{ $product->status }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Categoria:</strong></span>&nbsp;
+                    <span><strong>Category:</strong></span>&nbsp;
                     <p>{{ $product->category->name }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Quantidade:</strong></span>&nbsp;
+                    <span><strong>Quantity:</strong></span>&nbsp;
                     <p>{{ $product->quantity }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Data de Inclusão:</strong></span>&nbsp;
+                    <span><strong>Created At:</strong></span>&nbsp;
                     <p>{{ $product->created_at->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Data de Alteração:</strong></span>&nbsp;
+                    <span><strong>Updated At:</strong></span>&nbsp;
                     <p>{{ $product->updated_at->format('d/m/Y') }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Preço:</strong></span>&nbsp;
+                    <span><strong>Price:</strong></span>&nbsp;
                     <p> R$ {{ $product->price }}</p>
                 </div>
                 <div class="col-md-4 d-flex flex-row">
-                    <span><strong>Garantia:</strong></span>&nbsp;
+                    <span><strong>Warranty:</strong></span>&nbsp;
                     <p> {{ $product->warranty }}</p>
                 </div>
             </div>
@@ -51,7 +52,7 @@
         <div class="d-flex flex-row w-100 mt-3">
             <div class="row">
                 <div class="col-md-12">
-                    <span><strong>Descrição</strong></span>
+                    <span><strong>Description</strong></span>
                     <p>{{ $product->description }}</p>
                 </div>
             </div>

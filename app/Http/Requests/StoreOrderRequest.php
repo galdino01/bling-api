@@ -23,4 +23,15 @@ class StoreOrderRequest extends FormRequest {
             'output_date' => ['required', 'date'],
         ];
     }
+
+    public function messages() {
+        return [
+            'required' => 'The :attribute field is required.',
+            'date' => 'The :attribute field must be a date.',
+            'integer' => 'The :attribute field must be an integer.',
+            'numeric' => 'The :attribute field must be a numeric.',
+            'string' => 'The :attribute field must be a string.',
+            'max' => 'The :attribute field must be :max characters.',
+        ];
+    }
 }
