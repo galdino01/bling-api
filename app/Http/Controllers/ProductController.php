@@ -6,10 +6,8 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\StoreProductRequest;
 
-class ProductController extends Controller
-{
-    public function index()
-    {
+class ProductController extends Controller {
+    public function index() {
         try {
             return view('products.index', ['metaTitle' => 'Products']);
         } catch (\Exception $ex) {
@@ -17,8 +15,7 @@ class ProductController extends Controller
         }
     }
 
-    public function create()
-    {
+    public function create() {
         try {
             $categories = Category::orderBy('name', 'asc')->whereNull('deleted_at')->get();
 
@@ -28,8 +25,7 @@ class ProductController extends Controller
         }
     }
 
-    public function store(StoreProductRequest $request)
-    {
+    public function store(StoreProductRequest $request) {
         try {
             abort_if($request->origin !== 'national' && $request->origin !== 'imported', 400, 'Something went wrong.');
 
@@ -49,8 +45,7 @@ class ProductController extends Controller
         }
     }
 
-    public function show($id)
-    {
+    public function show($id) {
         try {
             $product = Product::findOrFail($id)->first();
 
@@ -60,8 +55,7 @@ class ProductController extends Controller
         }
     }
 
-    public function edit($id)
-    {
+    public function edit($id) {
         try {
             $product = Product::findOrFail($id)->first();
 
@@ -71,8 +65,7 @@ class ProductController extends Controller
         }
     }
 
-    public function update(StoreProductRequest $request, $id)
-    {
+    public function update(StoreProductRequest $request, $id) {
         try {
             $product = Product::findOrFail($id)->first();
 
@@ -84,8 +77,7 @@ class ProductController extends Controller
         }
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id) {
         try {
             $product = Product::findOrFail($id)->first();
 
@@ -97,8 +89,7 @@ class ProductController extends Controller
         }
     }
 
-    private function storeImage($request, $id)
-    {
+    private function storeImage($request, $id) {
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $name = uniqid(date('YmdHis'));
             $extension = $request->image->extension();

@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 
-class OrderController extends Controller
-{
-    public function index()
-    {
+class OrderController extends Controller {
+    public function index() {
         try {
             return view('orders.index', ['metaTitle' => 'Orders']);
         } catch (\Exception $ex) {
@@ -16,8 +14,7 @@ class OrderController extends Controller
         }
     }
 
-    public function create()
-    {
+    public function create() {
         try {
             return view('orders.create', ['metaTitle' => 'New Order']);
         } catch (\Exception $ex) {
@@ -25,8 +22,7 @@ class OrderController extends Controller
         }
     }
 
-    public function store(StoreOrderRequest $request)
-    {
+    public function store(StoreOrderRequest $request) {
         try {
             Order::create($request->validated());
 
@@ -36,8 +32,7 @@ class OrderController extends Controller
         }
     }
 
-    public function show($id)
-    {
+    public function show($id) {
         try {
             $order = Order::findOrFail($id)->first();
 
@@ -47,8 +42,7 @@ class OrderController extends Controller
         }
     }
 
-    public function edit($id)
-    {
+    public function edit($id) {
         try {
             $order = Order::findOrFail($id)->first();
 
@@ -58,8 +52,7 @@ class OrderController extends Controller
         }
     }
 
-    public function update(StoreOrderRequest $request, $id)
-    {
+    public function update(StoreOrderRequest $request, $id) {
         try {
             $order = Order::findOrFail($id)->first();
 
@@ -71,8 +64,7 @@ class OrderController extends Controller
         }
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id) {
         try {
             $order = Order::findOrFail($id)->first();
 

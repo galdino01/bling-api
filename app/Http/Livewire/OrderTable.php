@@ -21,9 +21,11 @@ final class OrderTable extends PowerGridComponent {
     public function setUp(): array {
         $this->showCheckBox();
 
+        $this->persist(['columns', 'filters']);
+
         return [
             Exportable::make(now()->format('dmY_his'))->striped()->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput()->showToggleColumns(),
+            Header::make()->showToggleColumns()->showSearchInput(),
             Footer::make()->showPerPage(5, [10, 25, 50, 100])->showRecordCount(),
         ];
     }
