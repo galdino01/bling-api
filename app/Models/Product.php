@@ -153,7 +153,7 @@ class Product extends Model {
     }
 
     public function getWarrantyAttribute() {
-        return ucfirst($this->attributes['warranty']);
+        return ucwords(str_replace('_', ' ', $this->attributes['warranty']));
     }
 
     public function getDescriptionAttribute() {
