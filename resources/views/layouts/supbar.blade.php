@@ -6,6 +6,12 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link @if (Request::is('categories')) supbar-selected-link @endif"
+            href="{{ route('categories.index') }}" title="Categories">
+            <span class="text-light">Categories</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link @if (Request::is('products')) supbar-selected-link @endif"
             href="{{ route('products.index') }}" title="Products">
             <span class="text-light">Products</span>

@@ -32,26 +32,6 @@ class OrderController extends Controller {
         }
     }
 
-    public function show($id) {
-        try {
-            $order = Order::findOrFail($id)->first();
-
-            return view('orders.show', ['metaTitle' => 'See Order'], compact('order'));
-        } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
-        }
-    }
-
-    public function edit($id) {
-        try {
-            $order = Order::findOrFail($id)->first();
-
-            return view('orders.edit', ['metaTitle' => 'Edit Order'], compact('product'));
-        } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
-        }
-    }
-
     public function update(StoreOrderRequest $request, $id) {
         try {
             $order = Order::findOrFail($id)->first();

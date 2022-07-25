@@ -25,7 +25,7 @@ final class OrderTable extends PowerGridComponent {
         return [
             Exportable::make(now()->format('dmY_his'))->striped()->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showToggleColumns()->showSearchInput(),
-            Footer::make()->showPerPage(5, [10, 25, 50, 100])->showRecordCount(),
+            Footer::make()->showPerPage(5, [5, 10, 25, 50, 100])->showRecordCount(),
         ];
     }
 
@@ -68,21 +68,21 @@ final class OrderTable extends PowerGridComponent {
 
     public function actions(): array {
         return [
-            Button::make('show', 'Show')
+            Button::make('show', '<i class="fas fa-eye"></i>')
                 ->class('btn btn-outline-primary cursor-pointer m-1 rounded text-sm')
-                ->tooltip('See Product')
+                ->tooltip('See Order')
                 ->route('orders.show', ['id' => 'id'])
                 ->target('_self'),
 
-            Button::make('edit', 'Edit')
+            Button::make('edit', '<i class="fas fa-edit"></i>')
                 ->class('btn btn-outline-warning cursor-pointer m-1 rounded text-sm')
-                ->tooltip('Edit Product')
+                ->tooltip('Edit Order')
                 ->route('orders.edit', ['id' => 'id'])
                 ->target('_self'),
 
             Button::make('destroy', 'Delete')
                 ->class('btn btn-outline-danger cursor-pointer m-1 rounded text-sm')
-                ->tooltip('Delete Product')
+                ->tooltip('Delete Order')
                 ->route('orders.destroy', ['id' => 'id'])
                 ->method('patch')
                 ->target('_self')

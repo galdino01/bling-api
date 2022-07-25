@@ -24,7 +24,7 @@ final class ProductTable extends PowerGridComponent {
         return [
             Exportable::make(now()->format('dmY_his'))->striped()->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showToggleColumns()->showSearchInput(),
-            Footer::make()->showPerPage(5, [10, 25, 50, 100])->showRecordCount(),
+            Footer::make()->showPerPage(5, [5, 10, 25, 50, 100])->showRecordCount(),
         ];
     }
 

@@ -45,26 +45,6 @@ class ProductController extends Controller {
         }
     }
 
-    public function show($id) {
-        try {
-            $product = Product::findOrFail($id)->first();
-
-            return view('products.show', ['metaTitle' => 'See Product'], compact('product'));
-        } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
-        }
-    }
-
-    public function edit($id) {
-        try {
-            $product = Product::findOrFail($id)->first();
-
-            return view('products.edit', ['metaTitle' => 'Edit Product'], compact('product'));
-        } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
-        }
-    }
-
     public function update(StoreProductRequest $request, $id) {
         try {
             $product = Product::findOrFail($id)->first();
