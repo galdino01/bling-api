@@ -62,6 +62,28 @@
 </head>
 
 <body class="bg-light">
+
+    @if (Session::has('alert'))
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="{{ Session::get('alert.icon') }}" fill="currentColor" viewBox="0 0 16 16">
+                <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+            </symbol>
+        </svg>
+
+        <div style="z-index: 9999;"
+            class="alert {{ Session::get('alert.class') }} alert-dismissible fade show d-flex align-items-center justify-content-center position-absolute top-0 end-0 shadow m-2"
+            role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                <use xlink:href="#check-circle-fill" />
+            </svg>
+            <div>
+                <strong>{{ ucfirst(Session::get('alert.type')) }}!</strong> {{ Session::get('alert.message') }}
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <nav class="navbar shadow sticky-top bg-primary">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center w-100">
@@ -101,26 +123,6 @@
         </div>
     </nav>
 
-    @if (Session::has('success'))
-        <div class="container-fluid w-25 mt-3 float-end">
-            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-                    <path
-                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                </symbol>
-            </svg>
-
-            <div class="alert alert-success d-flex align-items-center" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
-                    <use xlink:href="#check-circle-fill" />
-                </svg>
-                <div>
-                    <strong>Success.</strong> {{ Session::get('success') }}
-                </div>
-            </div>
-        </div>
-    @endif
-
     <main class="container mt-5">
         @yield('content')
     </main>
@@ -137,6 +139,9 @@
     <!-- Powergrid and Livewire Scripts -->
     @livewireScripts
     @powerGridScripts
+
+    <!-- Custom Scripts -->
+    <script src="{{ asset('js/store_here.js') }}"></script>
 </body>
 
 </html>
