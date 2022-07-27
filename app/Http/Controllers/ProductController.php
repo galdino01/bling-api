@@ -7,11 +7,18 @@ use App\Models\Category;
 use App\Http\Requests\StoreProductRequest;
 
 class ProductController extends Controller {
+
     public function index() {
         try {
             return view('products.index', ['metaTitle' => 'Products']);
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return redirect()->back()->with('alert', [
+                'type' => 'error',
+                'message' => 'Something went wrong.',
+                'class' => 'alert-danger',
+                'icon' => 'exclamation-triangle-fill',
+                'status_code' => $ex->getCode()
+            ]);
         }
     }
 
@@ -21,7 +28,13 @@ class ProductController extends Controller {
 
             return view('products.create', ['metaTitle' => 'New Product'], compact('categories'));
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return redirect()->back()->with('alert', [
+                'type' => 'error',
+                'message' => 'Something went wrong.',
+                'class' => 'alert-danger',
+                'icon' => 'exclamation-triangle-fill',
+                'status_code' => $ex->getCode()
+            ]);
         }
     }
 
@@ -34,14 +47,32 @@ class ProductController extends Controller {
             $upload = $this->storeImage($request, $product->id);
 
             if (!$upload) {
-                return redirect()->back()->with('message', 'Failed to upload.')->withInput();
+                return redirect()->back()->with('alert', [
+                    'type' => 'error',
+                    'message' => 'Failed to upload.',
+                    'class' => 'alert-danger',
+                    'icon' => 'exclamation-triangle-fill',
+                    'status_code' => 400
+                ])->withInput();
             }
 
             $product->update(['image' => $upload]);
 
-            return redirect(route('products.index'))->with('success', 'Product created!');
+            return redirect()->back()->with('alert', [
+                'type' => 'success',
+                'message' => 'Product created successfully.',
+                'class' => 'alert-success',
+                'icon' => 'check-circle-fill',
+                'status_code' => 201
+            ]);
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return redirect()->back()->with('alert', [
+                'type' => 'error',
+                'message' => 'Something went wrong.',
+                'class' => 'alert-danger',
+                'icon' => 'exclamation-triangle-fill',
+                'status_code' => $ex->getCode(),
+            ])->withInput();
         }
     }
 
@@ -51,9 +82,21 @@ class ProductController extends Controller {
 
             $product->update($request->validated());
 
-            return redirect(route('products.index'))->with('success', 'Product updated!');
+            return redirect()->back()->with('alert', [
+                'type' => 'success',
+                'message' => 'Product updated successfully.',
+                'class' => 'alert-success',
+                'icon' => 'check-circle-fill',
+                'status_code' => 200
+            ]);
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return redirect()->back()->with('alert', [
+                'type' => 'error',
+                'message' => 'Something went wrong.',
+                'class' => 'alert-danger',
+                'icon' => 'exclamation-triangle-fill',
+                'status_code' => $ex->getCode(),
+            ])->withInput();
         }
     }
 
@@ -63,9 +106,21 @@ class ProductController extends Controller {
 
             $product->update(['deleted_at' => now(), 'status' => 'inactive']);
 
-            return redirect(route('products.index'))->with('success', 'Product deleted!');
+            return redirect()->back()->with('alert', [
+                'type' => 'success',
+                'message' => 'Product deleted successfully.',
+                'class' => 'alert-success',
+                'icon' => 'check-circle-fill',
+                'status_code' => 200
+            ]);
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return redirect()->back()->with('alert', [
+                'type' => 'error',
+                'message' => 'Something went wrong.',
+                'class' => 'alert-danger',
+                'icon' => 'exclamation-triangle-fill',
+                'status_code' => $ex->getCode(),
+            ])->withInput();
         }
     }
 

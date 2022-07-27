@@ -10,7 +10,13 @@ class CategoryController extends Controller {
         try {
             return view('categories.index', ['metaTitle' => 'Categories']);
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return redirect()->back()->with('alert', [
+                'type' => 'error',
+                'message' => 'Something went wrong.',
+                'class' => 'alert-danger',
+                'icon' => 'exclamation-triangle-fill',
+                'status_code' => $ex->getCode()
+            ]);
         }
     }
 
@@ -18,7 +24,13 @@ class CategoryController extends Controller {
         try {
             return view('categories.create', ['metaTitle' => 'New Category']);
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return redirect()->back()->with('alert', [
+                'type' => 'error',
+                'message' => 'Something went wrong.',
+                'class' => 'alert-danger',
+                'icon' => 'exclamation-triangle-fill',
+                'status_code' => $ex->getCode()
+            ]);
         }
     }
 
@@ -26,9 +38,21 @@ class CategoryController extends Controller {
         try {
             Category::create($request->validated());
 
-            return redirect(route('categories.index'))->with('success', 'Category created!');
+            return redirect()->back()->with('alert', [
+                'type' => 'success',
+                'message' => 'Category created successfully.',
+                'class' => 'alert-success',
+                'icon' => 'check-circle-fill',
+                'status_code' => 201
+            ]);
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return redirect()->back()->with('alert', [
+                'type' => 'error',
+                'message' => 'Something went wrong.',
+                'class' => 'alert-danger',
+                'icon' => 'exclamation-triangle-fill',
+                'status_code' => $ex->getCode()
+            ]);
         }
     }
 
@@ -38,9 +62,21 @@ class CategoryController extends Controller {
 
             $category->update($request->validated());
 
-            return redirect(route('categories.index'))->with('success', 'Category updated!');
+            return redirect()->back()->with('alert', [
+                'type' => 'success',
+                'message' => 'Category updated successfully.',
+                'class' => 'alert-success',
+                'icon' => 'check-circle-fill',
+                'status_code' => 200
+            ]);
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went wrong.'], 500);
+            return redirect()->back()->with('alert', [
+                'type' => 'error',
+                'message' => 'Something went wrong.',
+                'class' => 'alert-danger',
+                'icon' => 'exclamation-triangle-fill',
+                'status_code' => $ex->getCode()
+            ]);
         }
     }
 
@@ -50,9 +86,21 @@ class CategoryController extends Controller {
 
             $category->update(['deleted_at' => now()]);
 
-            return redirect(route('categories.index'))->with('success', 'Category deleted!');
+            return redirect()->back()->with('alert', [
+                'type' => 'success',
+                'message' => 'Category deleted successfully.',
+                'class' => 'alert-success',
+                'icon' => 'check-circle-fill',
+                'status_code' => 200
+            ]);
         } catch (\Exception $ex) {
-            return response()->json(['message' => 'Something went'], 500);
+            return redirect()->back()->with('alert', [
+                'type' => 'error',
+                'message' => 'Something went wrong.',
+                'class' => 'alert-danger',
+                'icon' => 'exclamation-triangle-fill',
+                'status_code' => $ex->getCode()
+            ]);
         }
     }
 }
