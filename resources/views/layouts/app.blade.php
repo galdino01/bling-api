@@ -7,7 +7,7 @@
         <!-- APP Title -->
         <title>
             @isset($metaTitle)
-                {{ config('app.name', 'Armazene Aqui') . ' | ' . $metaTitle }}@else{{ config('app.name', 'Armazene Aqui') }}
+                {{ config('app.name', 'Store Here') . ' | ' . $metaTitle }}@else{{ config('app.name', 'Armazene Aqui') }}
             @endisset
         </title>
 
@@ -60,7 +60,6 @@
         </style>
     </head>
     <body class="bg-light">
-
         @if (Session::has('alert'))
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                 <symbol id="{{ Session::get('alert.icon') }}" fill="currentColor" viewBox="0 0 16 16">
